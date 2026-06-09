@@ -660,11 +660,6 @@ const menuGroups = [
                 "description": "Served with soup or salad.",
                 "items": [
                     {
-                        "name": "Hibachi Chicken",
-                        "price": "22",
-                        "description": ""
-                    },
-                    {
                         "name": "Hibachi Shrimp",
                         "price": "24",
                         "description": ""
@@ -712,11 +707,6 @@ const menuGroups = [
                 "description": "Served with Miso Soup, Salad, Rice, Tempura & CA Roll.",
                 "items": [
                     {
-                        "name": "Chicken Teriyaki",
-                        "price": "19",
-                        "description": ""
-                    },
-                    {
                         "name": "Steak Teriyaki",
                         "price": "23",
                         "description": ""
@@ -748,11 +738,6 @@ const menuGroups = [
                 "title": "Sushi Bar Lunch",
                 "description": "Lunch specials.",
                 "items": [
-                    {
-                        "name": "*Sushi and Sashimi Combo",
-                        "price": "38",
-                        "description": "6 pieces sashimi, 4 pieces sushi, California roll or tuna roll"
-                    },
                     {
                         "name": "*Lunch Maki Combo",
                         "price": "19",
