@@ -660,17 +660,17 @@ const menuGroups = [
                 "description": "Available Monday through Friday from 11:00 am to 3:00 pm",
                 "showSignature": false,
                 "items": [
-                    { "name": "Julienne Hibachi Chicken", "price": "17.00", "description": "Served with veggie fried rice and hibachi vegetables" },
-                    { "name": "Julienne Hibachi Filet", "price": "19.00", "description": "Served with veggie fried rice and hibachi vegetables" },
-                    { "name": "Grilled Mackerel with Rice", "price": "19.00", "description": "" },
-                    { "name": "Oyakodon", "price": "17.00", "description": "Chicken, egg and onion served over steamed rice" },
-                    { "name": "Mapo Tofu with Ground Beef", "price": "17.00", "description": "Sichuan-style soft tofu simmered in a spicy chili bean sauce with onion, carrots, and peas. Served with steamed rice." },
-                    { "name": "Chicken Katsu Don", "price": "17.00", "description": "Served over steamed rice" },
-                    { "name": "Julienne Chicken Curry Rice", "price": "17.00", "description": "Onion, carrots, and peas with steamed rice" },
-                    { "name": "Seared Salmon Don with Egg", "price": "19.00", "description": "Served with veggie fried rice" },
-                    { "name": "Ajisai Poke Don", "price": "20.00", "description": "Spicy salmon, spicy tuna, crab salad, avocado, sweet corn, mango, egg yolk, spicy mayo sauce, eel sauce, tobiko, with sushi rice" },
-                    { "name": "Lunch Sushi Combo", "price": "28.00", "description": "6 pieces of sushi: tuna, salmon, white fish, shrimp, yellowtail, and albacore tuna. Served with a California roll and miso soup" },
-                    { "name": "Lunch Sashimi Combo", "price": "30.00", "description": "10 pieces of chef's choice sashimi. Served with sushi rice and miso soup" }
+                    { "name": "Julienne Hibachi Chicken", "price": "17", "description": "Served with veggie fried rice and hibachi vegetables" },
+                    { "name": "Julienne Hibachi Filet", "price": "19", "description": "Served with veggie fried rice and hibachi vegetables" },
+                    { "name": "Grilled Mackerel with Rice", "price": "19", "description": "" },
+                    { "name": "Oyakodon", "price": "17", "description": "Chicken, egg and onion served over steamed rice" },
+                    { "name": "Mapo Tofu with Ground Beef", "price": "17", "description": "Sichuan-style soft tofu simmered in a spicy chili bean sauce with onion, carrots, and peas. Served with steamed rice." },
+                    { "name": "Chicken Katsu Don", "price": "17", "description": "Served over steamed rice" },
+                    { "name": "Julienne Chicken Curry Rice", "price": "17", "description": "Onion, carrots, and peas with steamed rice" },
+                    { "name": "Seared Salmon Don with Egg", "price": "19", "description": "Served with veggie fried rice" },
+                    { "name": "Ajisai Poke Don", "price": "20", "description": "Spicy salmon, spicy tuna, crab salad, avocado, sweet corn, mango, egg yolk, spicy mayo sauce, eel sauce, tobiko, with sushi rice" },
+                    { "name": "Lunch Sushi Combo", "price": "28", "description": "6 pieces of sushi: tuna, salmon, white fish, shrimp, yellowtail, and albacore tuna. Served with a California roll and miso soup" },
+                    { "name": "Lunch Sashimi Combo", "price": "30", "description": "10 pieces of chef's choice sashimi. Served with sushi rice and miso soup" }
                 ]
             },
             {
@@ -679,9 +679,9 @@ const menuGroups = [
                 "description": "Toppings: Kikurage mushroom, green onion, bamboo shoot, roasted pork",
                 "showSignature": false,
                 "items": [
-                    { "name": "Tonkotsu Ramen", "price": "17.00", "description": "" },
-                    { "name": "Spicy Miso Ramen", "price": "17.00", "description": "" },
-                    { "name": "Shoyu Ramen", "price": "16.00", "description": "" }
+                    { "name": "Tonkotsu Ramen", "price": "17", "description": "" },
+                    { "name": "Spicy Miso Ramen", "price": "17", "description": "" },
+                    { "name": "Shoyu Ramen", "price": "16", "description": "" }
                 ]
             },
             {
@@ -690,10 +690,10 @@ const menuGroups = [
                 "description": "Served with fish cake and scallions",
                 "showSignature": false,
                 "items": [
-                    { "name": "Lunch Chicken Udon", "price": "16.00", "description": "" },
-                    { "name": "Lunch Tempura Udon", "price": "15.00", "description": "" },
-                    { "name": "Lunch Kitsune Udon", "price": "13.00", "description": "" },
-                    { "name": "Lunch Chicken Katsu Udon", "price": "17.00", "description": "" }
+                    { "name": "Lunch Chicken Udon", "price": "16", "description": "" },
+                    { "name": "Lunch Tempura Udon", "price": "15", "description": "" },
+                    { "name": "Lunch Kitsune Udon", "price": "13", "description": "" },
+                    { "name": "Lunch Chicken Katsu Udon", "price": "17", "description": "" }
                 ]
             },
             {
@@ -702,10 +702,10 @@ const menuGroups = [
                 "description": "Served with onion, carrots, and cabbage",
                 "showSignature": false,
                 "items": [
-                    { "name": "Veggie Yaki Soba", "price": "16.00", "description": "" },
-                    { "name": "Chicken Yaki Soba", "price": "17.00", "description": "" },
-                    { "name": "Beef Yaki Soba", "price": "18.00", "description": "" },
-                    { "name": "Shrimp Yaki Soba", "price": "18.00", "description": "" }
+                    { "name": "Veggie Yaki Soba", "price": "16", "description": "" },
+                    { "name": "Chicken Yaki Soba", "price": "17", "description": "" },
+                    { "name": "Beef Yaki Soba", "price": "18", "description": "" },
+                    { "name": "Shrimp Yaki Soba", "price": "18", "description": "" }
                 ]
             },
             {
@@ -714,10 +714,10 @@ const menuGroups = [
                 "description": "Served with onion, carrots, green beans, and egg",
                 "showSignature": false,
                 "items": [
-                    { "name": "Chicken Fried Rice", "price": "15.00", "description": "" },
-                    { "name": "Shrimp Fried Rice", "price": "17.00", "description": "" },
-                    { "name": "Steak Fried Rice", "price": "17.00", "description": "" },
-                    { "name": "Salmon Fried Rice", "price": "17.00", "description": "" }
+                    { "name": "Chicken Fried Rice", "price": "15", "description": "" },
+                    { "name": "Shrimp Fried Rice", "price": "17", "description": "" },
+                    { "name": "Steak Fried Rice", "price": "17", "description": "" },
+                    { "name": "Salmon Fried Rice", "price": "17", "description": "" }
                 ]
             }
         ]
