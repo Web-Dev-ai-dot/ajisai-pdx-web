@@ -163,7 +163,63 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. ZIG-ZAG FEATURE SECTION WITH 3D TILT */}
+      {/* 2. LUNCH SPECIAL SECTION */}
+      <section className="w-full bg-[#5D182E] text-white py-24 overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+
+            {/* Image — left */}
+            <div className="w-full lg:w-1/2 order-1">
+              <div className="relative h-[500px] w-full rounded-sm overflow-hidden shadow-2xl">
+                <Image
+                  src="/lunch-poke-don.jpg"
+                  alt="Ajisai Poke Don — a signature lunch dish with spicy salmon, avocado, tobiko, and a purple flower garnish"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Text Content — right */}
+            <div className="w-full lg:w-1/2 space-y-8 order-2">
+              <div className="space-y-4">
+                <span className="text-[#C5A059] tracking-[0.2em] text-sm font-bold uppercase">Lunch Special</span>
+                <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+                  Lunch at <span className="text-[#C5A059]">Ajisai</span>
+                </h2>
+              </div>
+
+              <p className="text-white/80 leading-loose text-lg font-light">
+                Available Monday through Friday, 11:00 AM–3:00 PM.
+              </p>
+
+              <ul className="space-y-4 text-white/70">
+                <li className="flex items-start gap-3">
+                  <Sparkles className="w-5 h-5 text-[#C5A059] mt-1 shrink-0" />
+                  <span>Hibachi, Bento, Sushi Bar &amp; more</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Sparkles className="w-5 h-5 text-[#C5A059] mt-1 shrink-0" />
+                  <span>Dine in only</span>
+                </li>
+              </ul>
+
+              <div className="pt-4">
+                <Link
+                  href="/menus?tab=lunch"
+                  className="bg-[#C5A059] text-[#111] px-8 py-4 rounded-sm uppercase tracking-widest text-sm font-bold hover:bg-white transition-colors duration-300 inline-block"
+                >
+                  View Lunch Menu
+                </Link>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 3. ZIG-ZAG FEATURE SECTION WITH 3D TILT */}
       <section
         className="w-full bg-[#F9F4E8] py-24 bg-repeat bg-[length:400px_400px]"
         style={{ backgroundImage: 'url("/pattern-bg.png")' }}
