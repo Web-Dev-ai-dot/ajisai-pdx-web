@@ -164,13 +164,13 @@ export default function Home() {
       </section>
 
       {/* 2. LUNCH SPECIAL SECTION */}
-      <section className="w-full bg-[#5D182E] text-white py-10 overflow-hidden">
+      <section className="w-full bg-[#5D182E] text-white py-16 overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center gap-10">
 
             {/* Image — left */}
             <div className="w-full lg:w-1/2 order-1">
-              <div className="relative h-[280px] w-full rounded-sm overflow-hidden shadow-2xl">
+              <div className="relative h-[400px] w-full rounded-sm overflow-hidden shadow-2xl">
                 <Image
                   src="/lunch-poke-don.jpg"
                   alt="Ajisai Poke Don — a signature lunch dish with spicy salmon, avocado, tobiko, and a purple flower garnish"
