@@ -140,7 +140,7 @@ export default function Home() {
         <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-8 tracking-tight leading-tight">
             The Art of <br />
-            <span className="italic text-[#C5A059]">Japanese Dining</span>
+            <span className="italic text-[#C5A059]">Dining</span>
           </h1>
           <p className="text-gray-200 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
             Experience authentic sushi, interactive teppanyaki, and handcrafted ramen located across the street from Beaverton Town Square.
