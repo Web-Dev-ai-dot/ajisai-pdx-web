@@ -658,6 +658,7 @@ const menuGroups = [
                 "id": "hibachi-lunch",
                 "title": "Hibachi Lunch",
                 "description": "Served with soup or salad.",
+                "showSignature": false,
                 "items": [
                     {
                         "name": "Hibachi Shrimp",
@@ -705,6 +706,7 @@ const menuGroups = [
                 "id": "kitchen-lunch-bento",
                 "title": "Kitchen Lunch Bento",
                 "description": "Served with Miso Soup, Salad, Rice, Tempura & CA Roll.",
+                "showSignature": false,
                 "items": [
                     {
                         "name": "Steak Teriyaki",
@@ -737,6 +739,7 @@ const menuGroups = [
                 "id": "sushi-bar-lunch",
                 "title": "Sushi Bar Lunch",
                 "description": "Lunch specials.",
+                "showSignature": false,
                 "items": [
                     {
                         "name": "*Lunch Maki Combo",
