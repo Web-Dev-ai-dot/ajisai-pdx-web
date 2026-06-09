@@ -655,97 +655,69 @@ const menuGroups = [
         label: "Lunch",
         subCategories: [
             {
-                "id": "hibachi-lunch",
-                "title": "Hibachi Lunch",
-                "description": "Served with soup or salad.",
+                "id": "ajisai-special-lunch",
+                "title": "Ajisai Special Lunch",
+                "description": "Available Monday through Friday from 11:00 am to 3:00 pm",
                 "showSignature": false,
                 "items": [
-                    {
-                        "name": "Hibachi Shrimp",
-                        "price": "24",
-                        "description": ""
-                    },
-                    {
-                        "name": "Hibachi Steak",
-                        "price": "25",
-                        "description": ""
-                    },
-                    {
-                        "name": "Hibachi Filet Mignon",
-                        "price": "27",
-                        "description": ""
-                    },
-                    {
-                        "name": "Hibachi Calamari",
-                        "price": "24",
-                        "description": ""
-                    },
-                    {
-                        "name": "Hibachi Combo (any 2 item)",
-                        "price": "28",
-                        "description": "Yakisoba or Udon Japanese noodles with vegetable in a special sauce"
-                    },
-                    {
-                        "name": "Yakisoba (Chicken)",
-                        "price": "22",
-                        "description": ""
-                    },
-                    {
-                        "name": "Yakisoba (Steak)",
-                        "price": "23",
-                        "description": ""
-                    },
-                    {
-                        "name": "Yakisoba (Shrimp)",
-                        "price": "23",
-                        "description": ""
-                    }
+                    { "name": "Julienne Hibachi Chicken", "price": "17.00", "description": "Served with veggie fried rice and hibachi vegetables" },
+                    { "name": "Julienne Hibachi Filet", "price": "19.00", "description": "Served with veggie fried rice and hibachi vegetables" },
+                    { "name": "Grilled Mackerel with Rice", "price": "19.00", "description": "" },
+                    { "name": "Oyakodon", "price": "17.00", "description": "Chicken, egg and onion served over steamed rice" },
+                    { "name": "Mapo Tofu with Ground Beef", "price": "17.00", "description": "Sichuan-style soft tofu simmered in a spicy chili bean sauce with onion, carrots, and peas. Served with steamed rice." },
+                    { "name": "Chicken Katsu Don", "price": "17.00", "description": "Served over steamed rice" },
+                    { "name": "Julienne Chicken Curry Rice", "price": "17.00", "description": "Onion, carrots, and peas with steamed rice" },
+                    { "name": "Seared Salmon Don with Egg", "price": "19.00", "description": "Served with veggie fried rice" },
+                    { "name": "Ajisai Poke Don", "price": "20.00", "description": "Spicy salmon, spicy tuna, crab salad, avocado, sweet corn, mango, egg yolk, spicy mayo sauce, eel sauce, tobiko, with sushi rice" },
+                    { "name": "Lunch Sushi Combo", "price": "28.00", "description": "6 pieces of sushi: tuna, salmon, white fish, shrimp, yellowtail, and albacore tuna. Served with a California roll and miso soup" },
+                    { "name": "Lunch Sashimi Combo", "price": "30.00", "description": "10 pieces of chef's choice sashimi. Served with sushi rice and miso soup" }
                 ]
             },
             {
-                "id": "kitchen-lunch-bento",
-                "title": "Kitchen Lunch Bento",
-                "description": "Served with Miso Soup, Salad, Rice, Tempura & CA Roll.",
+                "id": "lunch-ramen",
+                "title": "Lunch Ramen",
+                "description": "Toppings: Kikurage mushroom, green onion, bamboo shoot, roasted pork",
                 "showSignature": false,
                 "items": [
-                    {
-                        "name": "Steak Teriyaki",
-                        "price": "23",
-                        "description": ""
-                    },
-                    {
-                        "name": "Salmon Teriyaki",
-                        "price": "22",
-                        "description": ""
-                    },
-                    {
-                        "name": "Filet Mignon",
-                        "price": "25",
-                        "description": ""
-                    },
-                    {
-                        "name": "Chicken katsu",
-                        "price": "19",
-                        "description": ""
-                    },
-                    {
-                        "name": "Assorted Tempura",
-                        "price": "19",
-                        "description": "Lunch Chicken Teriyaki Bento"
-                    }
+                    { "name": "Tonkotsu Ramen", "price": "17.00", "description": "" },
+                    { "name": "Spicy Miso Ramen", "price": "17.00", "description": "" },
+                    { "name": "Shoyu Ramen", "price": "16.00", "description": "" }
                 ]
             },
             {
-                "id": "sushi-bar-lunch",
-                "title": "Sushi Bar Lunch",
-                "description": "Lunch specials.",
+                "id": "lunch-udon",
+                "title": "Lunch Udon",
+                "description": "Served with fish cake and scallions",
                 "showSignature": false,
                 "items": [
-                    {
-                        "name": "*Lunch Maki Combo",
-                        "price": "19",
-                        "description": "Choice of any 2 rolls."
-                    }
+                    { "name": "Lunch Chicken Udon", "price": "16.00", "description": "" },
+                    { "name": "Lunch Tempura Udon", "price": "15.00", "description": "" },
+                    { "name": "Lunch Kitsune Udon", "price": "13.00", "description": "" },
+                    { "name": "Lunch Chicken Katsu Udon", "price": "17.00", "description": "" }
+                ]
+            },
+            {
+                "id": "yaki-soba-udon",
+                "title": "Yaki Soba & Udon",
+                "description": "Served with onion, carrots, and cabbage",
+                "showSignature": false,
+                "items": [
+                    { "name": "Veggie Yaki Soba", "price": "16.00", "description": "" },
+                    { "name": "Chicken Yaki Soba", "price": "17.00", "description": "" },
+                    { "name": "Beef Yaki Soba", "price": "18.00", "description": "" },
+                    { "name": "Shrimp Yaki Soba", "price": "18.00", "description": "" }
+                ]
+            },
+            {
+                "id": "lunch-fried-rice",
+                "title": "Fried Rice",
+                "description": "Served with onion, carrots, green beans, and egg",
+                "showSignature": false,
+                "items": [
+                    { "name": "Chicken Fried Rice", "price": "15.00", "description": "" },
+                    { "name": "Shrimp Fried Rice", "price": "17.00", "description": "" },
+                    { "name": "Steak Fried Rice", "price": "17.00", "description": "" },
+                    { "name": "Salmon Fried Rice", "price": "17.00", "description": "" }
                 ]
             }
         ]
