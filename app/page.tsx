@@ -172,8 +172,8 @@ export default function Home() {
             <div className="w-full lg:w-1/2 order-1">
               <div className="relative h-[400px] w-full rounded-sm overflow-hidden shadow-2xl">
                 <Image
-                  src="/lunch-poke-don.jpg"
-                  alt="Ajisai Poke Don — a signature lunch dish with spicy salmon, avocado, tobiko, and a purple flower garnish"
+                  src="/lunch-spread.png"
+                  alt="A spread of Ajisai lunch dishes including sashimi, curry rice, mapo tofu, chicken katsu, and poke don on a warm wood table"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
