@@ -39,13 +39,13 @@ export default function ChefsPage() {
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/60 to-transparent" />
                 <div className="relative container mx-auto px-6 pb-16">
                     <span className="text-[#C5A059] tracking-[0.25em] text-xs font-bold uppercase block mb-4">
-                        Teppanyaki Masters
+                        TEPPANYAKI MASTERS
                     </span>
                     <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-tight text-balance">
-                        Meet the Chefs<br />
+                        <span className="text-white">Meet the Chefs</span><br />
                         <span className="text-[#C5A059]">Behind the Flame</span>
                     </h1>
-                    <div className="w-20 h-px bg-[#C5A059] mt-6" />
+                    <div className="w-20 h-[2px] bg-[#C5A059] mt-6" />
                 </div>
             </section>
 
@@ -53,8 +53,7 @@ export default function ChefsPage() {
             <section className="bg-[#0D0D0D] pt-12 pb-4">
                 <div className="container mx-auto px-6 max-w-3xl">
                     <p className="text-white/60 font-light text-lg leading-relaxed text-pretty">
-                        Our hibachi chefs bring years of craft and showmanship to every table —
-                        turning each meal into a performance you will not forget.
+                        At Ajisai, hibachi dining is more than a meal — it is a live culinary performance crafted by chefs who have dedicated years to mastering their craft. Each of our teppanyaki chefs brings precision knife skills, expert timing, and genuine showmanship to the iron grill, searing premium steaks, fresh seafood, and seasonal vegetables right before your eyes. From the mesmerizing rhythm of the spatula to the heat of the open flame, every moment at the hibachi table is designed to delight. Whether you are celebrating a special occasion or simply craving an immersive dining experience unlike any other in Beaverton, our chefs make every visit memorable.
                     </p>
                 </div>
             </section>
@@ -100,16 +99,18 @@ export default function ChefsPage() {
 
             {/* CTA */}
             <section className="bg-[#0D0D0D] pb-24 pt-4">
-                <div className="container mx-auto px-6 text-center">
-                    <p className="text-white/50 font-light mb-8 text-pretty">
+                <div className="container mx-auto px-6">
+                    <p className="text-white/60 font-light text-lg mb-8 text-pretty">
                         Ready to watch them in action? Book your table and experience the show.
                     </p>
-                    <Link
-                        href="/reservations"
+                    <a
+                        href="https://www.ajisaisushisteak.com/reservations"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-block bg-[#C5A059] text-[#0D0D0D] px-10 py-4 rounded-sm uppercase tracking-widest text-sm font-bold hover:bg-white transition-colors duration-300"
                     >
-                        Reserve a Table
-                    </Link>
+                        RESERVE A TABLE
+                    </a>
                 </div>
             </section>
 
