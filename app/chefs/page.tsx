@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Flame } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "Meet the Chefs | Ajisai Sushi Steak",
@@ -83,16 +82,10 @@ export default function ChefsPage() {
 
                                 {/* Info */}
                                 <div className="p-5">
-                                    <div className="flex items-start gap-2 mb-1">
-                                        <Flame
-                                            className="text-[#C5A059] shrink-0 mt-0.5"
-                                            size={14}
-                                        />
-                                        <h2 className="font-serif text-white text-base leading-snug">
-                                            {chef.name}
-                                        </h2>
-                                    </div>
-                                    <p className="text-white/45 text-sm font-light pl-5">
+                                    <h2 className="font-serif text-white text-base leading-snug mb-1">
+                                        {chef.name}
+                                    </h2>
+                                    <p className="text-white/45 text-sm font-light">
                                         {chef.tenure}
                                     </p>
                                 </div>
