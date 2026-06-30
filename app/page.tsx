@@ -347,7 +347,77 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. REVIEWS SECTION (renumbered) */}
+      {/* 5. MEET THE CHEFS SECTION */}
+      <section
+        className="w-full bg-[#F9F4E8] py-24 bg-repeat bg-[length:400px_400px]"
+        style={{ backgroundImage: 'url("/pattern-bg.png")' }}
+      >
+        <div className="container mx-auto px-6">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <span className="text-[#C5A059] tracking-[0.2em] text-sm font-bold uppercase block mb-3">Teppanyaki Masters</span>
+            <h2 className="text-[#5D182E] text-4xl md:text-5xl font-serif mb-4">
+              Meet the Chefs Behind the Flame
+            </h2>
+            <div className="w-24 h-1 bg-[#C5A059] mx-auto mb-6" />
+            <p className="text-gray-600 font-light text-lg max-w-2xl mx-auto leading-relaxed">
+              Our hibachi chefs bring years of craft and showmanship to every table — turning each meal into a performance you will not forget.
+            </p>
+          </div>
+
+          {/* Chef Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
+            {[
+              { name: "Joseph Alcantara", tenure: "Hibachi chef since 2019" },
+              { name: "Jacob Valencia", tenure: "Hibachi chef for about 6 years" },
+              { name: "Trejan", tenure: "Hibachi chef since 2019" },
+              { name: "Félix Yu", tenure: "Hibachi chef since 1999" },
+              { name: "Ismael Samuel Torres Muñoz Salinas", tenure: "Hibachi chef for 3 years" },
+              { name: "Brady Benson", tenure: "Hibachi chef since 2017" },
+              { name: "Sean Naile", tenure: "Hibachi chef since 2014" },
+              { name: "Christopher", tenure: "Hibachi chef for about 10 years" },
+              { name: "Geovanny", tenure: "Hibachi chef for about 3.5 years" },
+              { name: "Gama", tenure: "Hibachi chef for 3 years" },
+              { name: "Scott Sims", tenure: "Hibachi chef for almost 5 years" },
+            ].map((chef) => (
+              <div
+                key={chef.name}
+                className="bg-white rounded-sm shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden group"
+              >
+                <div className="relative h-[320px] w-full overflow-hidden bg-[#F9F4E8]">
+                  <Image
+                    src="/placeholder.svg?height=400&width=320"
+                    alt={`Chef ${chef.name}`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {/* Subtle overlay on hover */}
+                  <div className="absolute inset-0 bg-[#5D182E]/0 group-hover:bg-[#5D182E]/10 transition-colors duration-300" />
+                </div>
+                <div className="p-5 border-t-2 border-[#C5A059]">
+                  <h3 className="text-[#5D182E] font-serif text-lg leading-snug mb-1">{chef.name}</h3>
+                  <p className="text-gray-500 text-sm font-light">{chef.tenure}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="text-center">
+            <a
+              href="https://www.ajisaisushisteak.com/reservations"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-[#5D182E] text-white px-10 py-4 rounded-sm uppercase tracking-widest text-sm font-bold hover:bg-[#C5A059] hover:text-[#111] transition-colors duration-300"
+            >
+              Reserve a Table
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. REVIEWS SECTION (renumbered) */}
       <section className="w-full bg-white py-24">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
