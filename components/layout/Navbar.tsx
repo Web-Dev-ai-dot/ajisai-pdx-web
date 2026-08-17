@@ -182,7 +182,12 @@ export function Navbar() {
                         href="https://www.toasttab.com/r/ajisai-beaverton/order"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-6 py-2 bg-accent text-primary text-sm uppercase tracking-wider font-light hover:bg-white transition-all duration-300"
+                        className={clsx(
+                            "px-6 py-2 border transition-all duration-300",
+                            isScrolled || !isHeroPage
+                                ? "border-secondary text-secondary hover:bg-secondary hover:text-primary"
+                                : "border-white text-white hover:bg-white hover:text-primary"
+                        )}
                     >
                         Order Pickup
                     </a>
@@ -291,7 +296,7 @@ export function Navbar() {
                                 href="https://www.toasttab.com/r/ajisai-beaverton/order"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-8 py-3 bg-accent text-primary hover:bg-white transition-all text-xl"
+                                className="px-8 py-3 border border-secondary text-secondary hover:bg-accent hover:border-accent hover:text-primary transition-all text-xl"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 Order Pickup
