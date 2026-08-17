@@ -178,11 +178,10 @@ export function Navbar() {
                         Reserve
                     </Link>
 
-                    <a
+                    <Link
                         href="https://toast.app/r/ajisai-beaverton/order"
                         target="_blank"
                         rel="noopener noreferrer"
-                        suppressHydrationWarning
                         className={clsx(
                             "px-6 py-2 border transition-all duration-300",
                             isScrolled || !isHeroPage
@@ -191,7 +190,7 @@ export function Navbar() {
                         )}
                     >
                         Order Pickup
-                    </a>
+                    </Link>
                 </nav>
 
                 {/* Mobile Toggle */}
@@ -293,16 +292,15 @@ export function Navbar() {
                                 Book a Table
                             </Link>
 
-                            <a
+                            <Link
                                 href="https://toast.app/r/ajisai-beaverton/order"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                suppressHydrationWarning
                                 className="px-8 py-3 border border-secondary text-secondary hover:bg-accent hover:border-accent hover:text-primary transition-all text-xl"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 Order Pickup
-                            </a>
+                            </Link>
                         </motion.div>
                     )}
                 </AnimatePresence>
