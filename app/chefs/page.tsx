@@ -53,7 +53,7 @@ export default function ChefsPage() {
             <section className="bg-[#0D0D0D] pt-12 pb-4">
                 <div className="container mx-auto px-6 max-w-3xl">
                     <p className="text-white/60 font-light text-lg leading-relaxed text-pretty">
-                        At Ajisai, hibachi dining is more than a meal — it is a live culinary performance crafted by chefs who have dedicated years to mastering their craft. Each of our teppanyaki chefs brings precision knife skills, expert timing, and genuine showmanship to the iron grill, searing premium steaks, fresh seafood, and seasonal vegetables right before your eyes. From the mesmerizing rhythm of the spatula to the heat of the open flame, every moment at the hibachi table is designed to delight. Whether you are celebrating a special occasion or simply craving an immersive dining experience unlike any other in Beaverton, our chefs make every visit memorable.
+                        At Ajisai, hibachi dining is more than a meal. It is a live culinary performance crafted by chefs who have dedicated years to mastering their craft. Each of our teppanyaki chefs brings precision knife skills, expert timing, and genuine showmanship to the iron grill, searing premium steaks, fresh seafood, and seasonal vegetables right before your eyes. From the mesmerizing rhythm of the spatula to the heat of the open flame, every moment at the hibachi table is designed to delight. Whether you are celebrating a special occasion or simply craving an immersive dining experience unlike any other in Beaverton, our chefs make every visit memorable.
                     </p>
                 </div>
             </section>
