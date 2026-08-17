@@ -177,6 +177,15 @@ export function Navbar() {
                     >
                         Reserve
                     </Link>
+
+                    <a
+                        href="https://www.toasttab.com/r/ajisai-beaverton/order"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-6 py-2 bg-accent text-primary text-sm uppercase tracking-wider font-light hover:bg-white transition-all duration-300"
+                    >
+                        Order Pickup
+                    </a>
                 </nav>
 
                 {/* Mobile Toggle */}
@@ -277,6 +286,16 @@ export function Navbar() {
                             >
                                 Book a Table
                             </Link>
+
+                            <a
+                                href="https://www.toasttab.com/r/ajisai-beaverton/order"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-8 py-3 bg-accent text-primary hover:bg-white transition-all text-xl"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                Order Pickup
+                            </a>
                         </motion.div>
                     )}
                 </AnimatePresence>
