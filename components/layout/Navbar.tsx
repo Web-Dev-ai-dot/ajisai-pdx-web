@@ -179,7 +179,7 @@ export function Navbar() {
                     </Link>
 
                     <a
-                        href="https://www.toasttab.com/r/ajisai-beaverton/order"
+                        href="https://toast.app/r/ajisai-beaverton/order"
                         target="_blank"
                         rel="noopener noreferrer"
                         className={clsx(
@@ -293,7 +293,7 @@ export function Navbar() {
                             </Link>
 
                             <a
-                                href="https://www.toasttab.com/r/ajisai-beaverton/order"
+                                href="https://toast.app/r/ajisai-beaverton/order"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="px-8 py-3 border border-secondary text-secondary hover:bg-accent hover:border-accent hover:text-primary transition-all text-xl"
