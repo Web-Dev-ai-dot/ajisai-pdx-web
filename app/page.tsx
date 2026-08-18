@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, ArrowUp, Star, Quote, Sparkles } from "lucide-react";
 import { useEffect, useState, useRef, MouseEvent } from "react";
+import { OrderDelivery } from "@/components/home/OrderDelivery";
 // import GrandOpeningPopup from "@/components/home/GrandOpeningPopup";
 
 // --- NEW COMPONENT: 3D TILT CARD ---
@@ -346,6 +347,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ORDER & DELIVERY SECTION */}
+      <OrderDelivery />
 
       {/* 5. REVIEWS SECTION */}
       <section className="w-full bg-white py-24">
