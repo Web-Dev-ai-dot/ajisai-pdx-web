@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 
 const PROVIDERS = [
@@ -7,16 +8,28 @@ const PROVIDERS = [
     name: "Toast",
     tag: "Pickup",
     href: "https://toast.app/r/ajisai-beaverton/order",
+    // Replace with the official Toast white/monochrome wordmark when available.
+    logo: "/images/order/toast-logo.webp",
+    logoWidth: 140,
+    logoHeight: 48,
   },
   {
     name: "DoorDash",
     tag: "Delivery & Pickup",
     href: "https://www.doordash.com/store/ajisai-sushi-and-steak-beaverton-38434949/113394000/?pickup=true&src=yp&utm_source_id=4b3a3b62-0272-4a57-8baf-6f65102f9d8c",
+    // Replace with the official DoorDash white/monochrome horizontal wordmark when available.
+    logo: "/images/order/doordash-logo.png",
+    logoWidth: 168,
+    logoHeight: 81,
   },
   {
     name: "Grubhub",
     tag: "Delivery",
     href: "https://www.grubhub.com/restaurant/ajisai-sushi-and-steak-4050-sw-114th-ave-beaverton/14508864",
+    // Replace with the official Grubhub white/monochrome horizontal wordmark when available.
+    logo: "/images/order/grubhub-logo.png",
+    logoWidth: 180,
+    logoHeight: 47,
   },
 ];
 
@@ -24,16 +37,17 @@ export function OrderDelivery() {
   return (
     <section className="relative w-full overflow-hidden">
       {/*
-        IMAGE PLACEHOLDER
-        Replace the backgroundImage below with a real Ajisai sushi/interior
-        photo, e.g.:
-        style={{ backgroundImage: "url('/images/order-online-bg.jpg')" }}
-        Until then this falls back to a solid burgundy background so the
-        section still reads correctly.
+        BACKGROUND IMAGE
+        This is a placeholder food/ambiance photo. Swap the src below for a
+        real Ajisai sushi/hibachi/interior photo when available, e.g.:
+        src="/images/order/ajisai-photo.jpg"
       */}
-      <div
-        className="absolute inset-0 bg-[#5C1A2E] bg-cover bg-center"
-        style={{ backgroundImage: "" }}
+      <Image
+        src="/images/order/order-online-bg.png"
+        alt=""
+        fill
+        priority={false}
+        className="object-cover"
         aria-hidden="true"
       />
 
@@ -64,7 +78,7 @@ export function OrderDelivery() {
             <div key={provider.name} className="flex items-center">
               {index > 0 && (
                 <div
-                  className="w-px h-16 bg-[#C9A24B]/40 mx-10 md:mx-14"
+                  className="w-px h-20 bg-[#C9A24B]/40 mx-10 md:mx-14"
                   aria-hidden="true"
                 />
               )}
@@ -75,9 +89,16 @@ export function OrderDelivery() {
                 aria-label={`Order now on ${provider.name} (opens in a new tab)`}
                 className="group flex flex-col items-center text-center transition-transform duration-300 hover:scale-105"
               >
-                <span className="relative text-3xl md:text-4xl font-serif text-[#C9A24B] group-hover:text-white transition-colors duration-300">
-                  {provider.name}
-                  <span className="absolute left-0 -bottom-1.5 h-px w-0 bg-[#C9A24B] transition-all duration-300 group-hover:w-full" />
+                {/* Logo placeholder container: fixed height box so all three
+                    logos align visually despite differing native shapes. */}
+                <span className="flex h-12 w-40 items-center justify-center">
+                  <Image
+                    src={provider.logo}
+                    alt={`${provider.name} logo`}
+                    width={provider.logoWidth}
+                    height={provider.logoHeight}
+                    className="max-h-12 w-auto object-contain brightness-0 invert opacity-90 transition-all duration-300 group-hover:opacity-100 group-hover:brightness-100 group-hover:invert-0 group-hover:[filter:brightness(0)_invert(1)_drop-shadow(0_0_6px_rgba(255,255,255,0.35))]"
+                  />
                 </span>
                 <span className="mt-3 text-white/60 text-xs uppercase tracking-widest">
                   {provider.tag}
@@ -98,11 +119,17 @@ export function OrderDelivery() {
               aria-label={`Order now on ${provider.name} (opens in a new tab)`}
               className="group flex items-center justify-between gap-4 py-5"
             >
-              <span className="flex flex-col">
-                <span className="text-2xl font-serif text-[#C9A24B]">
-                  {provider.name}
+              <span className="flex flex-col items-start">
+                <span className="flex h-9 w-32 items-center justify-start">
+                  <Image
+                    src={provider.logo}
+                    alt={`${provider.name} logo`}
+                    width={provider.logoWidth}
+                    height={provider.logoHeight}
+                    className="max-h-9 w-auto object-contain brightness-0 invert opacity-90"
+                  />
                 </span>
-                <span className="mt-1 text-white/60 text-xs uppercase tracking-widest">
+                <span className="mt-2 text-white/60 text-xs uppercase tracking-widest">
                   {provider.tag}
                 </span>
               </span>
