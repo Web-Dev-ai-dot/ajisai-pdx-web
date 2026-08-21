@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import { ChefCard } from "@/components/chefs/ChefCard";
 
 export const metadata: Metadata = {
     title: "Meet the Chefs | Ajisai Sushi Steak",
@@ -63,35 +63,7 @@ export default function ChefsPage() {
                 <div className="container mx-auto px-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         {CHEFS.map((chef) => (
-                            <div
-                                key={chef.name}
-                                className="group relative bg-[#141414] border border-white/5 hover:border-[#C5A059]/40 rounded-sm overflow-hidden transition-all duration-300"
-                            >
-                                {/* Photo */}
-                                <div className="relative h-[320px] w-full overflow-hidden bg-[#1c1c1c]">
-                                    <Image
-                                        src={chef.image}
-                                        alt={`Chef ${chef.name}`}
-                                        fill
-                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                                        className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-transparent" />
-                                </div>
-
-                                {/* Info */}
-                                <div className="p-5">
-                                    <h2 className="font-serif text-white text-base leading-snug mb-1">
-                                        {chef.name}
-                                    </h2>
-                                    <p className="text-white/45 text-sm font-light">
-                                        {chef.tenure}
-                                    </p>
-                                </div>
-
-                                {/* Gold bottom accent on hover */}
-                                <div className="absolute bottom-0 inset-x-0 h-px bg-[#C5A059] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                            </div>
+                            <ChefCard key={chef.name} {...chef} />
                         ))}
                     </div>
                 </div>
