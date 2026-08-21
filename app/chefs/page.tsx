@@ -16,15 +16,15 @@ export const metadata: Metadata = {
 
 const CHEFS = [
     { name: "Joseph Alcantara",                    tenure: "Hibachi chef since 2019",          image: "/chefs/joseph-alcantara.png" },
+    { name: "Brady Benson",                         tenure: "Hibachi chef since 2017",          image: "/chefs/brady-benson.png" },
+    { name: "Christopher",                          tenure: "Hibachi chef for about 10 years",  image: "/chefs/christopher.png" },
+    { name: "Félix Yu",                             tenure: "Hibachi chef since 1999",          image: "/chefs/felix-yu.png" },
+    { name: "Gama",                                 tenure: "Hibachi chef for 3 years",         image: "/chefs/gama.png" },
+    { name: "Geovanny",                             tenure: "Hibachi chef for about 3.5 years", image: "/chefs/geovanny.png" },
     { name: "Jacob Valencia",                       tenure: "Hibachi chef for about 6 years",   image: "/chefs/jacob-valencia.png" },
     { name: "Trejan",                               tenure: "Hibachi chef since 2019",          image: "/chefs/trejan.png" },
-    { name: "Félix Yu",                             tenure: "Hibachi chef since 1999",          image: "/chefs/felix-yu.png" },
     { name: "Ismael Samuel Torres Muñoz Salinas",   tenure: "Hibachi chef for 3 years",         image: "/chefs/ismael-torres.png" },
-    { name: "Brady Benson",                         tenure: "Hibachi chef since 2017",          image: "/chefs/brady-benson.png" },
     { name: "Sean Naile",                           tenure: "Hibachi chef since 2014",          image: "/chefs/sean-naile.png" },
-    { name: "Christopher",                          tenure: "Hibachi chef for about 10 years",  image: "/chefs/christopher.png" },
-    { name: "Geovanny",                             tenure: "Hibachi chef for about 3.5 years", image: "/chefs/geovanny.png" },
-    { name: "Gama",                                 tenure: "Hibachi chef for 3 years",         image: "/chefs/gama.png" },
     { name: "Scott Sims",                           tenure: "Hibachi chef for almost 5 years",  image: "/chefs/scott-sims.png" },
 ];
 
