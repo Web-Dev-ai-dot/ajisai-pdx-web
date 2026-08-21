@@ -15,7 +15,12 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
     const isFelix = name === "Félix Yu";
     const [showVideo, setShowVideo] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isHydrated, setIsHydrated] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        setIsHydrated(true);
+    }, []);
 
     useEffect(() => {
         if (!showVideo) {
@@ -40,7 +45,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
         <>
             <div className="group relative bg-[#141414] border border-white/5 hover:border-[#C5A059]/40 rounded-sm overflow-hidden transition-all duration-300">
                 <div className="relative h-[320px] w-full overflow-hidden bg-[#1c1c1c]">
-                    {isFelix && showVideo ? (
+                    {isHydrated && isFelix && showVideo ? (
                         <video
                             ref={videoRef}
                             src="/chefs/felix-yu-v1.mp4"
@@ -52,7 +57,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                             aria-label="Félix Yu cooking video"
                             className="absolute inset-0 h-full w-full object-cover"
                         />
-                    ) : isBrady && showVideo ? (
+                    ) : isHydrated && isBrady && showVideo ? (
                         <video
                             src="/chefs/brady-benson-v2.mp4"
                             autoPlay
@@ -71,7 +76,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                             className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
                         />
                     )}
-                    {isFelix && !showVideo && (
+                    {isHydrated && isFelix && !showVideo && (
                         <button
                             type="button"
                             onClick={() => setShowVideo(true)}
@@ -83,7 +88,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                             </span>
                         </button>
                     )}
-                    {isFelix && showVideo && (
+                    {isHydrated && isFelix && showVideo && (
                         <button
                             type="button"
                             onClick={togglePlayback}
@@ -113,7 +118,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                 <div className="absolute bottom-0 inset-x-0 h-px bg-[#C5A059] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </div>
 
-            {isChristopher && showVideo && (
+            {isHydrated && isChristopher && showVideo && (
                 <div
                     className="fixed inset-0 z-50 flex items-center justify-center bg-[#0D0D0D]/90 p-4 sm:p-8"
                     role="dialog"
