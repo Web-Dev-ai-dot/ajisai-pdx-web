@@ -13,10 +13,14 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
     const isBrady = name === "Brady Benson";
     const isChristopher = name === "Christopher";
     const isFelix = name === "Félix Yu";
+    const isGama = name === "Gama";
     const [showVideo, setShowVideo] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isGamaVisible, setIsGamaVisible] = useState(false);
     const [isHydrated, setIsHydrated] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
+    const gamaVideoRef = useRef<HTMLVideoElement>(null);
+    const gamaPortraitRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         setIsHydrated(true);
@@ -28,6 +32,39 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
             setIsPlaying(false);
         }
     }, [showVideo]);
+
+    useEffect(() => {
+        if (!isGama || !isHydrated || !gamaPortraitRef.current) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => setIsGamaVisible(entry.isIntersecting && entry.intersectionRatio >= 0.55),
+            { threshold: [0, 0.55, 0.8] }
+        );
+        observer.observe(gamaPortraitRef.current);
+        return () => observer.disconnect();
+    }, [isGama, isHydrated]);
+
+    useEffect(() => {
+        if (!isGama) return;
+        const video = gamaVideoRef.current;
+        if (isGamaVisible && video) {
+            void video.play().catch(() => undefined);
+        } else {
+            video?.pause();
+        }
+    }, [isGamaVisible, isGama]);
+
+    const toggleGamaPlayback = () => {
+        const video = gamaVideoRef.current;
+        if (!video) return;
+        if (video.paused) {
+            void video.play();
+            setIsPlaying(true);
+        } else {
+            video.pause();
+            setIsPlaying(false);
+        }
+    };
 
     const togglePlayback = () => {
         const video = videoRef.current;
@@ -44,8 +81,21 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
     return (
         <>
             <div className="group relative bg-[#141414] border border-white/5 hover:border-[#C5A059]/40 rounded-sm overflow-hidden transition-all duration-300">
-                <div className="relative h-[320px] w-full overflow-hidden bg-[#1c1c1c]">
-                    {isHydrated && isFelix && showVideo ? (
+                <div ref={isGama ? gamaPortraitRef : undefined} className="relative h-[320px] w-full overflow-hidden bg-[#1c1c1c]">
+                    {isGamaVisible ? (
+                        <video
+                            ref={gamaVideoRef}
+                            src="/chefs/gama-v2.mp4"
+                            autoPlay
+                            muted
+                            playsInline
+                            preload="metadata"
+                            onPlay={() => setIsPlaying(true)}
+                            onPause={() => setIsPlaying(false)}
+                            aria-label="Gama cooking preview video"
+                            className="absolute inset-0 h-full w-full object-cover"
+                        />
+                    ) : isHydrated && isFelix && showVideo ? (
                         <video
                             ref={videoRef}
                             src="/chefs/felix-yu-v1.mp4"
@@ -75,6 +125,16 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
                         />
+                    )}
+                    {isGamaVisible && (
+                        <button
+                            type="button"
+                            onClick={toggleGamaPlayback}
+                            className="absolute bottom-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-[#C5A059] bg-[#0D0D0D]/75 text-white transition-colors hover:bg-[#C5A059] hover:text-[#0D0D0D]"
+                            aria-label={isPlaying ? "Pause Gama video" : "Play Gama video"}
+                        >
+                            <span aria-hidden="true" className="text-sm">{isPlaying ? "Ⅱ" : "▶"}</span>
+                        </button>
                     )}
                     {isHydrated && isFelix && !showVideo && (
                         <button
