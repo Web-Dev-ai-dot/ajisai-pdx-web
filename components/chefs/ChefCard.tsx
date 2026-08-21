@@ -12,6 +12,7 @@ type ChefCardProps = {
 export function ChefCard({ name, tenure, image }: ChefCardProps) {
     const isBrady = name === "Brady Benson";
     const isChristopher = name === "Christopher";
+    const isFelix = name === "Félix Yu";
     const [showVideo, setShowVideo] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -39,7 +40,19 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
         <>
             <div className="group relative bg-[#141414] border border-white/5 hover:border-[#C5A059]/40 rounded-sm overflow-hidden transition-all duration-300">
                 <div className="relative h-[320px] w-full overflow-hidden bg-[#1c1c1c]">
-                    {isBrady && showVideo ? (
+                    {isFelix && showVideo ? (
+                        <video
+                            ref={videoRef}
+                            src="/chefs/felix-yu-v1.mp4"
+                            autoPlay
+                            playsInline
+                            preload="metadata"
+                            onPlay={() => setIsPlaying(true)}
+                            onPause={() => setIsPlaying(false)}
+                            aria-label="Félix Yu cooking video"
+                            className="absolute inset-0 h-full w-full object-cover"
+                        />
+                    ) : isBrady && showVideo ? (
                         <video
                             src="/chefs/brady-benson-v2.mp4"
                             autoPlay
@@ -57,6 +70,28 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
                         />
+                    )}
+                    {isFelix && !showVideo && (
+                        <button
+                            type="button"
+                            onClick={() => setShowVideo(true)}
+                            className="absolute inset-0 flex items-center justify-center"
+                            aria-label="Play Félix Yu cooking video"
+                        >
+                            <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[#C5A059] bg-[#0D0D0D]/60 text-white transition-transform duration-300 group-hover:scale-110" aria-hidden="true">
+                                <span className="ml-1 text-lg">▶</span>
+                            </span>
+                        </button>
+                    )}
+                    {isFelix && showVideo && (
+                        <button
+                            type="button"
+                            onClick={togglePlayback}
+                            className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full border border-[#C5A059] bg-[#0D0D0D]/75 text-white transition-colors hover:bg-[#C5A059] hover:text-[#0D0D0D]"
+                            aria-label={isPlaying ? "Pause Félix Yu video" : "Play Félix Yu video"}
+                        >
+                            <span aria-hidden="true" className="text-sm">{isPlaying ? "Ⅱ" : "▶"}</span>
+                        </button>
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-transparent pointer-events-none" />
                 </div>
