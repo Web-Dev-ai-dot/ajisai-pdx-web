@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type ChefCardProps = {
     name: string;
@@ -11,53 +11,118 @@ type ChefCardProps = {
 
 export function ChefCard({ name, tenure, image }: ChefCardProps) {
     const isBrady = name === "Brady Benson";
+    const isChristopher = name === "Christopher";
     const [showVideo, setShowVideo] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        if (!showVideo) {
+            videoRef.current?.pause();
+            setIsPlaying(false);
+        }
+    }, [showVideo]);
+
+    const togglePlayback = () => {
+        const video = videoRef.current;
+        if (!video) return;
+        if (video.paused) {
+            void video.play();
+            setIsPlaying(true);
+        } else {
+            video.pause();
+            setIsPlaying(false);
+        }
+    };
 
     return (
-        <div className="group relative bg-[#141414] border border-white/5 hover:border-[#C5A059]/40 rounded-sm overflow-hidden transition-all duration-300">
-            <div className="relative h-[320px] w-full overflow-hidden bg-[#1c1c1c]">
-                {isBrady && showVideo ? (
-                    <video
-                        src="/chefs/brady-benson-v2.mp4"
-                        autoPlay
-                        controls
-                        playsInline
-                        preload="metadata"
-                        aria-label="Brady Benson cooking video"
-                        className="absolute inset-0 h-full w-full object-cover"
-                    />
-                ) : (
-                    <Image
-                        src={image}
-                        alt={`Chef ${name}`}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                        className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
-                    />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-transparent pointer-events-none" />
+        <>
+            <div className="group relative bg-[#141414] border border-white/5 hover:border-[#C5A059]/40 rounded-sm overflow-hidden transition-all duration-300">
+                <div className="relative h-[320px] w-full overflow-hidden bg-[#1c1c1c]">
+                    {isBrady && showVideo ? (
+                        <video
+                            src="/chefs/brady-benson-v2.mp4"
+                            autoPlay
+                            controls
+                            playsInline
+                            preload="metadata"
+                            aria-label="Brady Benson cooking video"
+                            className="absolute inset-0 h-full w-full object-cover"
+                        />
+                    ) : (
+                        <Image
+                            src={image}
+                            alt={`Chef ${name}`}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                            className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+                        />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-transparent pointer-events-none" />
+                </div>
+
+                <div className="p-5">
+                    <h2 className="font-serif text-white text-base leading-snug mb-1">{name}</h2>
+                    <p className="text-white/45 text-sm font-light">{tenure}</p>
+                    {(isBrady || isChristopher) && (
+                        <button
+                            type="button"
+                            onClick={() => setShowVideo(true)}
+                            className="mt-4 text-[#C5A059] text-xs uppercase tracking-[0.2em] font-bold hover:text-white transition-colors"
+                        >
+                            Learn More
+                        </button>
+                    )}
+                </div>
+
+                <div className="absolute bottom-0 inset-x-0 h-px bg-[#C5A059] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </div>
 
-            <div className="p-5">
-                <h2 className="font-serif text-white text-base leading-snug mb-1">
-                    {name}
-                </h2>
-                <p className="text-white/45 text-sm font-light">
-                    {tenure}
-                </p>
-                {isBrady && !showVideo && (
-                    <button
-                        type="button"
-                        onClick={() => setShowVideo(true)}
-                        className="mt-4 text-[#C5A059] text-xs uppercase tracking-[0.2em] font-bold hover:text-white transition-colors"
-                    >
-                        Learn More
-                    </button>
-                )}
-            </div>
-
-            <div className="absolute bottom-0 inset-x-0 h-px bg-[#C5A059] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-        </div>
+            {isChristopher && showVideo && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-[#0D0D0D]/90 p-4 sm:p-8"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Christopher cooking video"
+                    onClick={(event) => {
+                        if (event.target === event.currentTarget) setShowVideo(false);
+                    }}
+                >
+                    <div className="relative w-full max-w-lg overflow-hidden rounded-sm bg-[#141414] shadow-2xl">
+                        <button
+                            type="button"
+                            onClick={() => setShowVideo(false)}
+                            className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-[#0D0D0D]/80 text-2xl leading-none text-white hover:bg-[#C5A059] hover:text-[#0D0D0D] transition-colors"
+                            aria-label="Close Christopher video"
+                        >
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <div className="relative aspect-[9/16] w-full bg-[#0D0D0D]">
+                            <video
+                                ref={videoRef}
+                                src="/chefs/christopher-v3.mp4"
+                                autoPlay
+                                playsInline
+                                preload="metadata"
+                                onPlay={() => setIsPlaying(true)}
+                                onPause={() => setIsPlaying(false)}
+                                aria-label="Christopher cooking video"
+                                className="absolute inset-0 h-full w-full object-contain"
+                            />
+                            <button
+                                type="button"
+                                onClick={togglePlayback}
+                                className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#C5A059] bg-[#0D0D0D]/70 text-white hover:bg-[#C5A059] hover:text-[#0D0D0D] transition-colors"
+                                aria-label={isPlaying ? "Pause Christopher video" : "Play Christopher video"}
+                            >
+                                <span aria-hidden="true" className="text-xl">
+                                    {isPlaying ? "Ⅱ" : "▶"}
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </>
     );
 }
-
