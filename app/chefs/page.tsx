@@ -26,6 +26,7 @@ const CHEFS = [
     { name: "Ismael Samuel Torres Muñoz Salinas",   tenure: "Hibachi chef for 3 years",         image: "/chefs/ismael-torres.png" },
     { name: "Sean Naile",                           tenure: "Hibachi chef since 2014",          image: "/chefs/sean-naile.png" },
     { name: "Scott Sims",                           tenure: "Hibachi chef for almost 5 years",  image: "/chefs/scott-sims.png" },
+    { name: "Shane White",                           tenure: "Hibachi chef for 4 years now",      image: "/chefs/shane-white.png" },
 ];
 
 export default function ChefsPage() {
