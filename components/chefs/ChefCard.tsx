@@ -44,7 +44,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
     return (
         <>
             <div className="group relative bg-[#141414] border border-white/5 hover:border-[#C5A059]/40 rounded-sm overflow-hidden transition-all duration-300">
-                <div className="relative h-[320px] w-full overflow-hidden bg-[#1c1c1c]">
+                <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#1c1c1c]">
                     {isHydrated && isFelix && showVideo ? (
                         <video
                             ref={videoRef}
