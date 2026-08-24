@@ -13,6 +13,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
     const isBrady = name === "Brady Benson";
     const isChristopher = name === "Christopher";
     const isFelix = name === "Félix Yu";
+    const hasVideo = isBrady || isChristopher || isFelix;
     const [showVideo, setShowVideo] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isHydrated, setIsHydrated] = useState(false);
@@ -82,16 +83,18 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                             className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
                         />
                     )}
-                    {isHydrated && (isFelix || isChristopher) && isCompactViewport && !showVideo && (
+                    {isHydrated && isCompactViewport && !showVideo && (
                         <button
                             type="button"
-                            onClick={() => setShowVideo(true)}
+                            onClick={() => { if (hasVideo) setShowVideo(true); }}
                             className="absolute inset-0 flex items-center justify-center"
-                            aria-label={`Play ${name} cooking video`}
+                            aria-label={hasVideo ? `Play ${name} cooking video` : `${name} photo`}
                         >
-                            <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[#C5A059] bg-[#0D0D0D]/60 text-white transition-transform duration-300 group-hover:scale-110" aria-hidden="true">
-                                <span className="ml-1 text-lg">▶</span>
-                            </span>
+                            {hasVideo && (
+                                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[#C5A059] bg-[#0D0D0D]/60 text-white transition-transform duration-300 group-hover:scale-110" aria-hidden="true">
+                                    <span className="ml-1 text-lg">▶</span>
+                                </span>
+                            )}
                         </button>
                     )}
                     {isHydrated && isFelix && showVideo && (
@@ -112,11 +115,12 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                 <div className="p-5">
                     <h2 className="font-serif text-white text-base leading-snug mb-1">{name}</h2>
                     <p className="text-white/45 text-sm font-light">{tenure}</p>
-                    {isHydrated && !isCompactViewport && (isBrady || isChristopher || isFelix) && (
+                    {isHydrated && !isCompactViewport && (
                         <button
                             type="button"
-                            onClick={() => setShowVideo(true)}
+                            onClick={() => { if (hasVideo) setShowVideo(true); }}
                             className="mt-4 text-[#C5A059] text-xs uppercase tracking-[0.2em] font-bold hover:text-white transition-colors"
+                            aria-label={hasVideo ? `Learn more about ${name}` : `${name} photo`}
                         >
                             Learn More
                         </button>
