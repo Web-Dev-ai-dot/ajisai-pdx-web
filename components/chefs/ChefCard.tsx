@@ -16,10 +16,16 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
     const [showVideo, setShowVideo] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isHydrated, setIsHydrated] = useState(false);
+    const [isCompactViewport, setIsCompactViewport] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
         setIsHydrated(true);
+        const mediaQuery = window.matchMedia("(max-width: 1023px)");
+        const updateViewport = () => setIsCompactViewport(mediaQuery.matches);
+        updateViewport();
+        mediaQuery.addEventListener("change", updateViewport);
+        return () => mediaQuery.removeEventListener("change", updateViewport);
     }, []);
 
     useEffect(() => {
@@ -45,10 +51,10 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
         <>
             <div className="group relative bg-[#141414] border border-white/5 hover:border-[#C5A059]/40 rounded-sm overflow-hidden transition-all duration-300">
                 <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#1c1c1c]">
-                    {isHydrated && isFelix && showVideo ? (
+                    {isHydrated && (isFelix || isChristopher) && isCompactViewport && showVideo ? (
                         <video
                             ref={videoRef}
-                            src="/chefs/felix-yu-v1.mp4"
+                            src={isFelix ? "/chefs/felix-yu-v1.mp4" : "/chefs/christopher-v3.mp4"}
                             autoPlay
                             playsInline
                             preload="metadata"
@@ -76,12 +82,12 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                             className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
                         />
                     )}
-                    {isHydrated && isFelix && !showVideo && (
+                    {isHydrated && (isFelix || isChristopher) && isCompactViewport && !showVideo && (
                         <button
                             type="button"
                             onClick={() => setShowVideo(true)}
                             className="absolute inset-0 flex items-center justify-center"
-                            aria-label="Play Félix Yu cooking video"
+                            aria-label={`Play ${name} cooking video`}
                         >
                             <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[#C5A059] bg-[#0D0D0D]/60 text-white transition-transform duration-300 group-hover:scale-110" aria-hidden="true">
                                 <span className="ml-1 text-lg">▶</span>
@@ -93,7 +99,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                             type="button"
                             onClick={togglePlayback}
                             className="absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full border border-[#C5A059] bg-[#0D0D0D]/75 text-white transition-colors hover:bg-[#C5A059] hover:text-[#0D0D0D]"
-                            aria-label={isPlaying ? "Pause Félix Yu video" : "Play Félix Yu video"}
+                            aria-label={isPlaying ? `Pause ${name} video` : `Play ${name} video`}
                         >
                             <span aria-hidden="true" className="text-sm">{isPlaying ? "Ⅱ" : "▶"}</span>
                         </button>
@@ -106,7 +112,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                 <div className="p-5">
                     <h2 className="font-serif text-white text-base leading-snug mb-1">{name}</h2>
                     <p className="text-white/45 text-sm font-light">{tenure}</p>
-                    {(isBrady || isChristopher) && (
+                    {isHydrated && !isCompactViewport && (isBrady || isChristopher || isFelix) && (
                         <button
                             type="button"
                             onClick={() => setShowVideo(true)}
@@ -120,12 +126,12 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                 <div className="absolute bottom-0 inset-x-0 h-px bg-[#C5A059] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </div>
 
-            {isHydrated && isChristopher && showVideo && (
+            {isHydrated && !isCompactViewport && (isChristopher || isFelix) && showVideo && (
                 <div
                     className="fixed inset-0 z-50 flex items-center justify-center bg-[#0D0D0D]/90 p-4 sm:p-8"
                     role="dialog"
                     aria-modal="true"
-                    aria-label="Christopher cooking video"
+                    aria-label={`${name} cooking video`}
                     onClick={(event) => {
                         if (event.target === event.currentTarget) setShowVideo(false);
                     }}
@@ -135,20 +141,20 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                             type="button"
                             onClick={() => setShowVideo(false)}
                             className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-[#0D0D0D]/80 text-2xl leading-none text-white hover:bg-[#C5A059] hover:text-[#0D0D0D] transition-colors"
-                            aria-label="Close Christopher video"
+                            aria-label={`Close ${name} video`}
                         >
                             <span aria-hidden="true">×</span>
                         </button>
                         <div className="relative aspect-[9/16] w-full bg-[#0D0D0D]">
                             <video
                                 ref={videoRef}
-                                src="/chefs/christopher-v3.mp4"
+                                src={isChristopher ? "/chefs/christopher-v3.mp4" : "/chefs/felix-yu-v1.mp4"}
                                 autoPlay
                                 playsInline
                                 preload="metadata"
                                 onPlay={() => setIsPlaying(true)}
                                 onPause={() => setIsPlaying(false)}
-                                aria-label="Christopher cooking video"
+                                aria-label={`${name} cooking video`}
                                 className="absolute inset-0 h-full w-full object-contain"
                             />
                             <button
