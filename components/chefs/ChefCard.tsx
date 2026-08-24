@@ -98,7 +98,9 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                             <span aria-hidden="true" className="text-sm">{isPlaying ? "Ⅱ" : "▶"}</span>
                         </button>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-transparent pointer-events-none" />
+                    {!isFelix && (
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-transparent pointer-events-none" />
+                    )}
                 </div>
 
                 <div className="p-5">
