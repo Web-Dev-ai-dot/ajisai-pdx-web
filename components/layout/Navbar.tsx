@@ -30,7 +30,7 @@ export function Navbar() {
     const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const pathname = usePathname();
 
-    const isHeroPage = ["/", "/menus", "/about", "/jobs", "/reservations", "/gift-cards-rewards", "/chefs"].includes(pathname);
+    const isHeroPage = ["/", "/menus", "/about", "/jobs", "/reservations", "/contact", "/gift-cards-rewards", "/chefs"].includes(pathname);
 
     useEffect(() => {
         const handleScroll = () => {

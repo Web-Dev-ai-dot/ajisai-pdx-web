@@ -14,7 +14,7 @@ export default function ContactPage() {
             {/* Hero Section — matches the Reservations page banner */}
             <div className="relative h-[50vh] min-h-[400px] w-full">
                 <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/P1616101-kRcXr20nrTEruKK4ce9xV0ju8kbN1U.jpg"
+                    src="/contact-hero-reception.jpg"
                     alt="Ajisai Restaurant interior"
                     fill
                     style={{ objectFit: "cover" }}
@@ -32,8 +32,6 @@ export default function ContactPage() {
             </div>
 
             <div className="container mx-auto px-6 py-20">
-                <h1 className="text-4xl md:text-5xl font-serif text-center mb-16 uppercase tracking-widest">Contact & Location</h1>
-
                 <div className="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
                     {/* Info */}
                     <div className="w-full lg:w-1/3 space-y-12">
