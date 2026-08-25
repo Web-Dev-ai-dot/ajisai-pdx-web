@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 const navLinks = [
     { name: "About", href: "/about" },
     { name: "Menus", href: "/menus" },
+    { name: "Chefs", href: "/chefs" },
     { name: "Reservations", href: "/reservations" },
     { name: "Contact", href: "/contact" },
 ];
@@ -29,7 +30,7 @@ export function Navbar() {
     const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const pathname = usePathname();
 
-    const isHeroPage = ["/", "/menus", "/about", "/jobs", "/reservations", "/gift-cards-rewards"].includes(pathname);
+    const isHeroPage = ["/", "/menus", "/about", "/jobs", "/reservations", "/gift-cards-rewards", "/chefs"].includes(pathname);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -176,6 +177,20 @@ export function Navbar() {
                     >
                         Reserve
                     </Link>
+
+                    <Link
+                        href="https://toast.app/r/ajisai-beaverton/order"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={clsx(
+                            "px-6 py-2 border transition-all duration-300",
+                            isScrolled || !isHeroPage
+                                ? "border-secondary text-secondary hover:bg-secondary hover:text-primary"
+                                : "border-white text-white hover:bg-white hover:text-primary"
+                        )}
+                    >
+                        Order Pickup
+                    </Link>
                 </nav>
 
                 {/* Mobile Toggle */}
@@ -275,6 +290,16 @@ export function Navbar() {
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 Book a Table
+                            </Link>
+
+                            <Link
+                                href="https://toast.app/r/ajisai-beaverton/order"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-8 py-3 border border-secondary text-secondary hover:bg-accent hover:border-accent hover:text-primary transition-all text-xl"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                Order Pickup
                             </Link>
                         </motion.div>
                     )}
