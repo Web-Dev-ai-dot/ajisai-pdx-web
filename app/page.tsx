@@ -409,7 +409,7 @@ export default function Home() {
 
       {/* 4. AMBIANCE BANNER */}
       <section className="relative w-full h-[60vh] flex items-center justify-center bg-fixed bg-center bg-cover"
-        style={{ backgroundImage: 'url("/sanctuary-bg.jpg")' }}>
+        style={{ backgroundImage: 'url("/sanctuary-p1615832-v2.jpg")' }}>
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 text-center max-w-2xl px-6">
           <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">A Sanctuary in the City</h2>
