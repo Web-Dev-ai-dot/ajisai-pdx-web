@@ -31,7 +31,7 @@ export default function ReservationsPage() {
             {/* Hero Section */}
             <div className="relative h-[50vh] min-h-[400px] w-full">
                 <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/P1615743-UEWjeaGn2SVoAWxsVXTQ4QHrn7ZbyG.jpg"
+                    src="/reservations-hero.jpg"
                     alt="Elegant Dining Room"
                     fill
                     style={{ objectFit: "cover" }}
