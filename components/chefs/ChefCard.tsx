@@ -74,16 +74,6 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                             aria-label="Brady Benson cooking video"
                             className="absolute inset-0 h-full w-full object-cover"
                         />
-                    ) : isHydrated && isBrady && showVideo ? (
-                        <video
-                            src="/chefs/brady-benson-v2.mp4"
-                            autoPlay
-                            controls
-                            playsInline
-                            preload="metadata"
-                            aria-label="Brady Benson cooking video"
-                            className="absolute inset-0 h-full w-full object-cover"
-                        />
                     ) : (
                         <Image
                             src={image}
@@ -140,7 +130,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                 <div className="absolute bottom-0 inset-x-0 h-px bg-[#C5A059] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </div>
 
-            {isHydrated && !isCompactViewport && (isChristopher || isFelix) && showVideo && (
+            {isHydrated && !isCompactViewport && (isBrady || isChristopher || isFelix) && showVideo && (
                 <div
                     className="fixed inset-0 z-50 flex items-center justify-center bg-[#0D0D0D]/90 p-4 sm:p-8"
                     role="dialog"
@@ -162,7 +152,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                         <div className="relative aspect-[9/16] w-full bg-[#0D0D0D]">
                             <video
                                 ref={videoRef}
-                                src={isChristopher ? "/chefs/christopher-v3.mp4" : "/chefs/felix-yu-v1.mp4"}
+                                src={isBrady ? "/chefs/brady-benson-v2.mp4" : isChristopher ? "/chefs/christopher-v3.mp4" : "/chefs/felix-yu-v1.mp4"}
                                 autoPlay
                                 playsInline
                                 preload="metadata"
@@ -175,7 +165,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                                 type="button"
                                 onClick={togglePlayback}
                                 className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#C5A059] bg-[#0D0D0D]/70 text-white hover:bg-[#C5A059] hover:text-[#0D0D0D] transition-colors"
-                                aria-label={isPlaying ? "Pause Christopher video" : "Play Christopher video"}
+                                aria-label={isPlaying ? `Pause ${name} video` : `Play ${name} video`}
                             >
                                 <span aria-hidden="true" className="text-xl">
                                     {isPlaying ? "Ⅱ" : "▶"}
