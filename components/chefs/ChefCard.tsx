@@ -64,6 +64,16 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                             aria-label="Félix Yu cooking video"
                             className="absolute inset-0 h-full w-full object-cover"
                         />
+                    ) : isHydrated && isCompactViewport && isBrady && showVideo ? (
+                        <video
+                            src="/chefs/brady-benson-v2.mp4"
+                            autoPlay
+                            controls
+                            playsInline
+                            preload="metadata"
+                            aria-label="Brady Benson cooking video"
+                            className="absolute inset-0 h-full w-full object-cover"
+                        />
                     ) : isHydrated && isBrady && showVideo ? (
                         <video
                             src="/chefs/brady-benson-v2.mp4"
