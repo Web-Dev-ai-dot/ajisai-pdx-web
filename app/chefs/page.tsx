@@ -27,7 +27,7 @@ const CHEFS = [
     { name: "Sean Naile",                           tenure: "Hibachi chef since 2014",          image: "/chefs/sean-naile.png" },
     { name: "Scott Sims",                           tenure: "Hibachi chef for almost 5 years",  image: "/chefs/scott-sims.png" },
     { name: "Shane White",                           tenure: "Hibachi chef for 4 years now",      image: "/chefs/shane-white.png" },
-    { name: "Ander Route" },
+    { name: "Ander Route",                          tenure: "Hibachi chef for 3 months" },
 ];
 
 export default function ChefsPage() {
