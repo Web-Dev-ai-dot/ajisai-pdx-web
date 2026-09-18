@@ -14,6 +14,11 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
     const isChristopher = name === "Chris Aaronson";
     const isFelix = name === "Félix Yu";
     const hasVideo = isBrady || isChristopher || isFelix;
+    const videoSource = isBrady
+        ? "/chefs/brady-benson-v2.mp4"
+        : isChristopher
+            ? "/chefs/christopher-v3.mp4"
+            : "/chefs/felix-yu-v1.mp4";
     const [showVideo, setShowVideo] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isHydrated, setIsHydrated] = useState(false);
@@ -52,26 +57,16 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
         <>
             <div className="group relative bg-[#141414] border border-white/5 hover:border-[#C5A059]/40 rounded-sm overflow-hidden transition-all duration-300">
                 <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#1c1c1c]">
-                    {isHydrated && (isFelix || isChristopher) && isCompactViewport && showVideo ? (
+                    {isHydrated && isCompactViewport && hasVideo && showVideo ? (
                         <video
                             ref={videoRef}
-                            src={isFelix ? "/chefs/felix-yu-v1.mp4" : "/chefs/christopher-v3.mp4"}
+                            src={videoSource}
                             autoPlay
                             playsInline
                             preload="metadata"
                             onPlay={() => setIsPlaying(true)}
                             onPause={() => setIsPlaying(false)}
-                            aria-label="Félix Yu cooking video"
-                            className="absolute inset-0 h-full w-full object-cover"
-                        />
-                    ) : isHydrated && isCompactViewport && isBrady && showVideo ? (
-                        <video
-                            src="/chefs/brady-benson-v2.mp4"
-                            autoPlay
-                            controls
-                            playsInline
-                            preload="metadata"
-                            aria-label="Brady Benson cooking video"
+                            aria-label={`${name} cooking video`}
                             className="absolute inset-0 h-full w-full object-cover"
                         />
                     ) : image ? (
@@ -97,7 +92,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                             )}
                         </button>
                     )}
-                    {isHydrated && isFelix && showVideo && (
+                    {isHydrated && isCompactViewport && hasVideo && showVideo && (
                         <button
                             type="button"
                             onClick={togglePlayback}
@@ -107,7 +102,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                             <span aria-hidden="true" className="text-sm">{isPlaying ? "Ⅱ" : "▶"}</span>
                         </button>
                     )}
-                    {!isFelix && (
+                    {!isFelix && (!isCompactViewport || !showVideo) && (
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-transparent pointer-events-none" />
                     )}
                 </div>
@@ -152,7 +147,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                         <div className="relative aspect-[9/16] w-full bg-[#0D0D0D]">
                             <video
                                 ref={videoRef}
-                                src={isBrady ? "/chefs/brady-benson-v2.mp4" : isChristopher ? "/chefs/christopher-v3.mp4" : "/chefs/felix-yu-v1.mp4"}
+                                src={videoSource}
                                 autoPlay
                                 playsInline
                                 preload="metadata"
