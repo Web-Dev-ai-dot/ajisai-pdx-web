@@ -5,13 +5,13 @@ import { useEffect, useRef, useState } from "react";
 
 type ChefCardProps = {
     name: string;
-    tenure: string;
-    image: string;
+    tenure?: string;
+    image?: string;
 };
 
 export function ChefCard({ name, tenure, image }: ChefCardProps) {
     const isBrady = name === "Brady Benson";
-    const isChristopher = name === "Christopher";
+    const isChristopher = name === "Chris Aaronson";
     const isFelix = name === "Félix Yu";
     const hasVideo = isBrady || isChristopher || isFelix;
     const [showVideo, setShowVideo] = useState(false);
@@ -74,7 +74,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                             aria-label="Brady Benson cooking video"
                             className="absolute inset-0 h-full w-full object-cover"
                         />
-                    ) : (
+                    ) : image ? (
                         <Image
                             src={image}
                             alt={`Chef ${name}`}
@@ -82,7 +82,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
                         />
-                    )}
+                    ) : null}
                     {isHydrated && isCompactViewport && !showVideo && (
                         <button
                             type="button"
