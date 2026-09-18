@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, ArrowUp, Star, Quote, Sparkles } from "lucide-react";
 import { useEffect, useState, useRef, MouseEvent } from "react";
+import { OrderDelivery } from "@/components/home/OrderDelivery";
 // import GrandOpeningPopup from "@/components/home/GrandOpeningPopup";
 
 // --- NEW COMPONENT: 3D TILT CARD ---
@@ -163,7 +164,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. ZIG-ZAG FEATURE SECTION WITH 3D TILT */}
+      {/* 2. LUNCH SPECIAL SECTION */}
+      <section className="w-full bg-[#5D182E] text-white py-16 overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row items-center gap-10">
+
+            {/* Image — left */}
+            <div className="w-full lg:w-1/2 order-1">
+              <div className="relative h-[400px] w-full rounded-sm overflow-hidden shadow-2xl">
+                <Image
+                  src="/lunch-spread.png"
+                  alt="A spread of Ajisai lunch dishes including sashimi, curry rice, mapo tofu, chicken katsu, and poke don on a warm wood table"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Text Content — right */}
+            <div className="w-full lg:w-1/2 space-y-5 order-2">
+              <div className="space-y-3">
+                <span className="text-[#C5A059] tracking-[0.2em] text-sm font-bold uppercase">Lunch Special</span>
+                <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+                  Lunch at <span className="text-[#C5A059]">Ajisai</span>
+                </h2>
+              </div>
+
+              <p className="text-white/80 leading-loose text-lg font-light">
+                Available Monday through Friday, 11:00 AM–3:00 PM.
+              </p>
+
+              <div className="pt-2">
+                <Link
+                  href="/menus?tab=lunch"
+                  className="bg-[#C5A059] text-[#111] px-8 py-4 rounded-sm uppercase tracking-widest text-sm font-bold hover:bg-white transition-colors duration-300 inline-block"
+                >
+                  View Lunch Menu
+                </Link>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 3. ZIG-ZAG FEATURE SECTION WITH 3D TILT */}
       <section
         className="w-full bg-[#F9F4E8] py-24 bg-repeat bg-[length:400px_400px]"
         style={{ backgroundImage: 'url("/pattern-bg.png")' }}
@@ -302,7 +348,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. REVIEWS SECTION (renumbered) */}
+      {/* ORDER & DELIVERY SECTION */}
+      <OrderDelivery />
+
+      {/* 5. REVIEWS SECTION */}
       <section className="w-full bg-white py-24">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -360,7 +409,7 @@ export default function Home() {
 
       {/* 4. AMBIANCE BANNER */}
       <section className="relative w-full h-[60vh] flex items-center justify-center bg-fixed bg-center bg-cover"
-        style={{ backgroundImage: 'url("/sanctuary-bg.jpg")' }}>
+        style={{ backgroundImage: 'url("/P1604621.jpg")' }}>
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 text-center max-w-2xl px-6">
           <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">A Sanctuary in the City</h2>

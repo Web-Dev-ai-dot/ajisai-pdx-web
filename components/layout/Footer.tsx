@@ -88,6 +88,9 @@ export function Footer() {
                             <Link href="/menus" className="hover:text-accent">
                                 Menus
                             </Link>
+                            <Link href="/chefs" className="hover:text-accent">
+                                Chefs
+                            </Link>
                             <Link href="/contact" className="hover:text-accent">
                                 Contact & Location
                             </Link>

@@ -33,7 +33,7 @@ export function Hero() {
                         Welcome to Ajisai
                     </h2>
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-tight">
-                        The Art of Japanese Dining <br className="hidden md:block" />
+                        The Art of Dining <br className="hidden md:block" />
                         in Beaverton
                     </h1>
                     <p className="text-gray-200 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-light">

@@ -41,7 +41,7 @@ export default function GiftCardsRewardsPage() {
             {/* Hero */}
             <div className="relative h-[60vh]">
                 <Image
-                    src="/sanctuary-bg.jpg"
+                    src="/gift-cards-rewards-hero.jpg"
                     alt="Ajisai Restaurant Interior"
                     fill
                     className="object-cover"
