@@ -23,7 +23,7 @@ const CHEFS = [
     { name: "Geovanny",                             tenure: "Hibachi chef for about 3.5 years", image: "/chefs/geovanny.png" },
     { name: "Jacob Valencia",                       tenure: "Hibachi chef for about 6 years",   image: "/chefs/jacob-valencia.png" },
     { name: "Trejan",                               tenure: "Hibachi chef since 2019",          image: "/chefs/trejan.png" },
-    { name: "Ismael Samuel Torres Muñoz Salinas",   tenure: "Hibachi chef for 3 years",         image: "/chefs/ismael-torres.png" },
+    { name: "Ismael Torres",   tenure: "Hibachi chef for 3 years",         image: "/chefs/ismael-torres.png" },
     { name: "Sean Naile",                           tenure: "Hibachi chef since 2014",          image: "/chefs/sean-naile.png" },
     { name: "Scott Sims",                           tenure: "Hibachi chef for almost 5 years",  image: "/chefs/scott-sims.png" },
     { name: "Shane White",                           tenure: "Hibachi chef for 4 years now",      image: "/chefs/shane-white.png" },
