@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 const CHEFS = [
     { name: "Joseph Alcantara",                    tenure: "Hibachi chef since 2019",          image: "/chefs/joseph-alcantara-portrait.jpg",        video: "/chefs/videos/joseph-alcantara.mp4" },
     { name: "Brady Benson",                         tenure: "Hibachi chef since 2017",          image: "/chefs/brady-benson-portrait.jpg",           video: "/chefs/videos/brady-benson.mp4" },
-    { name: "Chris Aaronson",                       tenure: "Hibachi chef for about 10 years",  image: "/chefs/chris-aaronson-portrait.jpg",         video: "/chefs/videos/chris-aaronson.mp4" },
+    { name: "Chris Aaronson",                       tenure: "Hibachi chef for about 10 years",  image: "/chefs/chris-aaronson-portrait.jpg",         video: "/chefs/videos/chris-aaronson-v2.mp4" },
     { name: "Félix Yu",                             tenure: "Hibachi chef since 1999",          image: "/chefs/felix-yu-portrait.jpg",               video: "/chefs/videos/felix-yu.mp4" },
     { name: "Gama Morelos",                         tenure: "Hibachi chef for 3 years",         image: "/chefs/gama-morelos-portrait.jpg",           video: "/chefs/videos/gama-morelos.mp4" },
     { name: "Giovanny Martinez Ortega",             tenure: "Hibachi chef for about 3.5 years", image: "/chefs/giovanny-martinez-ortega-portrait.jpg", video: "/chefs/videos/giovanny-martinez-ortega-v2.mp4" },
