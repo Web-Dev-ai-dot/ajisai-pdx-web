@@ -153,7 +153,7 @@ export function ChefCard({ name, tenure, image, video }: ChefCardProps) {
                             <button
                                 type="button"
                                 onClick={togglePlayback}
-                                className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#C5A059] bg-[#0D0D0D]/70 text-white hover:bg-[#C5A059] hover:text-[#0D0D0D] transition-colors"
+                                className="absolute bottom-5 right-5 flex h-16 w-16 items-center justify-center rounded-full border border-[#C5A059] bg-[#0D0D0D]/70 text-white hover:bg-[#C5A059] hover:text-[#0D0D0D] transition-colors"
                                 aria-label={isPlaying ? `Pause ${name} video` : `Play ${name} video`}
                             >
                                 <span aria-hidden="true" className="text-xl">
