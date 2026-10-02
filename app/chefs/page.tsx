@@ -20,7 +20,7 @@ const CHEFS = [
     { name: "Chris Aaronson",                       tenure: "Hibachi chef for about 10 years",  image: "/chefs/chris-aaronson-portrait.jpg",         video: "/chefs/videos/chris-aaronson.mp4" },
     { name: "Félix Yu",                             tenure: "Hibachi chef since 1999",          image: "/chefs/felix-yu-portrait.jpg",               video: "/chefs/videos/felix-yu.mp4" },
     { name: "Gama Morelos",                         tenure: "Hibachi chef for 3 years",         image: "/chefs/gama-morelos-portrait.jpg",           video: "/chefs/videos/gama-morelos.mp4" },
-    { name: "Giovanny Martinez Ortega",             tenure: "Hibachi chef for about 3.5 years", image: "/chefs/giovanny-martinez-ortega-portrait.jpg", video: "/chefs/videos/giovanny-martinez-ortega.mp4" },
+    { name: "Giovanny Martinez Ortega",             tenure: "Hibachi chef for about 3.5 years", image: "/chefs/giovanny-martinez-ortega-portrait.jpg", video: "/chefs/videos/giovanny-martinez-ortega-v2.mp4" },
     { name: "Jacob Valencia",                       tenure: "Hibachi chef for about 6 years",   image: "/chefs/jacob-valencia-portrait.jpg",         video: "/chefs/videos/jacob-valencia.mp4" },
     { name: "Tre Evan-McClennaham",                 tenure: "Hibachi chef since 2019",          image: "/chefs/tre-evan-mcclennaham-portrait.jpg",   video: "/chefs/videos/tre-evan-mcclennaham.mp4" },
     { name: "Ismael Torres",   tenure: "Hibachi chef for 3 years",         image: "/chefs/ismael-torres-portrait.jpg",          video: "/chefs/videos/ismael-torres.mp4" },
