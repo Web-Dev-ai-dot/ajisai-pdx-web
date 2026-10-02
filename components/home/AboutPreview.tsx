@@ -18,7 +18,7 @@ export function AboutPreview() {
                         className="w-full md:w-1/2 relative h-[500px]"
                     >
                         <Image
-                            src="https://images.unsplash.com/photo-1493236272120-200db0da1927?auto=format&fit=crop&q=80&w=2000"
+                            src="/images/sanctuary-p1615832.jpg"
                             alt="Intimate restaurant ambiance"
                             fill
                             className="object-cover"

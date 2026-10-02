@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -10,9 +11,27 @@ export const metadata: Metadata = {
 export default function ContactPage() {
     return (
         <div className="bg-secondary min-h-screen text-primary pb-20">
-            <div className="container mx-auto px-6 py-20 pt-48">
-                <h1 className="text-4xl md:text-5xl font-serif text-center mb-16 uppercase tracking-widest">Contact & Location</h1>
+            {/* Hero Section — matches the Reservations page banner */}
+            <div className="relative h-[50vh] min-h-[400px] w-full">
+                <Image
+                    src="/contact-hero-reception.jpg"
+                    alt="Ajisai Restaurant interior"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    className="object-cover"
+                    priority
+                />
+                <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                    <div className="text-center">
+                        <h1 className="text-5xl md:text-6xl font-serif text-white tracking-widest uppercase mb-4">
+                            Contact &amp; Location
+                        </h1>
+                        <div className="w-24 h-1 bg-[#C5A059] mx-auto" />
+                    </div>
+                </div>
+            </div>
 
+            <div className="container mx-auto px-6 py-20">
                 <div className="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
                     {/* Info */}
                     <div className="w-full lg:w-1/3 space-y-12">

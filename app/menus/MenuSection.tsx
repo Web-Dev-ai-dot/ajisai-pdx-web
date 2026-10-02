@@ -14,10 +14,12 @@ interface MenuCategory {
     title: string;
     description: string;
     items: MenuItem[];
+    showSignature?: boolean;
 }
 
 interface MenuSectionProps {
     category: MenuCategory;
+    showSignature?: boolean;
 }
 
 const containerVariants = {
@@ -35,9 +37,10 @@ const itemVariants = {
     visible: { opacity: 1, y: 0 },
 };
 
-export default function MenuSection({ category }: MenuSectionProps) {
-    const signatureItem = category.items[0];
-    const otherItems = category.items.slice(1);
+export default function MenuSection({ category, showSignature }: MenuSectionProps) {
+    const shouldShowSignature = showSignature ?? category.showSignature ?? true;
+    const signatureItem = shouldShowSignature ? category.items[0] : null;
+    const otherItems = shouldShowSignature ? category.items.slice(1) : category.items;
 
     return (
         <section id={category.id} className="scroll-mt-40">
