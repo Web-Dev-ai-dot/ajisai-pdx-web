@@ -15,19 +15,19 @@ export const metadata: Metadata = {
 };
 
 const CHEFS = [
-    { name: "Joseph Alcantara",                    tenure: "Hibachi chef since 2019",          image: "/chefs/joseph-alcantara-portrait.jpg" },
-    { name: "Brady Benson",                         tenure: "Hibachi chef since 2017",          image: "/chefs/brady-benson-portrait.jpg" },
-    { name: "Chris Aaronson",                       tenure: "Hibachi chef for about 10 years",  image: "/chefs/chris-aaronson-portrait.jpg" },
-    { name: "Félix Yu",                             tenure: "Hibachi chef since 1999",          image: "/chefs/felix-yu-portrait.jpg" },
-    { name: "Gama Morelos",                         tenure: "Hibachi chef for 3 years",         image: "/chefs/gama-morelos-portrait.jpg" },
-    { name: "Giovanny Martinez Ortega",             tenure: "Hibachi chef for about 3.5 years", image: "/chefs/giovanny-martinez-ortega-portrait.jpg" },
-    { name: "Jacob Valencia",                       tenure: "Hibachi chef for about 6 years",   image: "/chefs/jacob-valencia-portrait.jpg" },
-    { name: "Tre Evan-McClennaham",                 tenure: "Hibachi chef since 2019",          image: "/chefs/tre-evan-mcclennaham-portrait.jpg" },
-    { name: "Ismael Torres",   tenure: "Hibachi chef for 3 years",         image: "/chefs/ismael-torres-portrait.jpg" },
-    { name: "Sean Naile",                           tenure: "Hibachi chef since 2014",          image: "/chefs/sean-naile-portrait.jpg" },
+    { name: "Joseph Alcantara",                    tenure: "Hibachi chef since 2019",          image: "/chefs/joseph-alcantara-portrait.jpg",        video: "/chefs/videos/joseph-alcantara.mp4" },
+    { name: "Brady Benson",                         tenure: "Hibachi chef since 2017",          image: "/chefs/brady-benson-portrait.jpg",           video: "/chefs/videos/brady-benson.mp4" },
+    { name: "Chris Aaronson",                       tenure: "Hibachi chef for about 10 years",  image: "/chefs/chris-aaronson-portrait.jpg",         video: "/chefs/videos/chris-aaronson.mp4" },
+    { name: "Félix Yu",                             tenure: "Hibachi chef since 1999",          image: "/chefs/felix-yu-portrait.jpg",               video: "/chefs/videos/felix-yu.mp4" },
+    { name: "Gama Morelos",                         tenure: "Hibachi chef for 3 years",         image: "/chefs/gama-morelos-portrait.jpg",           video: "/chefs/videos/gama-morelos.mp4" },
+    { name: "Giovanny Martinez Ortega",             tenure: "Hibachi chef for about 3.5 years", image: "/chefs/giovanny-martinez-ortega-portrait.jpg", video: "/chefs/videos/giovanny-martinez-ortega.mp4" },
+    { name: "Jacob Valencia",                       tenure: "Hibachi chef for about 6 years",   image: "/chefs/jacob-valencia-portrait.jpg",         video: "/chefs/videos/jacob-valencia.mp4" },
+    { name: "Tre Evan-McClennaham",                 tenure: "Hibachi chef since 2019",          image: "/chefs/tre-evan-mcclennaham-portrait.jpg",   video: "/chefs/videos/tre-evan-mcclennaham.mp4" },
+    { name: "Ismael Torres",   tenure: "Hibachi chef for 3 years",         image: "/chefs/ismael-torres-portrait.jpg",          video: "/chefs/videos/ismael-torres.mp4" },
+    { name: "Sean Naile",                           tenure: "Hibachi chef since 2014",          image: "/chefs/sean-naile-portrait.jpg",             video: "/chefs/videos/sean-naile.mp4" },
     { name: "Scott Sims",                           tenure: "Hibachi chef for almost 5 years",  image: "/chefs/scott-sims-portrait.jpg" },
-    { name: "Shane White",                           tenure: "Hibachi chef for 4 years now",      image: "/chefs/shane-white-portrait.jpg" },
-    { name: "Ander Route",                          tenure: "Hibachi chef for 3 months",         image: "/chefs/ander-route-portrait.jpg" },
+    { name: "Shane White",                           tenure: "Hibachi chef for 4 years now",      image: "/chefs/shane-white-portrait.jpg",            video: "/chefs/videos/shane-white.mp4" },
+    { name: "Ander Route",                          tenure: "Hibachi chef for 3 months",         image: "/chefs/ander-route-portrait.jpg",            video: "/chefs/videos/ander-route.mp4" },
 ];
 
 export default function ChefsPage() {

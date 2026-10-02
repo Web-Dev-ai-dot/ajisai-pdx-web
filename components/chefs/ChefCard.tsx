@@ -7,18 +7,12 @@ type ChefCardProps = {
     name: string;
     tenure?: string;
     image?: string;
+    video?: string;
 };
 
-export function ChefCard({ name, tenure, image }: ChefCardProps) {
-    const isBrady = name === "Brady Benson";
-    const isChristopher = name === "Chris Aaronson";
+export function ChefCard({ name, tenure, image, video }: ChefCardProps) {
     const isFelix = name === "Félix Yu";
-    const hasVideo = isBrady || isChristopher || isFelix;
-    const videoSource = isBrady
-        ? "/chefs/brady-benson-v2.mp4"
-        : isChristopher
-            ? "/chefs/christopher-v3.mp4"
-            : "/chefs/felix-yu-v1.mp4";
+    const hasVideo = Boolean(video);
     const [showVideo, setShowVideo] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isHydrated, setIsHydrated] = useState(false);
@@ -60,7 +54,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                     {isHydrated && isCompactViewport && hasVideo && showVideo ? (
                         <video
                             ref={videoRef}
-                            src={videoSource}
+                            src={video}
                             autoPlay
                             playsInline
                             preload="metadata"
@@ -125,7 +119,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                 <div className="absolute bottom-0 inset-x-0 h-px bg-[#C5A059] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </div>
 
-            {isHydrated && !isCompactViewport && (isBrady || isChristopher || isFelix) && showVideo && (
+            {isHydrated && !isCompactViewport && hasVideo && showVideo && (
                 <div
                     className="fixed inset-0 z-50 flex items-center justify-center bg-[#0D0D0D]/90 p-4 sm:p-8"
                     role="dialog"
@@ -147,7 +141,7 @@ export function ChefCard({ name, tenure, image }: ChefCardProps) {
                         <div className="relative aspect-[9/16] w-full bg-[#0D0D0D]">
                             <video
                                 ref={videoRef}
-                                src={videoSource}
+                                src={video}
                                 autoPlay
                                 playsInline
                                 preload="metadata"
