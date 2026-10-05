@@ -32,9 +32,6 @@ export default function CateringPage() {
                     <h1 className="mb-6 font-serif text-5xl leading-tight md:text-6xl lg:text-7xl">
                         Catering by Ajisai
                     </h1>
-                    <p className="mx-auto max-w-2xl text-lg font-light leading-relaxed text-white/80 md:text-xl">
-                        Bring the Ajisai experience to gatherings, celebrations, corporate events, and special occasions with thoughtfully prepared Japanese catering.
-                    </p>
                 </div>
             </section>
 
@@ -44,6 +41,9 @@ export default function CateringPage() {
                         Explore the Menu
                     </span>
                     <h2 className="mb-6 font-serif text-4xl md:text-5xl">Catering Menu</h2>
+                    <p className="mx-auto mb-4 max-w-2xl text-lg font-light leading-relaxed text-primary/70">
+                        Bring the Ajisai experience to gatherings, celebrations, corporate events, and special occasions with thoughtfully prepared Japanese catering.
+                    </p>
                     <p className="mx-auto mb-10 max-w-2xl text-lg font-light leading-relaxed text-primary/70">
                         Browse our catering selections for shareable appetizers, sushi, hibachi favorites, lunch boxes, salads, beverages, and more.
                     </p>
