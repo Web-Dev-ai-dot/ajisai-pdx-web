@@ -386,9 +386,7 @@ export default function Home() {
       <section className="w-full bg-[#481029] py-16 overflow-hidden">
         <div className="container mx-auto px-6 text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Sparkles className="w-5 h-5 text-[#C5A059]" />
             <span className="text-xs tracking-[0.25em] uppercase text-[#C5A059] font-bold">Exclusive Offer</span>
-            <Sparkles className="w-5 h-5 text-[#C5A059]" />
           </div>
           <h2 className="text-3xl md:text-4xl font-serif text-white mb-4 leading-snug">
             Become an Ajisai Rewards Member
