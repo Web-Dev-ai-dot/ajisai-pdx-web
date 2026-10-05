@@ -224,7 +224,6 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center gap-12 mb-24">
             <div className="md:w-1/2 text-center md:text-left space-y-6">
               <div className="flex items-center justify-center md:justify-start gap-3">
-                <Sparkles className="text-[#C5A059] w-5 h-5" />
                 <span className="text-xs tracking-widest uppercase text-[#C5A059] font-bold">Chef's Selection</span>
               </div>
               <h3 className="text-3xl font-serif text-[#5D182E]">Artisan Sushi</h3>
