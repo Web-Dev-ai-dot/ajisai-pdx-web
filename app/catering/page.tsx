@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Download, Phone } from "lucide-react";
+import CateringFlipbook from "./CateringFlipbook";
 
 export const metadata: Metadata = {
     title: "Catering by Ajisai",
@@ -57,6 +58,8 @@ export default function CateringPage() {
                     </a>
                 </div>
             </section>
+
+            <CateringFlipbook />
 
             <section className="bg-primary px-6 py-20 text-secondary md:py-24">
                 <div className="container mx-auto max-w-4xl text-center">
