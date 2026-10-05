@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const menuPages = [
@@ -24,16 +24,13 @@ const bookStates = [
   [menuPages[7]],
 ];
 
-const stateVariants = {
-  enter: (direction: number) => ({
-    opacity: 0,
-    x: direction > 0 ? 32 : -32,
-  }),
-  center: { opacity: 1, x: 0 },
-  exit: (direction: number) => ({
-    opacity: 0,
-    x: direction > 0 ? -32 : 32,
-  }),
+type MenuPage = (typeof menuPages)[number];
+
+type PageTurn = {
+  id: number;
+  direction: 1 | -1;
+  from: MenuPage[];
+  to: MenuPage[];
 };
 
 function NavigationButton({
@@ -60,19 +57,129 @@ function NavigationButton({
   );
 }
 
+function PageImage({ page, sizes }: { page: MenuPage; sizes: string }) {
+  return (
+    <Image
+      src={page.src}
+      alt={page.alt}
+      fill
+      sizes={sizes}
+      className="select-none object-contain"
+    />
+  );
+}
+
+function DesktopBookState({ pages }: { pages: MenuPage[] }) {
+  return (
+    <div className={`absolute inset-0 flex overflow-hidden rounded-md ${pages.length === 1 ? "justify-center" : "border border-[#c99a4b]/35"}`}>
+      {pages.map((page) => (
+        <div
+          key={page.src}
+          className={`relative h-full bg-black shadow-[0_28px_70px_rgba(0,0,0,0.55)] ${
+            pages.length === 1
+              ? "w-1/2 overflow-hidden rounded-md border border-[#c99a4b]/35"
+              : "w-1/2"
+          }`}
+        >
+          <PageImage page={page} sizes="(min-width: 1280px) 576px, 45vw" />
+        </div>
+      ))}
+      {pages.length === 2 && (
+        <div className="pointer-events-none absolute inset-y-0 left-1/2 z-10 w-10 -translate-x-1/2 bg-gradient-to-r from-transparent via-black/35 to-transparent" />
+      )}
+    </div>
+  );
+}
+
+function DesktopPageTurn({ turn, onComplete }: { turn: PageTurn; onComplete: () => void }) {
+  const movingForward = turn.direction === 1;
+  const frontPage = movingForward ? turn.from[turn.from.length - 1] : turn.from[0];
+  const backPage = movingForward ? turn.to[0] : turn.to[turn.to.length - 1];
+  const stationaryPage = turn.from.length === 2
+    ? movingForward
+      ? turn.from[0]
+      : turn.from[turn.from.length - 1]
+    : null;
+  const singlePageOffset = turn.from.length === 1 ? "left-1/4" : movingForward ? "left-1/2" : "left-0";
+
+  return (
+    <div className="pointer-events-none absolute inset-0 z-20" style={{ perspective: "1800px" }}>
+      {stationaryPage && (
+        <div className={`absolute inset-y-0 z-20 w-1/2 bg-black ${movingForward ? "left-0" : "left-1/2"}`}>
+          <PageImage page={stationaryPage} sizes="(min-width: 1280px) 576px, 45vw" />
+        </div>
+      )}
+
+      <motion.div
+        key={turn.id}
+        initial={{ rotateY: 0 }}
+        animate={{ rotateY: movingForward ? -180 : 180 }}
+        transition={{ duration: 0.68, ease: [0.45, 0, 0.2, 1] }}
+        onAnimationComplete={onComplete}
+        className={`absolute inset-y-0 z-30 w-1/2 ${singlePageOffset}`}
+        style={{
+          transformOrigin: movingForward ? "left center" : "right center",
+          transformStyle: "preserve-3d",
+        }}
+      >
+        <div
+          className="absolute inset-0 overflow-hidden bg-black shadow-[0_10px_35px_rgba(0,0,0,0.55)]"
+          style={{ backfaceVisibility: "hidden" }}
+        >
+          <PageImage page={frontPage} sizes="(min-width: 1280px) 576px, 45vw" />
+          <motion.div
+            className={`absolute inset-0 ${movingForward ? "bg-gradient-to-l" : "bg-gradient-to-r"} from-black/5 via-black/10 to-black/55`}
+            animate={{ opacity: [0.15, 0.7, 0.2] }}
+            transition={{ duration: 0.68, times: [0, 0.55, 1] }}
+          />
+        </div>
+
+        <div
+          className="absolute inset-0 overflow-hidden bg-black shadow-[0_10px_35px_rgba(0,0,0,0.45)]"
+          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+        >
+          <PageImage page={backPage} sizes="(min-width: 1280px) 576px, 45vw" />
+          <motion.div
+            className={`absolute inset-0 ${movingForward ? "bg-gradient-to-r" : "bg-gradient-to-l"} from-black/10 via-transparent to-black/45`}
+            animate={{ opacity: [0.65, 0.25, 0.08] }}
+            transition={{ duration: 0.68, times: [0, 0.5, 1] }}
+          />
+        </div>
+
+        <motion.div
+          className={`absolute inset-y-0 z-40 w-8 ${movingForward ? "left-0 bg-gradient-to-r" : "right-0 bg-gradient-to-l"} from-black/55 to-transparent`}
+          animate={{ opacity: [0.15, 0.8, 0.15] }}
+          transition={{ duration: 0.68, times: [0, 0.5, 1] }}
+        />
+      </motion.div>
+    </div>
+  );
+}
+
 export default function CateringFlipbook() {
   const [stateIndex, setStateIndex] = useState(0);
-  const [direction, setDirection] = useState(1);
+  const [direction, setDirection] = useState<1 | -1>(1);
+  const [turn, setTurn] = useState<PageTurn | null>(null);
   const currentPages = bookStates[stateIndex];
 
   const move = (delta: number) => {
+    if (turn) return;
+
     const nextState = Math.min(
       Math.max(stateIndex + delta, 0),
       bookStates.length - 1,
     );
 
     if (nextState === stateIndex) return;
-    setDirection(delta > 0 ? 1 : -1);
+
+    const nextDirection = delta > 0 ? 1 : -1;
+    setDirection(nextDirection);
+    setTurn({
+      id: Date.now(),
+      direction: nextDirection,
+      from: currentPages,
+      to: bookStates[nextState],
+    });
     setStateIndex(nextState);
   };
 
@@ -80,7 +187,7 @@ export default function CateringFlipbook() {
     <div className="mt-7 flex items-center justify-center gap-5">
       <NavigationButton
         direction="previous"
-        disabled={stateIndex === 0}
+        disabled={stateIndex === 0 || turn !== null}
         onClick={() => move(-1)}
       />
       <p className="min-w-24 text-center text-sm tracking-[0.16em] text-white/70">
@@ -88,7 +195,7 @@ export default function CateringFlipbook() {
       </p>
       <NavigationButton
         direction="next"
-        disabled={stateIndex === bookStates.length - 1}
+        disabled={stateIndex === bookStates.length - 1 || turn !== null}
         onClick={() => move(1)}
       />
     </div>
@@ -108,73 +215,40 @@ export default function CateringFlipbook() {
 
         <div className="hidden md:block">
           <div className="relative mx-auto aspect-[13/10] w-full max-w-6xl">
-            <AnimatePresence initial={false} custom={direction}>
-              <motion.div
-                key={stateIndex}
-                custom={direction}
-                variants={stateVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-                className={`absolute inset-0 flex overflow-hidden rounded-md ${
-                  currentPages.length === 1 ? "justify-center" : "border border-[#c99a4b]/35"
-                }`}
-              >
-                {currentPages.map((page) => (
-                  <div
-                    key={page.src}
-                    className={`relative h-full bg-black shadow-[0_28px_70px_rgba(0,0,0,0.55)] ${
-                      currentPages.length === 1
-                        ? "w-1/2 overflow-hidden rounded-md border border-[#c99a4b]/35"
-                        : "w-1/2"
-                    }`}
-                  >
-                    <Image
-                      src={page.src}
-                      alt={page.alt}
-                      fill
-                      sizes="(min-width: 1280px) 576px, 45vw"
-                      className="object-contain"
-                    />
-                  </div>
-                ))}
-                {currentPages.length === 2 && (
-                  <div className="pointer-events-none absolute inset-y-0 left-1/2 z-10 w-10 -translate-x-1/2 bg-gradient-to-r from-transparent via-black/35 to-transparent" />
-                )}
-              </motion.div>
-            </AnimatePresence>
+            <DesktopBookState pages={currentPages} />
+            {turn && <DesktopPageTurn turn={turn} onComplete={() => setTurn(null)} />}
           </div>
           {controls}
         </div>
 
         <div className="md:hidden">
-          <div className="relative mx-auto aspect-[13/20] w-full max-w-md">
-            <AnimatePresence initial={false} custom={direction}>
-              <motion.div
-                key={stateIndex}
-                custom={direction}
-                variants={stateVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-0 flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain rounded-sm border border-[#c99a4b]/35 bg-black shadow-[0_22px_50px_rgba(0,0,0,0.5)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-                aria-label={`Catering menu state ${stateIndex + 1}`}
-              >
-                {currentPages.map((page) => (
-                  <div key={page.src} className="relative h-full w-full flex-none snap-center">
-                    <Image
-                      src={page.src}
-                      alt={page.alt}
-                      fill
-                      sizes="(max-width: 767px) 92vw, 448px"
-                      className="select-none object-contain"
-                    />
-                  </div>
-                ))}
-              </motion.div>
-            </AnimatePresence>
+          <div
+            className="relative mx-auto aspect-[13/20] w-full max-w-md"
+            style={{ perspective: "1200px" }}
+          >
+            <motion.div
+              key={stateIndex}
+              initial={{ rotateY: direction > 0 ? 72 : -72 }}
+              animate={{ rotateY: 0 }}
+              transition={{ duration: 0.55, ease: [0.35, 0, 0.2, 1] }}
+              className="absolute inset-0 flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain rounded-sm border border-[#c99a4b]/35 bg-black shadow-[0_22px_50px_rgba(0,0,0,0.5)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              style={{
+                backfaceVisibility: "hidden",
+                transformOrigin: direction > 0 ? "left center" : "right center",
+              }}
+              aria-label={`Catering menu state ${stateIndex + 1}`}
+            >
+              {currentPages.map((page) => (
+                <div key={page.src} className="relative h-full w-full flex-none snap-center">
+                  <PageImage page={page} sizes="(max-width: 767px) 92vw, 448px" />
+                  <motion.div
+                    className={`pointer-events-none absolute inset-0 ${direction > 0 ? "bg-gradient-to-r" : "bg-gradient-to-l"} from-black/45 via-transparent to-transparent`}
+                    animate={{ opacity: [0.6, 0] }}
+                    transition={{ duration: 0.55 }}
+                  />
+                </div>
+              ))}
+            </motion.div>
           </div>
           {controls}
           {currentPages.length === 2 && (
