@@ -29,8 +29,10 @@ type MenuPage = (typeof menuPages)[number];
 type PageTurn = {
   id: number;
   direction: 1 | -1;
+  toIndex: number;
   from: MenuPage[];
   to: MenuPage[];
+  isCoverTransition: boolean;
 };
 
 function NavigationButton({
@@ -156,11 +158,102 @@ function DesktopPageTurn({ turn, onComplete }: { turn: PageTurn; onComplete: () 
   );
 }
 
+function DesktopCoverTransition({
+  turn,
+  onComplete,
+}: {
+  turn: PageTurn;
+  onComplete: () => void;
+}) {
+  const opening = turn.direction === 1;
+  const cover = opening ? turn.from[0] : turn.to[0];
+  const spread = opening ? turn.to : turn.from;
+  const turningFront = opening ? cover : spread[0];
+  const turningBack = opening ? spread[0] : cover;
+
+  return (
+    <div
+      className="pointer-events-none absolute inset-0 z-20 overflow-hidden rounded-md bg-[#11100f]"
+      style={{ perspective: "1800px" }}
+    >
+      <motion.div
+        className="absolute inset-0"
+        initial={{ opacity: opening ? 0 : 1 }}
+        animate={{ opacity: opening ? [0, 0, 1] : 1 }}
+        transition={{ duration: 0.72, times: [0, 0.18, 0.38] }}
+      >
+        <DesktopBookState pages={spread} />
+      </motion.div>
+
+      {!opening && (
+        <motion.div
+          className="absolute inset-0 z-10 bg-[#11100f]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, 0, 1] }}
+          transition={{ duration: 0.72, times: [0, 0.78, 1] }}
+        />
+      )}
+
+      <motion.div
+        key={turn.id}
+        initial={{ left: opening ? "25%" : "0%", rotateY: 0 }}
+        animate={{
+          left: opening ? ["25%", "50%", "50%"] : ["0%", "0%", "25%"],
+          rotateY: opening ? [0, 0, -180] : [0, 180, 180],
+        }}
+        transition={{
+          duration: 0.72,
+          ease: [0.45, 0, 0.2, 1],
+          times: opening ? [0, 0.18, 1] : [0, 0.82, 1],
+        }}
+        onAnimationComplete={onComplete}
+        className="absolute inset-y-0 z-30 w-1/2"
+        style={{
+          transformOrigin: opening ? "left center" : "right center",
+          transformStyle: "preserve-3d",
+        }}
+      >
+        <div
+          className="absolute inset-0 overflow-hidden rounded-md border border-[#c99a4b]/35 bg-black shadow-[0_12px_40px_rgba(0,0,0,0.6)]"
+          style={{ backfaceVisibility: "hidden" }}
+        >
+          <PageImage page={turningFront} sizes="(min-width: 1280px) 576px, 45vw" />
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-l from-black/5 via-black/10 to-black/55"
+            animate={{ opacity: [0.08, 0.7, 0.18] }}
+            transition={{ duration: 0.72, times: [0, 0.58, 1] }}
+          />
+        </div>
+
+        <div
+          className="absolute inset-0 overflow-hidden rounded-md border border-[#c99a4b]/35 bg-black shadow-[0_12px_40px_rgba(0,0,0,0.5)]"
+          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+        >
+          <PageImage page={turningBack} sizes="(min-width: 1280px) 576px, 45vw" />
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-black/15 via-transparent to-black/45"
+            animate={{ opacity: [0.65, 0.25, 0.08] }}
+            transition={{ duration: 0.72, times: [0, 0.5, 1] }}
+          />
+        </div>
+
+        <motion.div
+          className={`absolute inset-y-0 z-40 w-8 ${opening ? "left-0 bg-gradient-to-r" : "right-0 bg-gradient-to-l"} from-black/60 to-transparent`}
+          animate={{ opacity: [0.12, 0.85, 0.12] }}
+          transition={{ duration: 0.72, times: [0, 0.52, 1] }}
+        />
+      </motion.div>
+    </div>
+  );
+}
+
 export default function CateringFlipbook() {
   const [stateIndex, setStateIndex] = useState(0);
+  const [desktopStateIndex, setDesktopStateIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
   const [turn, setTurn] = useState<PageTurn | null>(null);
   const currentPages = bookStates[stateIndex];
+  const desktopPages = bookStates[desktopStateIndex];
 
   const move = (delta: number) => {
     if (turn) return;
@@ -173,14 +266,26 @@ export default function CateringFlipbook() {
     if (nextState === stateIndex) return;
 
     const nextDirection = delta > 0 ? 1 : -1;
+    const isCoverTransition =
+      (stateIndex === 0 && nextState === 1) ||
+      (stateIndex === 1 && nextState === 0);
+
     setDirection(nextDirection);
     setTurn({
       id: Date.now(),
       direction: nextDirection,
-      from: currentPages,
+      toIndex: nextState,
+      from: bookStates[stateIndex],
       to: bookStates[nextState],
+      isCoverTransition,
     });
     setStateIndex(nextState);
+    if (!isCoverTransition) setDesktopStateIndex(nextState);
+  };
+
+  const completeTurn = () => {
+    if (turn?.isCoverTransition) setDesktopStateIndex(turn.toIndex);
+    setTurn(null);
   };
 
   const controls = (
@@ -215,8 +320,13 @@ export default function CateringFlipbook() {
 
         <div className="hidden md:block">
           <div className="relative mx-auto aspect-[13/10] w-full max-w-6xl">
-            <DesktopBookState pages={currentPages} />
-            {turn && <DesktopPageTurn turn={turn} onComplete={() => setTurn(null)} />}
+            <DesktopBookState pages={desktopPages} />
+            {turn?.isCoverTransition && (
+              <DesktopCoverTransition turn={turn} onComplete={completeTurn} />
+            )}
+            {turn && !turn.isCoverTransition && (
+              <DesktopPageTurn turn={turn} onComplete={completeTurn} />
+            )}
           </div>
           {controls}
         </div>
