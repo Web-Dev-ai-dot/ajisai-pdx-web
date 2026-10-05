@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { AnimatePresence, motion, type PanInfo } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const menuPages = [
@@ -16,24 +16,24 @@ const menuPages = [
   { src: "/catering/menu-pages/08-thank-you.webp", alt: "Ajisai catering information and thank you page" },
 ];
 
-const desktopVariants = {
+const bookStates = [
+  [menuPages[0]],
+  [menuPages[1], menuPages[2]],
+  [menuPages[3], menuPages[4]],
+  [menuPages[5], menuPages[6]],
+  [menuPages[7]],
+];
+
+const stateVariants = {
   enter: (direction: number) => ({
     opacity: 0,
-    rotateY: direction > 0 ? 52 : -52,
-    x: direction > 0 ? 44 : -44,
+    x: direction > 0 ? 32 : -32,
   }),
-  center: { opacity: 1, rotateY: 0, x: 0 },
+  center: { opacity: 1, x: 0 },
   exit: (direction: number) => ({
     opacity: 0,
-    rotateY: direction > 0 ? -72 : 72,
-    x: direction > 0 ? -44 : 44,
+    x: direction > 0 ? -32 : 32,
   }),
-};
-
-const mobileVariants = {
-  enter: (direction: number) => ({ opacity: 0, x: direction > 0 ? 72 : -72 }),
-  center: { opacity: 1, x: 0 },
-  exit: (direction: number) => ({ opacity: 0, x: direction > 0 ? -72 : 72 }),
 };
 
 function NavigationButton({
@@ -52,7 +52,7 @@ function NavigationButton({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      aria-label={`${isPrevious ? "Previous" : "Next"} menu page`}
+      aria-label={`${isPrevious ? "Previous" : "Next"} menu state`}
       className="flex h-11 w-11 items-center justify-center rounded-full border border-[#c99a4b]/70 bg-black/70 text-[#e2b967] shadow-lg backdrop-blur-sm transition-colors hover:border-[#e2b967] hover:bg-black disabled:cursor-not-allowed disabled:opacity-30"
     >
       {isPrevious ? <ChevronLeft size={22} /> : <ChevronRight size={22} />}
@@ -61,34 +61,38 @@ function NavigationButton({
 }
 
 export default function CateringFlipbook() {
-  const [pageIndex, setPageIndex] = useState(0);
+  const [stateIndex, setStateIndex] = useState(0);
   const [direction, setDirection] = useState(1);
-  const spreadStart = Math.floor(pageIndex / 2) * 2;
+  const currentPages = bookStates[stateIndex];
 
-  const moveMobile = (delta: number) => {
-    const nextPage = Math.min(Math.max(pageIndex + delta, 0), menuPages.length - 1);
-    if (nextPage === pageIndex) return;
-    setDirection(delta > 0 ? 1 : -1);
-    setPageIndex(nextPage);
-  };
-
-  const moveDesktop = (delta: number) => {
-    const nextSpread = Math.min(
-      Math.max(spreadStart + delta * 2, 0),
-      menuPages.length - 2,
+  const move = (delta: number) => {
+    const nextState = Math.min(
+      Math.max(stateIndex + delta, 0),
+      bookStates.length - 1,
     );
-    if (nextSpread === spreadStart) return;
+
+    if (nextState === stateIndex) return;
     setDirection(delta > 0 ? 1 : -1);
-    setPageIndex(nextSpread);
+    setStateIndex(nextState);
   };
 
-  const handleDragEnd = (
-    _event: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo,
-  ) => {
-    if (info.offset.x < -50 || info.velocity.x < -450) moveMobile(1);
-    if (info.offset.x > 50 || info.velocity.x > 450) moveMobile(-1);
-  };
+  const controls = (
+    <div className="mt-7 flex items-center justify-center gap-5">
+      <NavigationButton
+        direction="previous"
+        disabled={stateIndex === 0}
+        onClick={() => move(-1)}
+      />
+      <p className="min-w-24 text-center text-sm tracking-[0.16em] text-white/70">
+        {stateIndex + 1} of {bookStates.length}
+      </p>
+      <NavigationButton
+        direction="next"
+        disabled={stateIndex === bookStates.length - 1}
+        onClick={() => move(1)}
+      />
+    </div>
+  );
 
   return (
     <section className="overflow-hidden bg-[#11100f] px-4 py-20 text-white md:px-6 md:py-24">
@@ -103,88 +107,81 @@ export default function CateringFlipbook() {
         </div>
 
         <div className="hidden md:block">
-          <div
-            className="relative mx-auto aspect-[13/10] w-full max-w-6xl"
-            style={{ perspective: "1800px" }}
-          >
+          <div className="relative mx-auto aspect-[13/10] w-full max-w-6xl">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
-                key={spreadStart}
+                key={stateIndex}
                 custom={direction}
-                variants={desktopVariants}
+                variants={stateVariants}
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{ duration: 0.68, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-0 grid grid-cols-2 overflow-hidden rounded-md border border-[#c99a4b]/35 bg-black shadow-[0_28px_70px_rgba(0,0,0,0.55)]"
-                style={{
-                  transformStyle: "preserve-3d",
-                  transformOrigin: direction > 0 ? "left center" : "right center",
-                }}
+                transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                className={`absolute inset-0 flex overflow-hidden rounded-md ${
+                  currentPages.length === 1 ? "justify-center" : "border border-[#c99a4b]/35"
+                }`}
               >
-                {[spreadStart, spreadStart + 1].map((index) => (
-                  <div key={menuPages[index].src} className="relative h-full bg-black">
+                {currentPages.map((page) => (
+                  <div
+                    key={page.src}
+                    className={`relative h-full bg-black shadow-[0_28px_70px_rgba(0,0,0,0.55)] ${
+                      currentPages.length === 1
+                        ? "w-1/2 overflow-hidden rounded-md border border-[#c99a4b]/35"
+                        : "w-1/2"
+                    }`}
+                  >
                     <Image
-                      src={menuPages[index].src}
-                      alt={menuPages[index].alt}
+                      src={page.src}
+                      alt={page.alt}
                       fill
                       sizes="(min-width: 1280px) 576px, 45vw"
                       className="object-contain"
                     />
                   </div>
                 ))}
-                <div className="pointer-events-none absolute inset-y-0 left-1/2 z-10 w-10 -translate-x-1/2 bg-gradient-to-r from-transparent via-black/35 to-transparent" />
+                {currentPages.length === 2 && (
+                  <div className="pointer-events-none absolute inset-y-0 left-1/2 z-10 w-10 -translate-x-1/2 bg-gradient-to-r from-transparent via-black/35 to-transparent" />
+                )}
               </motion.div>
             </AnimatePresence>
           </div>
-
-          <div className="mt-7 flex items-center justify-center gap-5">
-            <NavigationButton direction="previous" disabled={spreadStart === 0} onClick={() => moveDesktop(-1)} />
-            <p className="min-w-32 text-center text-sm tracking-[0.16em] text-white/70">
-              Pages {spreadStart + 1}–{spreadStart + 2} of {menuPages.length}
-            </p>
-            <NavigationButton direction="next" disabled={spreadStart >= menuPages.length - 2} onClick={() => moveDesktop(1)} />
-          </div>
+          {controls}
         </div>
 
         <div className="md:hidden">
-          <div className="relative mx-auto aspect-[13/20] w-full max-w-md overflow-hidden rounded-sm border border-[#c99a4b]/35 bg-black shadow-[0_22px_50px_rgba(0,0,0,0.5)]">
+          <div className="relative mx-auto aspect-[13/20] w-full max-w-md">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
-                key={pageIndex}
+                key={stateIndex}
                 custom={direction}
-                variants={mobileVariants}
+                variants={stateVariants}
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.16}
-                onDragEnd={handleDragEnd}
-                className="absolute inset-0 cursor-grab touch-pan-y active:cursor-grabbing"
+                transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0 flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain rounded-sm border border-[#c99a4b]/35 bg-black shadow-[0_22px_50px_rgba(0,0,0,0.5)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                aria-label={`Catering menu state ${stateIndex + 1}`}
               >
-                <Image
-                  src={menuPages[pageIndex].src}
-                  alt={menuPages[pageIndex].alt}
-                  fill
-                  sizes="(max-width: 767px) 92vw, 448px"
-                  className="pointer-events-none select-none object-contain"
-                />
+                {currentPages.map((page) => (
+                  <div key={page.src} className="relative h-full w-full flex-none snap-center">
+                    <Image
+                      src={page.src}
+                      alt={page.alt}
+                      fill
+                      sizes="(max-width: 767px) 92vw, 448px"
+                      className="select-none object-contain"
+                    />
+                  </div>
+                ))}
               </motion.div>
             </AnimatePresence>
           </div>
-
-          <div className="mt-6 flex items-center justify-center gap-5">
-            <NavigationButton direction="previous" disabled={pageIndex === 0} onClick={() => moveMobile(-1)} />
-            <p className="min-w-28 text-center text-sm tracking-[0.16em] text-white/70">
-              Page {pageIndex + 1} of {menuPages.length}
+          {controls}
+          {currentPages.length === 2 && (
+            <p className="mt-4 text-center text-xs uppercase tracking-[0.2em] text-white/45">
+              Swipe to view both pages
             </p>
-            <NavigationButton direction="next" disabled={pageIndex === menuPages.length - 1} onClick={() => moveMobile(1)} />
-          </div>
-          <p className="mt-4 text-center text-xs uppercase tracking-[0.2em] text-white/45">
-            Swipe to turn pages
-          </p>
+          )}
         </div>
       </div>
     </section>
