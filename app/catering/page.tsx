@@ -48,18 +48,21 @@ export default function CateringPage() {
                     <p className="mx-auto mb-10 max-w-2xl text-lg font-light leading-relaxed text-primary/70">
                         Browse our catering selections for shareable appetizers, sushi, hibachi favorites, lunch boxes, salads, beverages, and more.
                     </p>
-                    <a
-                        href="/catering/ajisai-catering-menu.pdf"
-                        download
-                        className="inline-flex items-center gap-3 rounded-sm bg-primary px-8 py-4 text-sm uppercase tracking-widest text-secondary transition-colors duration-300 hover:bg-accent hover:text-primary"
-                    >
-                        <Download className="h-5 w-5" aria-hidden="true" />
-                        Download Catering Menu
-                    </a>
                 </div>
             </section>
 
             <CateringFlipbook />
+
+            <div className="bg-[#11100f] px-6 pb-20 text-center md:pb-24">
+                <a
+                    href="/catering/ajisai-catering-menu.pdf"
+                    download
+                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-sm border border-accent/70 px-5 py-3 text-xs uppercase tracking-widest text-accent transition-colors duration-300 hover:bg-accent hover:text-primary"
+                >
+                    <Download className="h-4 w-4" aria-hidden="true" />
+                    Download Catering Menu
+                </a>
+            </div>
 
             <section className="bg-primary px-6 py-20 text-secondary md:py-24">
                 <div className="container mx-auto max-w-4xl text-center">
