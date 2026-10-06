@@ -5,29 +5,29 @@ import { ChefCard } from "@/components/chefs/ChefCard";
 export const metadata: Metadata = {
     title: "Meet the Chefs | Ajisai Sushi Steak",
     description:
-        "Meet the hibachi chefs behind the flame at Ajisai in Beaverton, OR. Years of craft and showmanship — turning every meal into an unforgettable performance.",
+        "Meet the teppanyaki chefs behind the flame at Ajisai in Beaverton, OR. Years of craft and showmanship — turning every meal into an unforgettable performance.",
     openGraph: {
         title: "Meet the Chefs | Ajisai Sushi Steak",
         description:
-            "Meet the hibachi chefs behind the flame at Ajisai in Beaverton, OR.",
+            "Meet the teppanyaki chefs behind the flame at Ajisai in Beaverton, OR.",
         url: "https://www.ajisaisushisteak.com/chefs",
     },
 };
 
 const CHEFS = [
-    { name: "Joseph Alcantara",                    tenure: "Hibachi chef since 2019",          image: "/chefs/joseph-alcantara-portrait.jpg",        video: "/chefs/videos/joseph-alcantara.mp4" },
-    { name: "Brady Benson",                         tenure: "Hibachi chef since 2017",          image: "/chefs/brady-benson-portrait.jpg",           video: "/chefs/videos/brady-benson.mp4" },
-    { name: "Chris Aaronson",                       tenure: "Hibachi chef for about 10 years",  image: "/chefs/chris-aaronson-portrait.jpg",         video: "/chefs/videos/chris-aaronson-v2.mp4" },
-    { name: "Félix Yu",                             tenure: "Hibachi chef since 1999",          image: "/chefs/felix-yu-portrait.jpg",               video: "/chefs/videos/felix-yu.mp4" },
-    { name: "Gama Morelos",                         tenure: "Hibachi chef for 3 years",         image: "/chefs/gama-morelos-portrait.jpg",           video: "/chefs/videos/gama-morelos.mp4" },
-    { name: "Giovanny Martinez Ortega",             tenure: "Hibachi chef for about 3.5 years", image: "/chefs/giovanny-martinez-ortega-portrait.jpg", video: "/chefs/videos/giovanny-martinez-ortega-v2.mp4" },
-    { name: "Jacob Valencia",                       tenure: "Hibachi chef for about 6 years",   image: "/chefs/jacob-valencia-portrait.jpg",         video: "/chefs/videos/jacob-valencia.mp4" },
-    { name: "Tre Evan-McClennaham",                 tenure: "Hibachi chef since 2019",          image: "/chefs/tre-evan-mcclennaham-portrait.jpg",   video: "/chefs/videos/tre-evan-mcclennaham.mp4" },
-    { name: "Ismael Torres",   tenure: "Hibachi chef for 3 years",         image: "/chefs/ismael-torres-portrait.jpg",          video: "/chefs/videos/ismael-torres.mp4" },
-    { name: "Sean Naile",                           tenure: "Hibachi chef since 2014",          image: "/chefs/sean-naile-portrait.jpg",             video: "/chefs/videos/sean-naile.mp4" },
-    { name: "Scott Sims",                           tenure: "Hibachi chef for almost 5 years",  image: "/chefs/scott-sims-portrait.jpg" },
-    { name: "Shane White",                           tenure: "Hibachi chef for 4 years now",      image: "/chefs/shane-white-portrait.jpg",            video: "/chefs/videos/shane-white.mp4" },
-    { name: "Ander Route",                          tenure: "Hibachi chef for 3 months",         image: "/chefs/ander-route-portrait.jpg",            video: "/chefs/videos/ander-route.mp4" },
+    { name: "Joseph Alcantara",                    tenure: "Teppanyaki chef since 2019",          image: "/chefs/joseph-alcantara-portrait.jpg",        video: "/chefs/videos/joseph-alcantara.mp4" },
+    { name: "Brady Benson",                         tenure: "Teppanyaki chef since 2017",          image: "/chefs/brady-benson-portrait.jpg",           video: "/chefs/videos/brady-benson.mp4" },
+    { name: "Chris Aaronson",                       tenure: "Teppanyaki chef for about 10 years",  image: "/chefs/chris-aaronson-portrait.jpg",         video: "/chefs/videos/chris-aaronson-v2.mp4" },
+    { name: "Félix Yu",                             tenure: "Teppanyaki chef since 1999",          image: "/chefs/felix-yu-portrait.jpg",               video: "/chefs/videos/felix-yu.mp4" },
+    { name: "Gama Morelos",                         tenure: "Teppanyaki chef for 3 years",         image: "/chefs/gama-morelos-portrait.jpg",           video: "/chefs/videos/gama-morelos.mp4" },
+    { name: "Giovanny Martinez Ortega",             tenure: "Teppanyaki chef for about 3.5 years", image: "/chefs/giovanny-martinez-ortega-portrait.jpg", video: "/chefs/videos/giovanny-martinez-ortega-v2.mp4" },
+    { name: "Jacob Valencia",                       tenure: "Teppanyaki chef for about 6 years",   image: "/chefs/jacob-valencia-portrait.jpg",         video: "/chefs/videos/jacob-valencia.mp4" },
+    { name: "Tre Evan-McClennaham",                 tenure: "Teppanyaki chef since 2019",          image: "/chefs/tre-evan-mcclennaham-portrait.jpg",   video: "/chefs/videos/tre-evan-mcclennaham.mp4" },
+    { name: "Ismael Torres",   tenure: "Teppanyaki chef for 3 years",         image: "/chefs/ismael-torres-portrait.jpg",          video: "/chefs/videos/ismael-torres.mp4" },
+    { name: "Sean Naile",                           tenure: "Teppanyaki chef since 2014",          image: "/chefs/sean-naile-portrait.jpg",             video: "/chefs/videos/sean-naile.mp4" },
+    { name: "Scott Sims",                           tenure: "Teppanyaki chef for almost 5 years",  image: "/chefs/scott-sims-portrait.jpg" },
+    { name: "Shane White",                           tenure: "Teppanyaki chef for 4 years now",      image: "/chefs/shane-white-portrait.jpg",            video: "/chefs/videos/shane-white.mp4" },
+    { name: "Ander Route",                          tenure: "Teppanyaki chef for 3 months",         image: "/chefs/ander-route-portrait.jpg",            video: "/chefs/videos/ander-route.mp4" },
 ];
 
 export default function ChefsPage() {
@@ -55,7 +55,7 @@ export default function ChefsPage() {
             <section className="bg-[#0D0D0D] pt-12 pb-4">
                 <div className="container mx-auto px-6">
                     <p className="max-w-3xl text-white/60 font-light text-lg leading-relaxed text-pretty">
-                        At Ajisai, hibachi dining is more than a meal. It is a live culinary performance crafted by chefs who have dedicated years to mastering their craft. Each of our teppanyaki chefs brings precision knife skills, expert timing, and genuine showmanship to the iron grill, searing premium steaks, fresh seafood, and seasonal vegetables right before your eyes. From the mesmerizing rhythm of the spatula to the heat of the open flame, every moment at the hibachi table is designed to delight. Whether you are celebrating a special occasion or simply craving an immersive dining experience unlike any other in Beaverton, our chefs make every visit memorable.
+                        At Ajisai, teppanyaki dining is more than a meal. It is a live culinary performance crafted by chefs who have dedicated years to mastering their craft. Each of our teppanyaki chefs brings precision knife skills, expert timing, and genuine showmanship to the iron grill, searing premium steaks, fresh seafood, and seasonal vegetables right before your eyes. From the mesmerizing rhythm of the spatula to the heat of the open flame, every moment at the teppanyaki table is designed to delight. Whether you are celebrating a special occasion or simply craving an immersive dining experience unlike any other in Beaverton, our chefs make every visit memorable.
                     </p>
                 </div>
             </section>
