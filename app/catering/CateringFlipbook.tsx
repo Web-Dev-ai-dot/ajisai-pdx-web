@@ -52,7 +52,7 @@ function NavigationButton({
       onClick={onClick}
       disabled={disabled}
       aria-label={`${isPrevious ? "Previous" : "Next"} menu state`}
-      className="flex h-11 w-11 items-center justify-center rounded-full border border-[#c99a4b]/70 bg-black/70 text-[#e2b967] shadow-lg backdrop-blur-sm transition-colors hover:border-[#e2b967] hover:bg-black disabled:cursor-not-allowed disabled:opacity-30"
+      className="flex h-12 w-12 items-center justify-center rounded-full border border-[#c99a4b]/70 bg-black/70 text-[#e2b967] shadow-lg backdrop-blur-sm transition-colors hover:border-[#e2b967] hover:bg-black disabled:cursor-not-allowed disabled:opacity-30 lg:h-11 lg:w-11"
     >
       {isPrevious ? <ChevronLeft size={22} /> : <ChevronRight size={22} />}
     </button>
@@ -306,7 +306,7 @@ export default function CateringFlipbook() {
   };
 
   const controls = (
-    <div className="mt-7 flex items-center justify-center gap-5">
+    <div className="mt-5 flex items-center justify-center gap-4 sm:mt-6 sm:gap-5 lg:mt-7">
       <NavigationButton
         direction="previous"
         disabled={stateIndex === 0 || turn !== null}
@@ -324,18 +324,18 @@ export default function CateringFlipbook() {
   );
 
   return (
-    <section className="overflow-hidden bg-[#11100f] px-4 py-20 text-white md:px-6 md:py-24">
+    <section className="overflow-hidden bg-[#11100f] px-4 py-14 text-white sm:py-16 md:px-6 lg:py-24">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-10 text-center md:mb-12">
+        <div className="mb-8 text-center sm:mb-10 lg:mb-12">
           <p className="mb-3 text-xs font-medium uppercase tracking-[0.3em] text-[#c99a4b]">
             Browse the menu
           </p>
-          <h2 className="font-serif text-3xl tracking-wide md:text-5xl">
+          <h2 className="font-serif text-3xl tracking-wide sm:text-4xl lg:text-5xl">
             Catering Menu Flipbook
           </h2>
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <div className="relative mx-auto aspect-[13/10] w-full max-w-6xl">
             {turn?.isSinglePageTransition ? (
               <DesktopSinglePageTransition turn={turn} onComplete={completeTurn} />
@@ -349,16 +349,16 @@ export default function CateringFlipbook() {
           {controls}
         </div>
 
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <div
-            className="relative mx-auto aspect-[13/20] w-full max-w-md"
+            className="relative mx-auto aspect-[13/20] w-full max-w-md overflow-hidden rounded-sm sm:max-w-[560px]"
             style={{ perspective: "1200px" }}
           >
             <motion.div
               key={stateIndex}
-              initial={{ rotateY: direction > 0 ? 72 : -72 }}
-              animate={{ rotateY: 0 }}
-              transition={{ duration: 0.55, ease: [0.35, 0, 0.2, 1] }}
+              initial={{ rotateY: direction > 0 ? 28 : -28, opacity: 0.88 }}
+              animate={{ rotateY: 0, opacity: 1 }}
+              transition={{ duration: 0.42, ease: [0.35, 0, 0.2, 1] }}
               className="absolute inset-0 flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain rounded-sm border border-[#c99a4b]/35 bg-black shadow-[0_22px_50px_rgba(0,0,0,0.5)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               style={{
                 backfaceVisibility: "hidden",
@@ -368,11 +368,14 @@ export default function CateringFlipbook() {
             >
               {currentPages.map((page) => (
                 <div key={page.src} className="relative h-full w-full flex-none snap-center">
-                  <PageImage page={page} sizes="(max-width: 767px) 92vw, 448px" />
+                  <PageImage
+                    page={page}
+                    sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 560px, 448px"
+                  />
                   <motion.div
                     className={`pointer-events-none absolute inset-0 ${direction > 0 ? "bg-gradient-to-r" : "bg-gradient-to-l"} from-black/45 via-transparent to-transparent`}
                     animate={{ opacity: [0.6, 0] }}
-                    transition={{ duration: 0.55 }}
+                    transition={{ duration: 0.42 }}
                   />
                 </div>
               ))}

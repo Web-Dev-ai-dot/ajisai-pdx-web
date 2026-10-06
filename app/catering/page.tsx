@@ -53,11 +53,11 @@ export default function CateringPage() {
 
             <CateringFlipbook />
 
-            <div className="bg-[#11100f] px-6 pb-20 text-center md:pb-24">
+            <div className="bg-[#11100f] px-4 pb-14 text-center sm:pb-16 md:px-6 lg:pb-24">
                 <a
                     href="/catering/ajisai-catering-menu.pdf"
                     download
-                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-sm border border-accent/70 px-5 py-3 text-xs uppercase tracking-widest text-accent transition-colors duration-300 hover:bg-accent hover:text-primary"
+                    className="inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-sm border border-accent/70 px-5 py-3 text-xs uppercase tracking-widest text-accent transition-colors duration-300 hover:bg-accent hover:text-primary"
                 >
                     <Download className="h-4 w-4" aria-hidden="true" />
                     Download Catering Menu
