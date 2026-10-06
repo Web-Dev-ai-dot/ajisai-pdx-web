@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Award } from "lucide-react";
+import MenuImageGrid, { type MenuGalleryImage } from "./MenuImageGrid";
 
 interface MenuItem {
     name: string;
@@ -15,6 +16,7 @@ interface MenuCategory {
     description: string;
     items: MenuItem[];
     showSignature?: boolean;
+    galleryImages?: MenuGalleryImage[];
 }
 
 interface MenuSectionProps {
@@ -112,6 +114,12 @@ export default function MenuSection({ category, showSignature }: MenuSectionProp
                             </motion.div>
                         ))}
                     </div>
+
+                    {category.galleryImages && category.galleryImages.length > 0 && (
+                        <motion.div variants={itemVariants}>
+                            <MenuImageGrid images={category.galleryImages} />
+                        </motion.div>
+                    )}
                 </div>
             </motion.div>
         </section>

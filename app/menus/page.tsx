@@ -12,6 +12,20 @@ const menuGroups = [
                 "id": "cold-appetizers",
                 "title": "Cold Appetizers",
                 "description": "Refresh your palate with our chilled starters.",
+                "galleryImages": [
+                    {
+                        "src": "/menu/cold-appetizers/cold-appetizers-01.jpg",
+                        "alt": "Ajisai cold appetizer platter"
+                    },
+                    {
+                        "src": "/menu/cold-appetizers/cold-appetizers-02.jpg",
+                        "alt": "Ajisai salmon cold appetizer presentation"
+                    },
+                    {
+                        "src": "/menu/cold-appetizers/yellowtail-jalapeno.jpg",
+                        "alt": "Ajisai yellowtail jalapeño"
+                    }
+                ],
                 "items": [
                     {
                         "name": "Sushi Platter",

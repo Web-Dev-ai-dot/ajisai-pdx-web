@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Share2, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import MenuSection from "./MenuSection";
+import type { MenuGalleryImage } from "./MenuImageGrid";
 
 const HERO_IMAGES = [
     "/artisan-sushi-new.jpg",
@@ -25,6 +26,7 @@ interface MenuCategory {
     description: string;
     items: MenuItem[];
     showSignature?: boolean;
+    galleryImages?: MenuGalleryImage[];
 }
 
 interface MenuGroup {
