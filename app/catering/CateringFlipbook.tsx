@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, type PanInfo } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const menuPages = [
@@ -66,6 +66,7 @@ function PageImage({ page, sizes }: { page: MenuPage; sizes: string }) {
       alt={page.alt}
       fill
       sizes={sizes}
+      draggable={false}
       className="select-none object-contain"
     />
   );
@@ -268,12 +269,12 @@ function DesktopSinglePageTransition({
 export default function CateringFlipbook() {
   const [stateIndex, setStateIndex] = useState(0);
   const [desktopStateIndex, setDesktopStateIndex] = useState(0);
-  const [direction, setDirection] = useState<1 | -1>(1);
+  const [mobilePageIndex, setMobilePageIndex] = useState(0);
+  const [mobileDirection, setMobileDirection] = useState<1 | -1>(1);
   const [turn, setTurn] = useState<PageTurn | null>(null);
-  const currentPages = bookStates[stateIndex];
   const desktopPages = bookStates[desktopStateIndex];
 
-  const move = (delta: number) => {
+  const moveDesktop = (delta: number) => {
     if (turn) return;
 
     const nextState = Math.min(
@@ -287,7 +288,6 @@ export default function CateringFlipbook() {
     const isSinglePageTransition =
       bookStates[stateIndex].length !== bookStates[nextState].length;
 
-    setDirection(nextDirection);
     setTurn({
       id: Date.now(),
       direction: nextDirection,
@@ -300,17 +300,36 @@ export default function CateringFlipbook() {
     if (!isSinglePageTransition) setDesktopStateIndex(nextState);
   };
 
+  const moveMobile = (delta: number) => {
+    const nextPage = Math.min(
+      Math.max(mobilePageIndex + delta, 0),
+      menuPages.length - 1,
+    );
+
+    if (nextPage === mobilePageIndex) return;
+    setMobileDirection(delta > 0 ? 1 : -1);
+    setMobilePageIndex(nextPage);
+  };
+
+  const handleMobileSwipe = (
+    _event: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo,
+  ) => {
+    if (info.offset.x < -50 || info.velocity.x < -450) moveMobile(1);
+    if (info.offset.x > 50 || info.velocity.x > 450) moveMobile(-1);
+  };
+
   const completeTurn = () => {
     if (turn?.isSinglePageTransition) setDesktopStateIndex(turn.toIndex);
     setTurn(null);
   };
 
-  const controls = (
+  const desktopControls = (
     <div className="mt-5 flex items-center justify-center gap-4 sm:mt-6 sm:gap-5 lg:mt-7">
       <NavigationButton
         direction="previous"
         disabled={stateIndex === 0 || turn !== null}
-        onClick={() => move(-1)}
+        onClick={() => moveDesktop(-1)}
       />
       <p className="min-w-24 text-center text-sm tracking-[0.16em] text-white/70">
         {stateIndex + 1} of {bookStates.length}
@@ -318,7 +337,25 @@ export default function CateringFlipbook() {
       <NavigationButton
         direction="next"
         disabled={stateIndex === bookStates.length - 1 || turn !== null}
-        onClick={() => move(1)}
+        onClick={() => moveDesktop(1)}
+      />
+    </div>
+  );
+
+  const mobileControls = (
+    <div className="mt-5 flex items-center justify-center gap-4 sm:mt-6 sm:gap-5">
+      <NavigationButton
+        direction="previous"
+        disabled={mobilePageIndex === 0}
+        onClick={() => moveMobile(-1)}
+      />
+      <p className="min-w-24 text-center text-sm tracking-[0.16em] text-white/70">
+        {mobilePageIndex + 1} of {menuPages.length}
+      </p>
+      <NavigationButton
+        direction="next"
+        disabled={mobilePageIndex === menuPages.length - 1}
+        onClick={() => moveMobile(1)}
       />
     </div>
   );
@@ -346,7 +383,7 @@ export default function CateringFlipbook() {
               </>
             )}
           </div>
-          {controls}
+          {desktopControls}
         </div>
 
         <div className="lg:hidden">
@@ -355,38 +392,36 @@ export default function CateringFlipbook() {
             style={{ perspective: "1200px" }}
           >
             <motion.div
-              key={stateIndex}
-              initial={{ rotateY: direction > 0 ? 28 : -28, opacity: 0.88 }}
+              key={mobilePageIndex}
+              initial={{ rotateY: mobileDirection > 0 ? 28 : -28, opacity: 0.88 }}
               animate={{ rotateY: 0, opacity: 1 }}
               transition={{ duration: 0.42, ease: [0.35, 0, 0.2, 1] }}
-              className="absolute inset-0 flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain rounded-sm border border-[#c99a4b]/35 bg-black shadow-[0_22px_50px_rgba(0,0,0,0.5)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.16}
+              onDragEnd={handleMobileSwipe}
+              className="absolute inset-0 cursor-grab touch-pan-y overflow-hidden rounded-sm border border-[#c99a4b]/35 bg-black shadow-[0_22px_50px_rgba(0,0,0,0.5)] active:cursor-grabbing"
               style={{
                 backfaceVisibility: "hidden",
-                transformOrigin: direction > 0 ? "left center" : "right center",
+                transformOrigin: mobileDirection > 0 ? "left center" : "right center",
               }}
-              aria-label={`Catering menu state ${stateIndex + 1}`}
+              aria-label={`Catering menu page ${mobilePageIndex + 1}`}
             >
-              {currentPages.map((page) => (
-                <div key={page.src} className="relative h-full w-full flex-none snap-center">
-                  <PageImage
-                    page={page}
-                    sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 560px, 448px"
-                  />
-                  <motion.div
-                    className={`pointer-events-none absolute inset-0 ${direction > 0 ? "bg-gradient-to-r" : "bg-gradient-to-l"} from-black/45 via-transparent to-transparent`}
-                    animate={{ opacity: [0.6, 0] }}
-                    transition={{ duration: 0.42 }}
-                  />
-                </div>
-              ))}
+              <PageImage
+                page={menuPages[mobilePageIndex]}
+                sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 560px, 448px"
+              />
+              <motion.div
+                className={`pointer-events-none absolute inset-0 ${mobileDirection > 0 ? "bg-gradient-to-r" : "bg-gradient-to-l"} from-black/45 via-transparent to-transparent`}
+                animate={{ opacity: [0.6, 0] }}
+                transition={{ duration: 0.42 }}
+              />
             </motion.div>
           </div>
-          {controls}
-          {currentPages.length === 2 && (
-            <p className="mt-4 text-center text-xs uppercase tracking-[0.2em] text-white/45">
-              Swipe to view both pages
-            </p>
-          )}
+          {mobileControls}
+          <p className="mt-4 text-center text-xs uppercase tracking-[0.2em] text-white/45">
+            Swipe to turn pages
+          </p>
         </div>
       </div>
     </section>
