@@ -32,7 +32,7 @@ type PageTurn = {
   toIndex: number;
   from: MenuPage[];
   to: MenuPage[];
-  isCoverTransition: boolean;
+  isSinglePageTransition: boolean;
 };
 
 function NavigationButton({
@@ -158,18 +158,36 @@ function DesktopPageTurn({ turn, onComplete }: { turn: PageTurn; onComplete: () 
   );
 }
 
-function DesktopCoverTransition({
+function DesktopSinglePageTransition({
   turn,
   onComplete,
 }: {
   turn: PageTurn;
   onComplete: () => void;
 }) {
-  const opening = turn.direction === 1;
-  const cover = opening ? turn.from[0] : turn.to[0];
+  const opening = turn.from.length === 1;
+  const movingForward = turn.direction === 1;
+  const singlePage = opening ? turn.from[0] : turn.to[0];
   const spread = opening ? turn.to : turn.from;
-  const turningFront = opening ? cover : spread[0];
-  const turningBack = opening ? spread[0] : cover;
+  const spreadTurningPage = movingForward ? spread[spread.length - 1] : spread[0];
+  const spreadRevealPage = movingForward ? spread[0] : spread[spread.length - 1];
+  const turningFront = opening ? singlePage : spreadTurningPage;
+  const turningBack = opening ? spreadRevealPage : singlePage;
+  const initialLeft = opening ? "25%" : movingForward ? "50%" : "0%";
+  const leftKeyframes = opening
+    ? movingForward
+      ? ["25%", "50%", "50%"]
+      : ["25%", "0%", "0%"]
+    : movingForward
+      ? ["50%", "50%", "25%"]
+      : ["0%", "0%", "25%"];
+  const rotationKeyframes = opening
+    ? movingForward
+      ? [0, 0, -180]
+      : [0, 0, 180]
+    : movingForward
+      ? [0, -180, -180]
+      : [0, 180, 180];
 
   return (
     <div
@@ -196,10 +214,10 @@ function DesktopCoverTransition({
 
       <motion.div
         key={turn.id}
-        initial={{ left: opening ? "25%" : "0%", rotateY: 0 }}
+        initial={{ left: initialLeft, rotateY: 0 }}
         animate={{
-          left: opening ? ["25%", "50%", "50%"] : ["0%", "0%", "25%"],
-          rotateY: opening ? [0, 0, -180] : [0, 180, 180],
+          left: leftKeyframes,
+          rotateY: rotationKeyframes,
         }}
         transition={{
           duration: 0.72,
@@ -209,7 +227,7 @@ function DesktopCoverTransition({
         onAnimationComplete={onComplete}
         className="absolute inset-y-0 z-30 w-1/2"
         style={{
-          transformOrigin: opening ? "left center" : "right center",
+          transformOrigin: movingForward ? "left center" : "right center",
           transformStyle: "preserve-3d",
         }}
       >
@@ -219,7 +237,7 @@ function DesktopCoverTransition({
         >
           <PageImage page={turningFront} sizes="(min-width: 1280px) 576px, 45vw" />
           <motion.div
-            className="absolute inset-0 bg-gradient-to-l from-black/5 via-black/10 to-black/55"
+            className={`absolute inset-0 ${movingForward ? "bg-gradient-to-l" : "bg-gradient-to-r"} from-black/5 via-black/10 to-black/55`}
             animate={{ opacity: [0.08, 0.7, 0.18] }}
             transition={{ duration: 0.72, times: [0, 0.58, 1] }}
           />
@@ -231,14 +249,14 @@ function DesktopCoverTransition({
         >
           <PageImage page={turningBack} sizes="(min-width: 1280px) 576px, 45vw" />
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-black/15 via-transparent to-black/45"
+            className={`absolute inset-0 ${movingForward ? "bg-gradient-to-r" : "bg-gradient-to-l"} from-black/15 via-transparent to-black/45`}
             animate={{ opacity: [0.65, 0.25, 0.08] }}
             transition={{ duration: 0.72, times: [0, 0.5, 1] }}
           />
         </div>
 
         <motion.div
-          className={`absolute inset-y-0 z-40 w-8 ${opening ? "left-0 bg-gradient-to-r" : "right-0 bg-gradient-to-l"} from-black/60 to-transparent`}
+          className={`absolute inset-y-0 z-40 w-8 ${movingForward ? "left-0 bg-gradient-to-r" : "right-0 bg-gradient-to-l"} from-black/60 to-transparent`}
           animate={{ opacity: [0.12, 0.85, 0.12] }}
           transition={{ duration: 0.72, times: [0, 0.52, 1] }}
         />
@@ -266,9 +284,8 @@ export default function CateringFlipbook() {
     if (nextState === stateIndex) return;
 
     const nextDirection = delta > 0 ? 1 : -1;
-    const isCoverTransition =
-      (stateIndex === 0 && nextState === 1) ||
-      (stateIndex === 1 && nextState === 0);
+    const isSinglePageTransition =
+      bookStates[stateIndex].length !== bookStates[nextState].length;
 
     setDirection(nextDirection);
     setTurn({
@@ -277,14 +294,14 @@ export default function CateringFlipbook() {
       toIndex: nextState,
       from: bookStates[stateIndex],
       to: bookStates[nextState],
-      isCoverTransition,
+      isSinglePageTransition,
     });
     setStateIndex(nextState);
-    if (!isCoverTransition) setDesktopStateIndex(nextState);
+    if (!isSinglePageTransition) setDesktopStateIndex(nextState);
   };
 
   const completeTurn = () => {
-    if (turn?.isCoverTransition) setDesktopStateIndex(turn.toIndex);
+    if (turn?.isSinglePageTransition) setDesktopStateIndex(turn.toIndex);
     setTurn(null);
   };
 
@@ -320,12 +337,13 @@ export default function CateringFlipbook() {
 
         <div className="hidden md:block">
           <div className="relative mx-auto aspect-[13/10] w-full max-w-6xl">
-            <DesktopBookState pages={desktopPages} />
-            {turn?.isCoverTransition && (
-              <DesktopCoverTransition turn={turn} onComplete={completeTurn} />
-            )}
-            {turn && !turn.isCoverTransition && (
-              <DesktopPageTurn turn={turn} onComplete={completeTurn} />
+            {turn?.isSinglePageTransition ? (
+              <DesktopSinglePageTransition turn={turn} onComplete={completeTurn} />
+            ) : (
+              <>
+                <DesktopBookState pages={desktopPages} />
+                {turn && <DesktopPageTurn turn={turn} onComplete={completeTurn} />}
+              </>
             )}
           </div>
           {controls}
