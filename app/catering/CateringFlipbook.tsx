@@ -370,6 +370,9 @@ export default function CateringFlipbook() {
           <h2 className="font-serif text-3xl tracking-wide sm:text-4xl lg:text-5xl">
             Catering Menu Flipbook
           </h2>
+          <p className="mx-auto mt-3 max-w-xl text-sm font-light leading-relaxed text-white/55 sm:text-base">
+            Browse our catering menu and explore the full selection.
+          </p>
         </div>
 
         <div className="hidden lg:block">
