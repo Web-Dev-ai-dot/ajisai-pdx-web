@@ -93,14 +93,14 @@ export default function PromotionsCarousel() {
                     <div
                         ref={sliderRef}
                         onScroll={updateActiveSlide}
-                        className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] lg:pr-[18%] [&::-webkit-scrollbar]:hidden"
+                        className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                         aria-label="Current promotions"
                     >
                         {promotions.map((promotion, index) => (
                             <article
                                 key={promotion.title}
                                 ref={(element) => { cardRefs.current[index] = element; }}
-                                className="flex min-h-[350px] flex-[0_0_100%] snap-start flex-col justify-between rounded-sm border border-[#C5A059]/35 bg-[#5D182E] p-7 text-white shadow-lg sm:min-h-[330px] sm:p-9 lg:flex-[0_0_82%] lg:p-12"
+                                className="flex min-h-[350px] flex-[0_0_100%] snap-start flex-col justify-between rounded-sm border border-[#C5A059]/35 bg-[#5D182E] p-7 text-white shadow-lg sm:min-h-[330px] sm:p-9 lg:p-12"
                             >
                                 <div>
                                     <p className="mb-5 text-xs font-bold uppercase tracking-[0.24em] text-[#C5A059]">
