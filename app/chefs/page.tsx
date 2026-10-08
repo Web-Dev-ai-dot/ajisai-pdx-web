@@ -16,18 +16,18 @@ export const metadata: Metadata = {
 
 const CHEFS = [
     { name: "Joseph Alcantara",                    tenure: "Teppanyaki chef since 2019",          image: "/chefs/joseph-alcantara-portrait.jpg",        video: "/chefs/videos/joseph-alcantara.mp4" },
-    { name: "Brady Benson",                         tenure: "Teppanyaki chef since 2017",          image: "/chefs/brady-benson-portrait.jpg",           video: "/chefs/videos/brady-benson.mp4" },
+    { name: "Tre Evan-McClennaham",                 tenure: "Teppanyaki chef since 2019",          image: "/chefs/tre-evan-mcclennaham-portrait.jpg",   video: "/chefs/videos/tre-evan-mcclennaham.mp4" },
+    { name: "Shane White",                           tenure: "Teppanyaki chef for 4 years now",      image: "/chefs/shane-white-portrait.jpg",            video: "/chefs/videos/shane-white.mp4" },
     { name: "Chris Aaronson",                       tenure: "Teppanyaki chef for about 10 years",  image: "/chefs/chris-aaronson-portrait.jpg",         video: "/chefs/videos/chris-aaronson-v2.mp4" },
     { name: "Félix Yu",                             tenure: "Teppanyaki chef since 1999",          image: "/chefs/felix-yu-portrait.jpg",               video: "/chefs/videos/felix-yu.mp4" },
-    { name: "Gama Morelos",                         tenure: "Teppanyaki chef for 3 years",         image: "/chefs/gama-morelos-portrait.jpg",           video: "/chefs/videos/gama-morelos.mp4" },
-    { name: "Giovanny Martinez Ortega",             tenure: "Teppanyaki chef for about 3.5 years", image: "/chefs/giovanny-martinez-ortega-portrait.jpg", video: "/chefs/videos/giovanny-martinez-ortega-v2.mp4" },
     { name: "Jacob Valencia",                       tenure: "Teppanyaki chef for about 6 years",   image: "/chefs/jacob-valencia-portrait.jpg",         video: "/chefs/videos/jacob-valencia.mp4" },
-    { name: "Tre Evan-McClennaham",                 tenure: "Teppanyaki chef since 2019",          image: "/chefs/tre-evan-mcclennaham-portrait.jpg",   video: "/chefs/videos/tre-evan-mcclennaham.mp4" },
-    { name: "Ismael Torres",   tenure: "Teppanyaki chef for 3 years",         image: "/chefs/ismael-torres-portrait.jpg",          video: "/chefs/videos/ismael-torres.mp4" },
+    { name: "Giovanny Martinez Ortega",             tenure: "Teppanyaki chef for about 3.5 years", image: "/chefs/giovanny-martinez-ortega-portrait.jpg", video: "/chefs/videos/giovanny-martinez-ortega-v2.mp4" },
+    { name: "Gama Morelos",                         tenure: "Teppanyaki chef for 3 years",         image: "/chefs/gama-morelos-portrait.jpg",           video: "/chefs/videos/gama-morelos.mp4" },
     { name: "Sean Naile",                           tenure: "Teppanyaki chef since 2014",          image: "/chefs/sean-naile-portrait.jpg",             video: "/chefs/videos/sean-naile.mp4" },
-    { name: "Scott Sims",                           tenure: "Teppanyaki chef for almost 5 years",  image: "/chefs/scott-sims-portrait.jpg" },
-    { name: "Shane White",                           tenure: "Teppanyaki chef for 4 years now",      image: "/chefs/shane-white-portrait.jpg",            video: "/chefs/videos/shane-white.mp4" },
+    { name: "Ismael Torres",   tenure: "Teppanyaki chef for 3 years",         image: "/chefs/ismael-torres-portrait.jpg",          video: "/chefs/videos/ismael-torres.mp4" },
     { name: "Ander Route",                          tenure: "Teppanyaki chef for 3 months",         image: "/chefs/ander-route-portrait.jpg",            video: "/chefs/videos/ander-route.mp4" },
+    { name: "Brady Benson",                         tenure: "Teppanyaki chef since 2017",          image: "/chefs/brady-benson-portrait.jpg",           video: "/chefs/videos/brady-benson.mp4" },
+    { name: "Scott Sims",                           tenure: "Teppanyaki chef for almost 5 years",  image: "/chefs/scott-sims-portrait.jpg" },
 ];
 
 export default function ChefsPage() {
