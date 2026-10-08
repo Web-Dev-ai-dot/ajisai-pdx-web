@@ -165,6 +165,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PROMOTIONS SECTION */}
+      <PromotionsSlider />
+
       {/* 2. LUNCH SPECIAL SECTION */}
       <section className="w-full bg-[#5D182E] text-white py-16 overflow-hidden">
         <div className="container mx-auto px-6">
@@ -350,9 +353,6 @@ export default function Home() {
 
       {/* ORDER & DELIVERY SECTION */}
       <OrderDelivery />
-
-      {/* PROMOTIONS SECTION */}
-      <PromotionsSlider />
 
       {/* 5. REVIEWS SECTION */}
       <section className="w-full bg-white py-24">
