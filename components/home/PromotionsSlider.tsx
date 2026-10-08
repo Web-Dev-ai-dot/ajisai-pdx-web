@@ -236,7 +236,7 @@ export function PromotionsSlider() {
   };
 
   return (
-    <section className="w-full overflow-hidden bg-[#481029] text-white" aria-label="Current promotions">
+    <section className="w-full overflow-hidden bg-[#1A0A10] text-white" aria-label="Current promotions">
       <div className="border-b border-white/10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div
