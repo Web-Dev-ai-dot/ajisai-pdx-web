@@ -324,42 +324,6 @@ export default function CateringFlipbook() {
     setTurn(null);
   };
 
-  const desktopControls = (
-    <div className="mt-5 flex items-center justify-center gap-4 sm:mt-6 sm:gap-5 lg:mt-7">
-      <NavigationButton
-        direction="previous"
-        disabled={stateIndex === 0 || turn !== null}
-        onClick={() => moveDesktop(-1)}
-      />
-      <p className="min-w-24 text-center text-sm tracking-[0.16em] text-white/70">
-        {stateIndex + 1} of {bookStates.length}
-      </p>
-      <NavigationButton
-        direction="next"
-        disabled={stateIndex === bookStates.length - 1 || turn !== null}
-        onClick={() => moveDesktop(1)}
-      />
-    </div>
-  );
-
-  const mobileControls = (
-    <div className="mt-5 flex items-center justify-center gap-4 sm:mt-6 sm:gap-5">
-      <NavigationButton
-        direction="previous"
-        disabled={mobilePageIndex === 0}
-        onClick={() => moveMobile(-1)}
-      />
-      <p className="min-w-24 text-center text-sm tracking-[0.16em] text-white/70">
-        {mobilePageIndex + 1} of {menuPages.length}
-      </p>
-      <NavigationButton
-        direction="next"
-        disabled={mobilePageIndex === menuPages.length - 1}
-        onClick={() => moveMobile(1)}
-      />
-    </div>
-  );
-
   return (
     <section className="overflow-hidden bg-[#11100f] px-4 py-14 text-white sm:py-16 md:px-6 lg:py-24">
       <div className="mx-auto max-w-7xl">
@@ -376,52 +340,88 @@ export default function CateringFlipbook() {
         </div>
 
         <div className="hidden lg:block">
-          <div className="relative mx-auto aspect-[13/10] w-full max-w-6xl">
-            {turn?.isSinglePageTransition ? (
-              <DesktopSinglePageTransition turn={turn} onComplete={completeTurn} />
-            ) : (
-              <>
-                <DesktopBookState pages={desktopPages} />
-                {turn && <DesktopPageTurn turn={turn} onComplete={completeTurn} />}
-              </>
-            )}
+          <div className="relative mx-auto max-w-7xl px-14">
+            <div className="relative mx-auto aspect-[13/10] w-full max-w-6xl">
+              {turn?.isSinglePageTransition ? (
+                <DesktopSinglePageTransition turn={turn} onComplete={completeTurn} />
+              ) : (
+                <>
+                  <DesktopBookState pages={desktopPages} />
+                  {turn && <DesktopPageTurn turn={turn} onComplete={completeTurn} />}
+                </>
+              )}
+            </div>
+            <div className="absolute inset-y-0 left-0 z-10 flex items-center">
+              <NavigationButton
+                direction="previous"
+                disabled={stateIndex === 0 || turn !== null}
+                onClick={() => moveDesktop(-1)}
+              />
+            </div>
+            <div className="absolute inset-y-0 right-0 z-10 flex items-center">
+              <NavigationButton
+                direction="next"
+                disabled={stateIndex === bookStates.length - 1 || turn !== null}
+                onClick={() => moveDesktop(1)}
+              />
+            </div>
           </div>
-          {desktopControls}
+          <p className="mt-7 text-center text-sm tracking-[0.16em] text-white/70">
+            {stateIndex + 1} of {bookStates.length}
+          </p>
         </div>
 
         <div className="lg:hidden">
-          <div
-            className="relative mx-auto aspect-[13/20] w-full max-w-md overflow-hidden rounded-sm sm:max-w-[560px]"
-            style={{ perspective: "1200px" }}
-          >
-            <motion.div
-              key={mobilePageIndex}
-              initial={{ rotateY: mobileDirection > 0 ? 28 : -28, opacity: 0.88 }}
-              animate={{ rotateY: 0, opacity: 1 }}
-              transition={{ duration: 0.42, ease: [0.35, 0, 0.2, 1] }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.16}
-              onDragEnd={handleMobileSwipe}
-              className="absolute inset-0 cursor-grab touch-pan-y overflow-hidden rounded-sm border border-[#c99a4b]/35 bg-black shadow-[0_22px_50px_rgba(0,0,0,0.5)] active:cursor-grabbing"
-              style={{
-                backfaceVisibility: "hidden",
-                transformOrigin: mobileDirection > 0 ? "left center" : "right center",
-              }}
-              aria-label={`Catering menu page ${mobilePageIndex + 1}`}
+          <div className="relative mx-auto max-w-[688px] px-12 sm:px-16">
+            <div
+              className="relative mx-auto aspect-[13/20] w-full max-w-md overflow-hidden rounded-sm sm:max-w-[560px]"
+              style={{ perspective: "1200px" }}
             >
-              <PageImage
-                page={menuPages[mobilePageIndex]}
-                sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 560px, 448px"
-              />
               <motion.div
-                className={`pointer-events-none absolute inset-0 ${mobileDirection > 0 ? "bg-gradient-to-r" : "bg-gradient-to-l"} from-black/45 via-transparent to-transparent`}
-                animate={{ opacity: [0.6, 0] }}
-                transition={{ duration: 0.42 }}
+                key={mobilePageIndex}
+                initial={{ rotateY: mobileDirection > 0 ? 28 : -28, opacity: 0.88 }}
+                animate={{ rotateY: 0, opacity: 1 }}
+                transition={{ duration: 0.42, ease: [0.35, 0, 0.2, 1] }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.16}
+                onDragEnd={handleMobileSwipe}
+                className="absolute inset-0 cursor-grab touch-pan-y overflow-hidden rounded-sm border border-[#c99a4b]/35 bg-black shadow-[0_22px_50px_rgba(0,0,0,0.5)] active:cursor-grabbing"
+                style={{
+                  backfaceVisibility: "hidden",
+                  transformOrigin: mobileDirection > 0 ? "left center" : "right center",
+                }}
+                aria-label={`Catering menu page ${mobilePageIndex + 1}`}
+              >
+                <PageImage
+                  page={menuPages[mobilePageIndex]}
+                  sizes="(max-width: 639px) calc(100vw - 128px), (max-width: 1023px) 560px, 448px"
+                />
+                <motion.div
+                  className={`pointer-events-none absolute inset-0 ${mobileDirection > 0 ? "bg-gradient-to-r" : "bg-gradient-to-l"} from-black/45 via-transparent to-transparent`}
+                  animate={{ opacity: [0.6, 0] }}
+                  transition={{ duration: 0.42 }}
+                />
+              </motion.div>
+            </div>
+            <div className="absolute inset-y-0 left-0 z-10 flex items-center">
+              <NavigationButton
+                direction="previous"
+                disabled={mobilePageIndex === 0}
+                onClick={() => moveMobile(-1)}
               />
-            </motion.div>
+            </div>
+            <div className="absolute inset-y-0 right-0 z-10 flex items-center">
+              <NavigationButton
+                direction="next"
+                disabled={mobilePageIndex === menuPages.length - 1}
+                onClick={() => moveMobile(1)}
+              />
+            </div>
           </div>
-          {mobileControls}
+          <p className="mt-5 text-center text-sm tracking-[0.16em] text-white/70 sm:mt-6">
+            {mobilePageIndex + 1} of {menuPages.length}
+          </p>
           <p className="mt-4 text-center text-xs uppercase tracking-[0.2em] text-white/45">
             Swipe to turn pages
           </p>
