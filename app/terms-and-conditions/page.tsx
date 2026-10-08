@@ -28,7 +28,8 @@ export default function TermsAndConditions() {
                                 Welcome to Ajisai. These Terms &amp; Conditions apply to the reservations,
                                 promotions, specials, rewards program and gift cards offered by Ajisai
                                 Restaurant (&quot;Ajisai,&quot; &quot;we,&quot; &quot;us&quot; or &quot;our&quot;), located at 4050 SW 114th
-                                Ave, Beaverton, OR 97005.
+                                Ave, Beaverton, OR 97005. Our hours of operation are daily from 11:00 AM
+                                to 10:00 PM.
                             </p>
                         </section>
 
@@ -40,7 +41,6 @@ export default function TermsAndConditions() {
                                     more, or for private Teppanyaki room inquiries, please contact us
                                     directly at (971) 727-3180.
                                 </p>
-                                <p>Hours of operation: daily from 11:00 AM to 10:00 PM.</p>
                                 <p>
                                     <strong>Teppanyaki Policy:</strong> We recommend arriving 15 minutes
                                     prior to your reservation time. Teppanyaki shows start promptly.
@@ -68,9 +68,8 @@ export default function TermsAndConditions() {
                                         <li>Lounge: 2:00 PM to 5:00 PM</li>
                                     </ul>
                                     <p>
-                                        Happy Hour pricing applies to the items on the Happy Hour menu,
-                                        which includes sushi rolls, nigiri, hot appetizers, salads, soup,
-                                        draft beer, well cocktails and wine by the glass.
+                                        Happy Hour items and prices are limited to those listed on the
+                                        printed Happy Hour menu available at the restaurant.
                                     </p>
                                 </div>
 
@@ -85,10 +84,9 @@ export default function TermsAndConditions() {
                                         <li>Thursday: 5:00 PM to 8:00 PM</li>
                                     </ul>
                                     <p>
-                                        Hours for special games vary. Football Happy Hour pricing applies
-                                        to the items on the Football Happy Hour menu, which includes wings,
-                                        lettuce wraps, crab rangoons and, during the game, $5 draft beer,
-                                        $5 well cocktails and $5 wine.
+                                        Hours for special games vary. Football Happy Hour items and prices
+                                        are limited to those listed on the printed Football Happy Hour menu
+                                        available at the restaurant.
                                     </p>
                                 </div>
 
@@ -278,15 +276,6 @@ export default function TermsAndConditions() {
                             </div>
                         </section>
 
-                        <section>
-                            <h2 className="text-2xl font-serif mb-4 text-accent">7. Contact Us</h2>
-                            <div className="bg-primary p-6 border border-accent/20 rounded-lg">
-                                <p className="font-serif text-xl mb-2 text-white">Ajisai Restaurant</p>
-                                <p>4050 SW 114th Ave</p>
-                                <p>Beaverton, OR 97005</p>
-                                <p className="mt-2 text-accent">(971) 727-3180</p>
-                            </div>
-                        </section>
                     </div>
                 </motion.div>
             </div>
