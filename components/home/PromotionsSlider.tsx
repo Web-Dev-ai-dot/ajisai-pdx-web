@@ -5,10 +5,10 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useRef, useState, type KeyboardEvent } from "react";
 
 const promotionTabs = [
+  "Happy Hour",
   "Football Happy Hour",
   "Monday Special",
   "Tuesday Special",
-  "Happy Hour",
 ] as const;
 
 function ReserveButton() {
@@ -35,7 +35,16 @@ function FootballPromotion() {
         <p className="mt-5 text-base font-light leading-relaxed text-white/70 md:text-lg">
           Game-day food and drink specials available at the bartop during select NFL games.
         </p>
-        <ReserveButton />
+        <div className="mt-8 border-t border-white/15 pt-6">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#C5A059]">
+            Available at Bartop
+          </p>
+          <div className="mt-4 space-y-2 text-sm text-white/70">
+            <p>Sunday — All Day</p>
+            <p>Monday — During the Game</p>
+            <p>Thursday — During the Game</p>
+          </div>
+        </div>
       </div>
 
       <div className="border-t border-[#C5A059]/30 pt-8 text-left lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
@@ -59,12 +68,10 @@ function FootballPromotion() {
           </div>
 
           <div>
-            <div className="flex items-end gap-3">
-              <p className="font-serif text-5xl leading-none text-[#C5A059] sm:text-6xl">$5</p>
-              <p className="pb-1 text-xs font-bold uppercase tracking-[0.22em] text-white">
-                Drinks
-              </p>
-            </div>
+            <p className="font-serif text-5xl leading-none text-[#C5A059] sm:text-6xl">$5</p>
+            <p className="mt-2 text-xs font-bold uppercase tracking-[0.22em] text-white">
+              Drinks
+            </p>
             <div className="mt-5 space-y-2 text-sm leading-relaxed text-white/70">
               <p>Draft Beer</p>
               <p>Well Cocktails</p>
@@ -73,16 +80,7 @@ function FootballPromotion() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-white/15 pt-6">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#C5A059]">
-            NFL at the Bartop
-          </p>
-          <div className="mt-4 grid gap-2 text-sm text-white/70 min-[520px]:grid-cols-3 min-[520px]:gap-5">
-            <p>Sunday — All Day</p>
-            <p>Monday — During the Game</p>
-            <p>Thursday — During the Game</p>
-          </div>
-        </div>
+        <ReserveButton />
       </div>
     </div>
   );
@@ -116,17 +114,18 @@ function MinimalPromotion({
 }
 
 const happyHourHighlights = [
-  { price: "$5–$7", label: "Sushi Rolls" },
+  { price: "$5–$7", label: "SUSHI ROLLS" },
   {
-    price: "$3 Each",
-    label: "Nigiri",
+    price: "$3",
+    label: "NIGIRI",
+    suffix: " (each)",
     detail: "Tuna · Salmon · Ebi · Yellowtail · Red Snapper",
   },
-  { price: "From $3", label: "Salads & Soup" },
-  { price: "$0.50–$7", label: "Hot Appetizers" },
+  { price: "$3–$6", label: "SALADS & SOUP" },
+  { price: "$0.50–$7", label: "HOT APPETIZERS" },
   {
     price: "$5",
-    label: "Drinks",
+    label: "DRINKS",
     detail: "Draft Beer · Well Cocktails · Wine by the Glass",
   },
 ];
@@ -144,7 +143,15 @@ function HappyHourPromotion() {
         <p className="mt-5 text-base font-light leading-relaxed text-white/70 md:text-lg">
           Sushi, bites, and drinks at Happy Hour prices — every day.
         </p>
-        <ReserveButton />
+        <div className="mt-8 border-t border-white/15 pt-6">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#C5A059]">
+            Every Day
+          </p>
+          <div className="mt-4 space-y-2 text-sm text-white/70">
+            <p>Bar — 2PM–6PM</p>
+            <p>Lounge — 2PM–5PM</p>
+          </div>
+        </div>
       </div>
 
       <div className="border-t border-[#C5A059]/30 pt-8 text-left lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
@@ -161,8 +168,9 @@ function HappyHourPromotion() {
               <p className="font-serif text-2xl uppercase leading-tight text-[#C5A059] sm:text-3xl">
                 {highlight.price}
               </p>
-              <h3 className="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-white">
+              <h3 className="mt-1 text-xs font-bold tracking-[0.18em] text-white">
                 {highlight.label}
+                {highlight.suffix && <span className="normal-case">{highlight.suffix}</span>}
               </h3>
               {highlight.detail && (
                 <p className="mt-2 max-w-sm text-xs leading-relaxed text-white/50 sm:text-sm">
@@ -173,23 +181,16 @@ function HappyHourPromotion() {
           ))}
         </div>
 
-        <div className="mt-8 border-t border-white/15 pt-6">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#C5A059]">
-            Every Day
-          </p>
-          <div className="mt-4 grid grid-cols-2 gap-5 text-sm text-white/70">
-            <p>Bar — 2PM–6PM</p>
-            <p>Lounge — 2PM–5PM</p>
-          </div>
-        </div>
+        <ReserveButton />
       </div>
     </div>
   );
 }
 
 function PromotionContent({ index }: { index: number }) {
-  if (index === 0) return <FootballPromotion />;
-  if (index === 1) {
+  if (index === 0) return <HappyHourPromotion />;
+  if (index === 1) return <FootballPromotion />;
+  if (index === 2) {
     return (
       <MinimalPromotion
         eyebrow="Monday Special"
@@ -198,7 +199,7 @@ function PromotionContent({ index }: { index: number }) {
       />
     );
   }
-  if (index === 2) {
+  if (index === 3) {
     return (
       <MinimalPromotion
         eyebrow="Tuesday Special"
@@ -207,7 +208,7 @@ function PromotionContent({ index }: { index: number }) {
       />
     );
   }
-  return <HappyHourPromotion />;
+  return null;
 }
 
 export function PromotionsSlider() {
