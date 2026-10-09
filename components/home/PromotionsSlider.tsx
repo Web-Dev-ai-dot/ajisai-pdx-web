@@ -133,8 +133,8 @@ const happyHourHighlights = [
 
 function HappyHourPromotion() {
   return (
-    <div className="min-h-[540px] py-14 text-left md:py-16 lg:py-20">
-      <div className="max-w-3xl">
+    <div className="grid min-h-[540px] items-center gap-12 py-14 md:py-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:py-20">
+      <div className="max-w-xl text-left">
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#C5A059]">
           Happy Hour
         </p>
@@ -144,43 +144,44 @@ function HappyHourPromotion() {
         <p className="mt-5 text-base font-light leading-relaxed text-white/70 md:text-lg">
           Sushi, bites, and drinks at Happy Hour prices — every day.
         </p>
+        <ReserveButton />
       </div>
 
-      <div className="mt-9 grid grid-cols-2 gap-x-5 gap-y-7 border-y border-white/15 py-7 md:grid-cols-3 lg:grid-cols-5 lg:gap-x-7">
-        {happyHourHighlights.map((highlight) => (
-          <div key={highlight.label} className="min-w-0 lg:border-l lg:border-white/15 lg:pl-5 lg:first:border-l-0 lg:first:pl-0">
-            <p className="font-serif text-2xl leading-tight text-[#C5A059] sm:text-3xl">
-              {highlight.price}
-            </p>
-            <h3 className="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-white">
-              {highlight.label}
-            </h3>
-            {highlight.detail && (
-              <p className="mt-2 text-xs leading-relaxed text-white/50 sm:text-sm">
-                {highlight.detail}
+      <div className="border-t border-[#C5A059]/30 pt-8 text-left lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
+        <p className="text-xs font-bold uppercase tracking-[0.25em] text-white/50">
+          Happy Hour Favorites
+        </p>
+
+        <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-6">
+          {happyHourHighlights.map((highlight, index) => (
+            <div
+              key={highlight.label}
+              className={`min-w-0 ${index === happyHourHighlights.length - 1 ? "col-span-2" : ""}`}
+            >
+              <p className="font-serif text-2xl uppercase leading-tight text-[#C5A059] sm:text-3xl">
+                {highlight.price}
               </p>
-            )}
-          </div>
-        ))}
-      </div>
+              <h3 className="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-white">
+                {highlight.label}
+              </h3>
+              {highlight.detail && (
+                <p className="mt-2 max-w-sm text-xs leading-relaxed text-white/50 sm:text-sm">
+                  {highlight.detail}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
 
-      <div className="mt-7 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#C5A059]">
+        <div className="mt-8 border-t border-white/15 pt-6">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#C5A059]">
             Every Day
           </p>
-          <div className="mt-3 flex gap-8">
-            <div>
-              <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-white/45">Bar</p>
-              <p className="mt-1 font-serif text-xl text-white">2PM–6PM</p>
-            </div>
-            <div>
-              <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-white/45">Lounge</p>
-              <p className="mt-1 font-serif text-xl text-white">2PM–5PM</p>
-            </div>
+          <div className="mt-4 grid grid-cols-2 gap-5 text-sm text-white/70">
+            <p>Bar — 2PM–6PM</p>
+            <p>Lounge — 2PM–5PM</p>
           </div>
         </div>
-        <ReserveButton />
       </div>
     </div>
   );
@@ -279,6 +280,7 @@ export function PromotionsSlider() {
             id="promotion-panel"
             role="tabpanel"
             aria-labelledby={`promotion-tab-${activeIndex}`}
+            className="lg:pl-20 xl:pl-32"
             initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: -8 }}
