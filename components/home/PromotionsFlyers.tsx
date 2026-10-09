@@ -73,9 +73,17 @@ function ReserveButton() {
 }
 
 function PromotionPanel({ promotion }: { promotion: FlyerPromotion }) {
+  const hasFlyer = Boolean(promotion.imageSrc);
+
   return (
-    <div className="grid min-h-[540px] items-center gap-12 py-14 md:py-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:py-20">
-      <div className="max-w-xl text-left">
+    <div
+      className={
+        hasFlyer
+          ? "grid min-h-[540px] items-center gap-12 py-14 md:py-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:py-20"
+          : "flex min-h-[540px] items-center py-14 md:py-16 lg:py-20"
+      }
+    >
+      <div className={hasFlyer ? "max-w-xl text-left" : "max-w-3xl text-left"}>
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#C5A059]">
           {promotion.eyebrow}
         </p>
@@ -102,8 +110,8 @@ function PromotionPanel({ promotion }: { promotion: FlyerPromotion }) {
         <ReserveButton />
       </div>
 
-      <div className="flex items-center justify-center border-t border-[#C5A059]/30 pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
-        {promotion.imageSrc ? (
+      {promotion.imageSrc && (
+        <div className="flex items-center justify-center border-t border-[#C5A059]/30 pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
           <Image
             src={promotion.imageSrc}
             alt={promotion.imageAlt}
@@ -112,19 +120,8 @@ function PromotionPanel({ promotion }: { promotion: FlyerPromotion }) {
             sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1023px) 480px, 42vw"
             className="h-auto w-full max-w-[420px] object-contain sm:max-w-[480px] lg:max-h-[560px] lg:w-auto lg:max-w-full"
           />
-        ) : (
-          <div className="flex aspect-[4/5] w-full max-w-[420px] items-center justify-center border border-white/15 bg-white/[0.02] px-8 text-center sm:max-w-[480px] lg:max-h-[560px]">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-[#C5A059]">
-                FLYER ARTWORK
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-white/55">
-                Coming soon
-              </p>
-            </div>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
