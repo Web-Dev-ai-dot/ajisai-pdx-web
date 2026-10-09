@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 const navLinks = [
     { name: "About", href: "/about" },
     { name: "Menus", href: "/menus" },
+    { name: "Chefs", href: "/chefs" },
     { name: "Reservations", href: "/reservations" },
     { name: "Contact", href: "/contact" },
 ];
@@ -29,12 +30,13 @@ export function Navbar() {
     const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const pathname = usePathname();
 
-    const isHeroPage = ["/", "/menus", "/about", "/jobs", "/reservations", "/gift-cards-rewards"].includes(pathname);
+    const isHeroPage = ["/", "/menus", "/about", "/jobs", "/reservations", "/contact", "/gift-cards-rewards", "/chefs"].includes(pathname);
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
+            setIsScrolled(window.scrollY > 1);
         };
+        handleScroll();
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -62,8 +64,8 @@ export function Navbar() {
                 isScrolled
                     ? "bg-primary shadow-lg py-2"
                     : isHeroPage
-                        ? "bg-transparent py-6"
-                        : "bg-primary shadow-lg py-6"
+                        ? "bg-transparent py-3 md:py-6"
+                        : "bg-primary shadow-lg py-3 md:py-6"
             )}
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
@@ -71,7 +73,7 @@ export function Navbar() {
                 <Link href="/" className="relative z-10 group flex items-center gap-3">
                     <div className={clsx(
                         "relative transition-all duration-500 will-change-transform",
-                        isScrolled ? "w-0 h-0 opacity-0 -translate-x-4" : "w-32 h-32 opacity-100 translate-x-0"
+                        isScrolled ? "w-0 h-0 opacity-0 -translate-x-4" : "w-20 h-20 opacity-100 translate-x-0 sm:w-24 sm:h-24 md:w-32 md:h-32"
                     )}>
                         <Image
                             src="/logo-new.png"
@@ -176,6 +178,20 @@ export function Navbar() {
                     >
                         Reserve
                     </Link>
+
+                    <Link
+                        href="https://toast.app/r/ajisai-beaverton/order"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={clsx(
+                            "px-6 py-2 border transition-all duration-300",
+                            isScrolled || !isHeroPage
+                                ? "border-secondary text-secondary hover:bg-secondary hover:text-primary"
+                                : "border-white text-white hover:bg-white hover:text-primary"
+                        )}
+                    >
+                        Order Pickup
+                    </Link>
                 </nav>
 
                 {/* Mobile Toggle */}
@@ -185,10 +201,10 @@ export function Navbar() {
                     aria-label="Toggle Menu"
                 >
                     {isMobileMenuOpen ? (
-                        <X size={28} className="text-secondary" />
+                        <X size={24} className="text-secondary" />
                     ) : (
                         <Menu
-                            size={28}
+                            size={24}
                             className={clsx(
                                 isScrolled || !isHeroPage
                                     ? "text-secondary"
@@ -275,6 +291,16 @@ export function Navbar() {
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 Book a Table
+                            </Link>
+
+                            <Link
+                                href="https://toast.app/r/ajisai-beaverton/order"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-8 py-3 border border-secondary text-secondary hover:bg-accent hover:border-accent hover:text-primary transition-all text-xl"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                Order Pickup
                             </Link>
                         </motion.div>
                     )}

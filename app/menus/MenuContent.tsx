@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { Share2, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import MenuSection from "./MenuSection";
+import type { MenuGalleryImage } from "./MenuImageGrid";
 
 const HERO_IMAGES = [
     "/artisan-sushi-new.jpg",
@@ -23,6 +25,8 @@ interface MenuCategory {
     title: string;
     description: string;
     items: MenuItem[];
+    showSignature?: boolean;
+    galleryImages?: MenuGalleryImage[];
 }
 
 interface MenuGroup {
@@ -35,8 +39,12 @@ interface MenuContentProps {
     groups: MenuGroup[];
 }
 
-export default function MenuContent({ groups }: MenuContentProps) {
-    const [activeGroup, setActiveGroup] = useState<string>(groups[0].id);
+function MenuContentInner({ groups }: MenuContentProps) {
+    const searchParams = useSearchParams();
+    const tabParam = searchParams.get("tab");
+    const initialGroup = groups.find(g => g.id === tabParam)?.id ?? groups[0].id;
+
+    const [activeGroup, setActiveGroup] = useState<string>(initialGroup);
     const navRef = useRef<HTMLDivElement>(null);
     const [copied, setCopied] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -155,11 +163,19 @@ export default function MenuContent({ groups }: MenuContentProps) {
                         className="space-y-20"
                     >
                         {currentGroup.subCategories.map((cat) => (
-                            <MenuSection key={cat.id} category={cat} />
+                            <MenuSection key={cat.id} category={cat} showSignature={cat.showSignature} />
                         ))}
                     </motion.div>
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function MenuContent({ groups }: MenuContentProps) {
+    return (
+        <Suspense fallback={null}>
+            <MenuContentInner groups={groups} />
+        </Suspense>
     );
 }
