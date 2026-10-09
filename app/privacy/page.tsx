@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function PrivacyPolicy() {
     return (
-        <div className="bg-secondary min-h-screen text-primary pb-20 pt-32">
+        <div className="bg-secondary min-h-screen text-primary pb-20 pt-36 sm:pt-40 md:pt-52">
             <div className="container mx-auto px-6 max-w-4xl">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
