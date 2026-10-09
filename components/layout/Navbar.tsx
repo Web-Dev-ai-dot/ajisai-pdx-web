@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 const navLinks = [
     { name: "About", href: "/about" },
     { name: "Menus", href: "/menus" },
+    { name: "Catering", href: "/catering" },
     { name: "Chefs", href: "/chefs" },
     { name: "Reservations", href: "/reservations" },
     { name: "Contact", href: "/contact" },
