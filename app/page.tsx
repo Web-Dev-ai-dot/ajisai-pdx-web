@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChevronRight, ArrowUp, Star, Quote, Sparkles } from "lucide-react";
 import { useEffect, useState, useRef, MouseEvent } from "react";
 import { OrderDelivery } from "@/components/home/OrderDelivery";
+import { PromotionsSlider } from "@/components/home/PromotionsSlider";
 // import GrandOpeningPopup from "@/components/home/GrandOpeningPopup";
 
 // --- NEW COMPONENT: 3D TILT CARD ---
@@ -163,6 +164,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* PROMOTIONS SECTION */}
+      <PromotionsSlider />
 
       {/* 2. LUNCH SPECIAL SECTION */}
       <section className="w-full bg-[#5D182E] text-white py-16 overflow-hidden">
