@@ -14,11 +14,11 @@ const menuGroups = [
                 "description": "Refresh your palate with our chilled starters.",
                 "galleryImages": [
                     {
-                        "src": "/menu/cold-appetizers/cold-appetizers-01.jpg",
+                        "src": "/menu/cold-appetizers/cold-appetizers-01.png",
                         "alt": "Ajisai cold appetizer platter"
                     },
                     {
-                        "src": "/menu/cold-appetizers/cold-appetizers-02.jpg",
+                        "src": "/menu/cold-appetizers/cold-appetizers-02.png",
                         "alt": "Ajisai salmon cold appetizer presentation"
                     },
                     {
@@ -63,6 +63,20 @@ const menuGroups = [
                 "id": "hot-appetizers",
                 "title": "Hot Appetizers",
                 "description": "Warm, savory bites to begin your meal.",
+                "galleryImages": [
+                    {
+                        "src": "/menu/hot-appetizers/hot-appetizers-01.png",
+                        "alt": "Ajisai tempura appetizer"
+                    },
+                    {
+                        "src": "/menu/hot-appetizers/hot-appetizers-02.png",
+                        "alt": "Ajisai gyoza appetizer"
+                    },
+                    {
+                        "src": "/menu/hot-appetizers/hot-appetizers-03.png",
+                        "alt": "Ajisai chicken wings appetizer"
+                    }
+                ],
                 "items": [
                     {
                         "name": "Chicken Karaage",
@@ -141,6 +155,20 @@ const menuGroups = [
                 "id": "soups-salads",
                 "title": "Soups & Salads",
                 "description": "Light, fresh, and flavorful.",
+                "galleryImages": [
+                    {
+                        "src": "/menu/soups-salads/soups-salads-01.png",
+                        "alt": "Ajisai salmon salad presentation"
+                    },
+                    {
+                        "src": "/menu/soups-salads/soups-salads-02.png",
+                        "alt": "Ajisai sunomono salad"
+                    },
+                    {
+                        "src": "/menu/soups-salads/soups-salads-03.png",
+                        "alt": "Ajisai seaweed salad"
+                    }
+                ],
                 "items": [
                     {
                         "name": "House Miso Soup",
