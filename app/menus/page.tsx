@@ -3,7 +3,7 @@
 // Imports delegated to MenuContent
 
 // --- DATA ---
-const menuGroups = [
+const menuGroupData = [
     {
         id: "appetizers",
         label: "Appetizers",
@@ -829,6 +829,26 @@ const menuGroups = [
         ]
     }
 ];
+
+const menuGroupOrder = [
+    "lunch",
+    "appetizers",
+    "soups-salads",
+    "sushi",
+    "hibachi",
+    "dessert",
+    "kids-menu"
+];
+
+const menuGroups = menuGroupOrder.map((id) => {
+    const group = menuGroupData.find((candidate) => candidate.id === id);
+
+    if (!group) {
+        throw new Error(`Missing menu group: ${id}`);
+    }
+
+    return group;
+});
 
 // --- COMPONENTS ---
 import MenuContent from "./MenuContent";
