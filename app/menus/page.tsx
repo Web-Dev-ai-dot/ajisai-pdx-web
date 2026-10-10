@@ -500,11 +500,6 @@ const menuGroups = [
                         "description": ""
                     },
                     {
-                        "name": "Japanese A5 Wagyu Tiger Prawn",
-                        "price": "43",
-                        "description": ""
-                    },
-                    {
                         "name": "Hibachi Chateaubriand",
                         "price": "53",
                         "description": "8 oz of center cut tenderloin and mushroom"
