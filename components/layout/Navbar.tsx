@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 const navLinks = [
     { name: "About", href: "/about" },
     { name: "Menus", href: "/menus" },
+    { name: "Catering", href: "/catering" },
     { name: "Chefs", href: "/chefs" },
     { name: "Reservations", href: "/reservations" },
     { name: "Contact", href: "/contact" },
@@ -30,7 +31,7 @@ export function Navbar() {
     const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const pathname = usePathname();
 
-    const isHeroPage = ["/", "/menus", "/about", "/jobs", "/reservations", "/contact", "/gift-cards-rewards", "/chefs"].includes(pathname);
+    const isHeroPage = ["/", "/menus", "/about", "/jobs", "/reservations", "/contact", "/gift-cards-rewards", "/chefs", "/catering"].includes(pathname);
 
     useEffect(() => {
         const handleScroll = () => {
