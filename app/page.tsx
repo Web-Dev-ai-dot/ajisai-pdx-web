@@ -6,7 +6,6 @@ import { ChevronRight, ArrowUp, Star, Quote, Sparkles } from "lucide-react";
 import { useEffect, useState, useRef, MouseEvent } from "react";
 import { OrderDelivery } from "@/components/home/OrderDelivery";
 import { PromotionsFlyers } from "@/components/home/PromotionsFlyers";
-import { PromotionsSlider } from "@/components/home/PromotionsSlider";
 // import GrandOpeningPopup from "@/components/home/GrandOpeningPopup";
 
 // --- NEW COMPONENT: 3D TILT CARD ---
@@ -167,7 +166,6 @@ export default function Home() {
       </section>
 
       {/* PROMOTIONS SECTION */}
-      <PromotionsSlider />
       <PromotionsFlyers />
 
       {/* 2. LUNCH SPECIAL SECTION */}
