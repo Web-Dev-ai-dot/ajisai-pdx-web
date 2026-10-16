@@ -56,15 +56,28 @@ export default function CateringPage() {
                     </span>
                     <h2 className="mb-6 font-serif text-4xl md:text-5xl">How to Order</h2>
                     <p className="mx-auto mb-10 max-w-2xl text-lg font-light leading-relaxed text-secondary/80">
-                        Catering reservations and orders are currently handled by phone. Call our team to discuss your event, menu selections, serving needs, and pickup or delivery details.
+                        Planning a catered event? Submit your catering inquiry online or call our team to discuss your event, menu selections, serving needs, and pickup or delivery details. Please place catering orders at least 24 hours in advance.
                     </p>
-                    <a
-                        href="tel:9717273180"
-                        className="inline-flex items-center gap-3 rounded-sm border border-accent bg-accent px-8 py-4 text-sm uppercase tracking-widest text-primary transition-colors duration-300 hover:bg-secondary hover:text-primary"
-                    >
-                        <Phone className="h-5 w-5" aria-hidden="true" />
-                        Call to Order
-                    </a>
+                    <div className="flex flex-col items-center">
+                        <a
+                            href="https://www.toasttab.com/invoice/lead?rx=8811def4-cac0-4c58-8e3c-d399b4ad94f4&ot=47f63309-fbcd-4c1e-a13b-b0544fa3a056"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex min-h-14 max-w-full items-center justify-center rounded-sm border border-accent bg-accent px-8 py-4 text-center text-sm uppercase tracking-widest text-primary transition-colors duration-300 hover:bg-secondary hover:text-primary"
+                        >
+                            Submit Your Catering Inquiry
+                        </a>
+                        <span className="my-4 text-xs font-bold uppercase tracking-[0.25em] text-secondary/60">
+                            Or
+                        </span>
+                        <a
+                            href="tel:9717273180"
+                            className="inline-flex min-h-14 items-center justify-center gap-3 rounded-sm border border-accent px-8 py-4 text-sm uppercase tracking-widest text-accent transition-colors duration-300 hover:bg-accent hover:text-primary"
+                        >
+                            <Phone className="h-5 w-5" aria-hidden="true" />
+                            Call to Order
+                        </a>
+                    </div>
                     <p className="mt-8 text-sm font-light text-secondary/60">
                         Questions about your catering order? Call us at (971) 727-3180 and we will be happy to help.
                     </p>
