@@ -88,6 +88,9 @@ export function Footer() {
                             <Link href="/menus" className="hover:text-accent">
                                 Menus
                             </Link>
+                            <Link href="/catering" className="hover:text-accent">
+                                Catering
+                            </Link>
                             <Link href="/chefs" className="hover:text-accent">
                                 Chefs
                             </Link>
@@ -108,6 +111,9 @@ export function Footer() {
                             </Link>
                             <Link href="/privacy" className="hover:text-accent">
                                 Privacy Policy
+                            </Link>
+                            <Link href="/terms-and-conditions" className="hover:text-accent">
+                                Terms &amp; Conditions
                             </Link>
                         </nav>
                     </div>
