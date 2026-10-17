@@ -7,6 +7,7 @@ import { Share2, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import MenuSection from "./MenuSection";
 import type { MenuGalleryImage } from "./MenuImageGrid";
+import LunchPromotionPopup from "./LunchPromotionPopup";
 
 const HERO_IMAGES = [
     "/artisan-sushi-new.jpg",
@@ -69,8 +70,22 @@ function MenuContentInner({ groups }: MenuContentProps) {
         }
     };
 
+    const handleViewLunch = () => {
+        setActiveGroup("lunch");
+
+        window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+                document.getElementById("lunch")?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                });
+            });
+        });
+    };
+
     return (
         <div className="bg-secondary min-h-screen text-primary pb-20">
+            <LunchPromotionPopup onViewLunch={handleViewLunch} />
             {/* Header */}
             <div className="relative h-[50vh] bg-black overflow-hidden">
                 <AnimatePresence mode="wait">
@@ -156,11 +171,12 @@ function MenuContentInner({ groups }: MenuContentProps) {
                 <div className="max-w-4xl mx-auto min-h-[50vh]">
                     <motion.div
                         key={currentGroup.id}
+                        id={currentGroup.id}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.3 }}
-                        className="space-y-20"
+                        className="scroll-mt-40 space-y-20"
                     >
                         {currentGroup.subCategories.map((cat) => (
                             <MenuSection key={cat.id} category={cat} showSignature={cat.showSignature} />
