@@ -815,10 +815,10 @@ const menuGroupData = [
                     { "name": "Soda", "price": "4", "description": "Free Refills" },
                     { "name": "Shirley Temple", "price": "5", "description": "" },
                     { "name": "Raspberry Lemonade", "price": "5", "description": "" },
-                    { "name": "Milk", "price": "6", "description": "" },
-                    { "name": "Juice", "price": "6", "description": "Apple, Orange, Cranberry, Pineapple, or Pomegranate" },
-                    { "name": "Bubble Tea", "price": "6", "description": "" },
-                    { "name": "Ramune", "price": "6", "description": "" }
+                    { "name": "Milk", "price": "5.5", "description": "" },
+                    { "name": "Juice", "price": "5", "description": "Apple, Orange, Cranberry, Pineapple, or Pomegranate" },
+                    { "name": "Bubble Tea", "price": "6.5", "description": "" },
+                    { "name": "Ramune", "price": "5", "description": "" }
                 ]
             }
         ]
