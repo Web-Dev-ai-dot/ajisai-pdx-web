@@ -770,12 +770,12 @@ const menuGroupData = [
                     {
                         "src": "/menu/lunch/chicken-katsu-don-udon.jpg",
                         "alt": "Ajisai chicken katsu don",
-                        "caption": "Chicken Katsu Don"
+                        "caption": "Lunch Chicken Katsu Don"
                     },
                     {
                         "src": "/menu/lunch/tempura-udon.jpg",
                         "alt": "Ajisai tempura udon",
-                        "caption": "Tempura Udon"
+                        "caption": "Lunch Tempura Udon"
                     }
                 ],
                 "items": [
