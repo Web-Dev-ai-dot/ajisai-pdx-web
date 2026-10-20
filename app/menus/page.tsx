@@ -905,7 +905,7 @@ const menuGroupData = [
                     {
                         "src": "/menu/lunch/chicken-katsu-don-udon.jpg",
                         "alt": "Ajisai chicken katsu don",
-                        "caption": "Lunch Chicken Katsu Don"
+                        "caption": "Lunch Chicken Katsu Udon"
                     },
                     {
                         "src": "/menu/lunch/tempura-udon.jpg",
