@@ -587,6 +587,23 @@ const menuGroupData = [
                 "id": "hibachi-entree",
                 "title": "Hibachi Entree",
                 "description": "Grilled to perfection with our signature style.",
+                "galleryImages": [
+                    {
+                        "src": "/menu/hibachi-entrees/hibachi-chicken.jpg",
+                        "alt": "Ajisai Hibachi Chicken",
+                        "caption": "Hibachi Chicken"
+                    },
+                    {
+                        "src": "/menu/hibachi-entrees/yakisoba-shrimp.jpg",
+                        "alt": "Ajisai Yakisoba with shrimp",
+                        "caption": "Yakisoba (Shrimp)"
+                    },
+                    {
+                        "src": "/menu/hibachi-entrees/yakisoba-steak.jpg",
+                        "alt": "Ajisai Yakisoba with steak",
+                        "caption": "Yakisoba (Steak)"
+                    }
+                ],
                 "items": [
                     {
                         "name": "Japanese A5 Wagyu",
