@@ -792,9 +792,9 @@ const menuGroupData = [
                         "caption": "Foodgasm"
                     },
                     {
-                        "src": "/menu/500-degree-grill/bluefin-toro-nigiri.jpg",
-                        "alt": "Ajisai Bluefin Toro Nigiri",
-                        "caption": "Bluefin Toro Nigiri"
+                        "src": "/menu/500-degree-grill/uni.png",
+                        "alt": "Ajisai UNI",
+                        "caption": "UNI"
                     }
                 ],
                 "items": [
