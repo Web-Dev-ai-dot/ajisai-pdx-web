@@ -1026,7 +1026,7 @@ const menuGroupData = [
                     {
                         "src": "/menu/childrens-entrees/steak-hibachi.png",
                         "alt": "Ajisai Steak Hibachi",
-                        "caption": "Steak Hibachi"
+                        "caption": "Hibachi Steak"
                     }
                 ],
                 "items": [
