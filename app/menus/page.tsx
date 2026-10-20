@@ -979,6 +979,19 @@ const menuGroupData = [
                 "id": "dessert",
                 "title": "Dessert",
                 "description": "A sweet ending.",
+                "centerGallery": true,
+                "galleryImages": [
+                    {
+                        "src": "/menu/desserts/tai-yaki.png",
+                        "alt": "Ajisai Tai Yaki",
+                        "caption": "Tai Yaki"
+                    },
+                    {
+                        "src": "/menu/desserts/mochi-ice-cream.png",
+                        "alt": "Ajisai Mochi Ice Cream",
+                        "caption": "Mochi Ice Cream"
+                    }
+                ],
                 "items": [
                     {
                         "name": "Tai Yaki",
