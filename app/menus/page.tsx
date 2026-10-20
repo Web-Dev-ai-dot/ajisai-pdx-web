@@ -706,6 +706,13 @@ const menuGroupData = [
                 "id": "hibachi-combos",
                 "title": "Hibachi Combos",
                 "description": "The best of both worlds.",
+                "featuredGallery": true,
+                "galleryImages": [
+                    {
+                        "src": "/menu/hibachi-combos/hibachi-combos-banner.jpg",
+                        "alt": "Ajisai hibachi chef"
+                    }
+                ],
                 "items": [
                     {
                         "name": "N.Y. Steak & Scallop",
