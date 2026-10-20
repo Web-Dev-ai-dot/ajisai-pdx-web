@@ -701,6 +701,20 @@ const menuGroupData = [
                 "title": "Ajisai Special Lunch",
                 "description": "Available Monday through Friday from 11:00 am to 3:00 pm",
                 "showSignature": false,
+                "galleryImages": [
+                    {
+                        "src": "/menu/lunch/chicken-katsu-don.jpg",
+                        "alt": "Ajisai chicken katsu don"
+                    },
+                    {
+                        "src": "/menu/lunch/mapo-tofu-ground-beef.jpg",
+                        "alt": "Ajisai mapo tofu with ground beef"
+                    },
+                    {
+                        "src": "/menu/lunch/julienne-hibachi-chicken.jpg",
+                        "alt": "Ajisai julienne hibachi chicken"
+                    }
+                ],
                 "items": [
                     { "name": "Julienne Hibachi Chicken", "price": "17", "description": "Served with veggie fried rice and hibachi vegetables" },
                     { "name": "Julienne Hibachi Filet", "price": "19", "description": "Served with veggie fried rice and hibachi vegetables" },
