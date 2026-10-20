@@ -765,6 +765,7 @@ const menuGroupData = [
                 "title": "Lunch Udon",
                 "description": "Served with fish cake and scallions",
                 "showSignature": false,
+                "centerGallery": true,
                 "galleryImages": [
                     {
                         "src": "/menu/lunch/chicken-katsu-don-udon.jpg",

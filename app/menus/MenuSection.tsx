@@ -17,6 +17,7 @@ interface MenuCategory {
     items: MenuItem[];
     showSignature?: boolean;
     galleryImages?: MenuGalleryImage[];
+    centerGallery?: boolean;
 }
 
 interface MenuSectionProps {
@@ -117,7 +118,10 @@ export default function MenuSection({ category, showSignature }: MenuSectionProp
 
                     {category.galleryImages && category.galleryImages.length > 0 && (
                         <motion.div variants={itemVariants}>
-                            <MenuImageGrid images={category.galleryImages} />
+                            <MenuImageGrid
+                                images={category.galleryImages}
+                                centered={category.centerGallery}
+                            />
                         </motion.div>
                     )}
                 </div>
