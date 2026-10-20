@@ -737,6 +737,23 @@ const menuGroupData = [
                 "title": "Lunch Ramen",
                 "description": "Toppings: Kikurage mushroom, green onion, bamboo shoot, roasted pork",
                 "showSignature": false,
+                "galleryImages": [
+                    {
+                        "src": "/menu/lunch/shoyu-ramen.jpg",
+                        "alt": "Ajisai shoyu ramen",
+                        "caption": "Shoyu Ramen"
+                    },
+                    {
+                        "src": "/menu/lunch/spicy-miso-ramen.jpg",
+                        "alt": "Ajisai spicy miso ramen",
+                        "caption": "Spicy Miso Ramen"
+                    },
+                    {
+                        "src": "/menu/lunch/tonkotsu-ramen.jpg",
+                        "alt": "Ajisai tonkotsu ramen",
+                        "caption": "Tonkotsu Ramen"
+                    }
+                ],
                 "items": [
                     { "name": "Tonkotsu Ramen", "price": "17", "description": "" },
                     { "name": "Spicy Miso Ramen", "price": "17", "description": "" },
