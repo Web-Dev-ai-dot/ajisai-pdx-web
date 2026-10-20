@@ -765,6 +765,18 @@ const menuGroupData = [
                 "title": "Lunch Udon",
                 "description": "Served with fish cake and scallions",
                 "showSignature": false,
+                "galleryImages": [
+                    {
+                        "src": "/menu/lunch/chicken-katsu-don-udon.jpg",
+                        "alt": "Ajisai chicken katsu don",
+                        "caption": "Chicken Katsu Don"
+                    },
+                    {
+                        "src": "/menu/lunch/tempura-udon.jpg",
+                        "alt": "Ajisai tempura udon",
+                        "caption": "Tempura Udon"
+                    }
+                ],
                 "items": [
                     { "name": "Lunch Chicken Udon", "price": "16", "description": "" },
                     { "name": "Lunch Tempura Udon", "price": "15", "description": "" },
