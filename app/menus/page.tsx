@@ -164,15 +164,18 @@ const menuGroupData = [
                 "galleryImages": [
                     {
                         "src": "/menu/soups-salads/soups-salads-01.png",
-                        "alt": "Ajisai salmon salad presentation"
+                        "alt": "Ajisai sashimi salad",
+                        "caption": "Ajisai Sashimi Salad"
                     },
                     {
                         "src": "/menu/soups-salads/soups-salads-02.png",
-                        "alt": "Ajisai sunomono salad"
+                        "alt": "Ajisai seaweed salad",
+                        "caption": "Seaweed Salad"
                     },
                     {
                         "src": "/menu/soups-salads/soups-salads-03.png",
-                        "alt": "Ajisai seaweed salad"
+                        "alt": "Ajisai grilled salmon salad",
+                        "caption": "Grilled Salmon Salad"
                     }
                 ],
                 "items": [
