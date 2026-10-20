@@ -502,6 +502,23 @@ const menuGroupData = [
                 "id": "ajisai-special-roll",
                 "title": "Ajisai Special Rolls",
                 "description": "Our signature creations.",
+                "galleryImages": [
+                    {
+                        "src": "/menu/ajisai-special-rolls/fairy-roll.jpg",
+                        "alt": "Ajisai Fairy Roll",
+                        "caption": "*FAIRY ROLL"
+                    },
+                    {
+                        "src": "/menu/ajisai-special-rolls/pink-lady.jpg",
+                        "alt": "Ajisai Pink Lady roll",
+                        "caption": "*PINK LADY"
+                    },
+                    {
+                        "src": "/menu/ajisai-special-rolls/sex-on-the-beach-roll.jpg",
+                        "alt": "Ajisai Sex on the Beach Roll",
+                        "caption": "*SEX ON THE BEACH ROLL"
+                    }
+                ],
                 "items": [
                     {
                         "name": "*AJISAI HOUSE SPECIAL ROLL",
