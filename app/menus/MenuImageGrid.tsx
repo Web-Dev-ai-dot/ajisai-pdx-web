@@ -4,6 +4,7 @@ export interface MenuGalleryImage {
     src: string;
     alt: string;
     caption?: string;
+    objectPosition?: string;
 }
 
 interface MenuImageGridProps {
@@ -35,6 +36,7 @@ export default function MenuImageGrid({ images, centered = false, featured = fal
                             fill
                             sizes={featured ? "(max-width: 1023px) 100vw, 960px" : "(max-width: 767px) 30vw, (max-width: 1023px) 29vw, 270px"}
                             className={featured ? "object-cover" : "object-contain"}
+                            style={image.objectPosition ? { objectPosition: image.objectPosition } : undefined}
                         />
                     </div>
                 );

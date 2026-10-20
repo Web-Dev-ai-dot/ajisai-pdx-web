@@ -710,7 +710,8 @@ const menuGroupData = [
                 "galleryImages": [
                     {
                         "src": "/menu/hibachi-combos/hibachi-combos-banner.jpg",
-                        "alt": "Ajisai hibachi chef"
+                        "alt": "Ajisai hibachi chef",
+                        "objectPosition": "center 24%"
                     }
                 ],
                 "items": [
