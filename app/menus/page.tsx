@@ -69,15 +69,18 @@ const menuGroupData = [
                 "galleryImages": [
                     {
                         "src": "/menu/hot-appetizers/hot-appetizers-01.png",
-                        "alt": "Ajisai tempura appetizer"
+                        "alt": "Ajisai tempura appetizer",
+                        "caption": "Tempura (Shrimp)"
                     },
                     {
                         "src": "/menu/hot-appetizers/hot-appetizers-02.png",
-                        "alt": "Ajisai gyoza appetizer"
+                        "alt": "Ajisai gyoza appetizer",
+                        "caption": "Gyoza Veggie (Veggie)"
                     },
                     {
                         "src": "/menu/hot-appetizers/hot-appetizers-03.png",
-                        "alt": "Ajisai chicken wings appetizer"
+                        "alt": "Ajisai chicken wings appetizer",
+                        "caption": "Chicken Karaage"
                     }
                 ],
                 "items": [
