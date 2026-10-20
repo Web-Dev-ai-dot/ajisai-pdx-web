@@ -384,6 +384,23 @@ const menuGroupData = [
                 "id": "sushi-roll",
                 "title": "Sushi Rolls",
                 "description": "Classic and contemporary rolls.",
+                "galleryImages": [
+                    {
+                        "src": "/menu/sushi-rolls/cucumber-roll.jpg",
+                        "alt": "Ajisai cucumber roll",
+                        "caption": "Cucumber Roll"
+                    },
+                    {
+                        "src": "/menu/sushi-rolls/shrimp-tempura-roll.jpg",
+                        "alt": "Ajisai shrimp tempura roll",
+                        "caption": "Shrimp Tempura Roll"
+                    },
+                    {
+                        "src": "/menu/sushi-rolls/avocado-roll.jpg",
+                        "alt": "Ajisai avocado roll",
+                        "caption": "Avocado Roll"
+                    }
+                ],
                 "items": [
                     {
                         "name": "California Roll",
