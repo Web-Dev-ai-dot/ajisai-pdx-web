@@ -822,7 +822,7 @@ const menuGroupData = [
                 "title": "Fried Rice",
                 "description": "Served with onion, carrots, green beans, and egg",
                 "showSignature": false,
-                "centerGallery": true,
+                "featuredGallery": true,
                 "galleryImages": [
                     {
                         "src": "/menu/lunch/chicken-fried-rice.jpg",

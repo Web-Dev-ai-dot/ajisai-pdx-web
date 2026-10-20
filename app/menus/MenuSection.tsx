@@ -18,6 +18,7 @@ interface MenuCategory {
     showSignature?: boolean;
     galleryImages?: MenuGalleryImage[];
     centerGallery?: boolean;
+    featuredGallery?: boolean;
 }
 
 interface MenuSectionProps {
@@ -59,6 +60,12 @@ export default function MenuSection({ category, showSignature }: MenuSectionProp
                     </h2>
                     <p className="text-center text-primary/60 italic mb-10">{category.description}</p>
                 </motion.div>
+
+                {category.featuredGallery && category.galleryImages && category.galleryImages.length > 0 && (
+                    <motion.div variants={itemVariants} className="mb-12">
+                        <MenuImageGrid images={category.galleryImages} featured />
+                    </motion.div>
+                )}
 
                 <div className="space-y-12">
                     {/* Signature Highlight Card */}
@@ -116,7 +123,7 @@ export default function MenuSection({ category, showSignature }: MenuSectionProp
                         ))}
                     </div>
 
-                    {category.galleryImages && category.galleryImages.length > 0 && (
+                    {!category.featuredGallery && category.galleryImages && category.galleryImages.length > 0 && (
                         <motion.div variants={itemVariants}>
                             <MenuImageGrid
                                 images={category.galleryImages}
