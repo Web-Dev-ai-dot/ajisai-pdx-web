@@ -780,6 +780,23 @@ const menuGroupData = [
                 "id": "caution-500-degree-grill",
                 "title": "Specialty: 500 Degree Grill",
                 "description": "Sizzling specialties from our hot stone grill.",
+                "galleryImages": [
+                    {
+                        "src": "/menu/500-degree-grill/bluefin-toro-and-uni.jpg",
+                        "alt": "Ajisai Bluefin Toro and Uni",
+                        "caption": "Bluefin Toro & Uni"
+                    },
+                    {
+                        "src": "/menu/500-degree-grill/foodgasm.jpg",
+                        "alt": "Ajisai Foodgasm",
+                        "caption": "Foodgasm"
+                    },
+                    {
+                        "src": "/menu/500-degree-grill/bluefin-toro-nigiri.jpg",
+                        "alt": "Ajisai Bluefin Toro Nigiri",
+                        "caption": "Bluefin Toro Nigiri"
+                    }
+                ],
                 "items": [
                     {
                         "name": "*FOODGASM (2 Spoons)",
