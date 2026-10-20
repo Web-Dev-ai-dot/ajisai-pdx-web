@@ -819,6 +819,14 @@ const menuGroupData = [
                 "title": "Fried Rice",
                 "description": "Served with onion, carrots, green beans, and egg",
                 "showSignature": false,
+                "centerGallery": true,
+                "galleryImages": [
+                    {
+                        "src": "/menu/lunch/chicken-fried-rice.jpg",
+                        "alt": "Ajisai chicken fried rice",
+                        "caption": "Chicken Fried Rice"
+                    }
+                ],
                 "items": [
                     { "name": "Chicken Fried Rice", "price": "15", "description": "" },
                     { "name": "Shrimp Fried Rice", "price": "17", "description": "" },
