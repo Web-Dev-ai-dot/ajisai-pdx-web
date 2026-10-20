@@ -704,15 +704,18 @@ const menuGroupData = [
                 "galleryImages": [
                     {
                         "src": "/menu/lunch/chicken-katsu-don.jpg",
-                        "alt": "Ajisai chicken katsu don"
+                        "alt": "Ajisai chicken katsu don",
+                        "caption": "Chicken Katsu Don"
                     },
                     {
                         "src": "/menu/lunch/mapo-tofu-ground-beef.jpg",
-                        "alt": "Ajisai mapo tofu with ground beef"
+                        "alt": "Ajisai mapo tofu with ground beef",
+                        "caption": "Mapo Tofu with Ground Beef"
                     },
                     {
                         "src": "/menu/lunch/julienne-hibachi-chicken.jpg",
-                        "alt": "Ajisai julienne hibachi chicken"
+                        "alt": "Ajisai julienne hibachi chicken",
+                        "caption": "Julienne Hibachi Chicken"
                     }
                 ],
                 "items": [
