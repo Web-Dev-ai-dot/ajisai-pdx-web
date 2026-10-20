@@ -15,15 +15,18 @@ const menuGroupData = [
                 "galleryImages": [
                     {
                         "src": "/menu/cold-appetizers/cold-appetizers-01.png",
-                        "alt": "Ajisai cold appetizer platter"
+                        "alt": "Ajisai cold appetizer platter",
+                        "caption": "Sashimi Platter"
                     },
                     {
                         "src": "/menu/cold-appetizers/cold-appetizers-02.png",
-                        "alt": "Ajisai salmon cold appetizer presentation"
+                        "alt": "Ajisai salmon cold appetizer presentation",
+                        "caption": "Salmon Carpaccio"
                     },
                     {
                         "src": "/menu/cold-appetizers/yellowtail-jalapeno.jpg",
-                        "alt": "Ajisai yellowtail jalapeño"
+                        "alt": "Ajisai yellowtail jalapeño",
+                        "caption": "Yellowtail Jalapeño"
                     }
                 ],
                 "items": [
