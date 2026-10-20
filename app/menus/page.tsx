@@ -1015,6 +1015,23 @@ const menuGroupData = [
                 "id": "kids-entrees",
                 "title": "Children's Entrées",
                 "description": "For kids 10 and younger. Entrées served with miso soup or Ajisai house salad, shrimp appetizer, Vegetables (zucchini, onion), white rice, ice cream.",
+                "galleryImages": [
+                    {
+                        "src": "/menu/childrens-entrees/chicken-fried-rice.jpg",
+                        "alt": "Ajisai Chicken Fried Rice",
+                        "caption": "Chicken Fried Rice"
+                    },
+                    {
+                        "src": "/menu/childrens-entrees/french-fries.jpg",
+                        "alt": "Ajisai French Fries",
+                        "caption": "French Fries"
+                    },
+                    {
+                        "src": "/menu/childrens-entrees/steak-hibachi.png",
+                        "alt": "Ajisai Steak Hibachi",
+                        "caption": "Steak Hibachi"
+                    }
+                ],
                 "items": [
                     { "name": "Chicken & Shrimp", "price": "27", "description": "" },
                     { "name": "Chicken & Steak", "price": "28", "description": "" },
