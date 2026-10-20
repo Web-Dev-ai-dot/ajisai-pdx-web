@@ -453,6 +453,23 @@ const menuGroupData = [
                 "id": "tempura-roll",
                 "title": "Tempura Rolls",
                 "description": "Crispy, deep-fried rolls.",
+                "galleryImages": [
+                    {
+                        "src": "/menu/tempura-rolls/las-vegas-roll.jpg",
+                        "alt": "Ajisai Las Vegas roll",
+                        "caption": "Las Vegas Roll"
+                    },
+                    {
+                        "src": "/menu/tempura-rolls/spicy-tuna-crispy-rice.jpg",
+                        "alt": "Ajisai spicy tuna crispy rice",
+                        "caption": "*Spicy Tuna Crispy Rice"
+                    },
+                    {
+                        "src": "/menu/tempura-rolls/volcano-roll.jpg",
+                        "alt": "Ajisai Volcano roll",
+                        "caption": "*Volcano Roll"
+                    }
+                ],
                 "items": [
                     {
                         "name": "*Spicy Tuna Crispy Rice",
