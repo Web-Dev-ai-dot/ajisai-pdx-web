@@ -275,6 +275,23 @@ const menuGroupData = [
                 "id": "nigiri-or-sashimi",
                 "title": "Nigiri Only",
                 "description": "Traditional hand-pressed sushi.",
+                "galleryImages": [
+                    {
+                        "src": "/menu/nigiri-only/hamachi-nigiri.jpg",
+                        "alt": "Ajisai hamachi nigiri",
+                        "caption": "*HAMACHI (Yellowtail)"
+                    },
+                    {
+                        "src": "/menu/nigiri-only/ikura-nigiri.jpg",
+                        "alt": "Ajisai ikura nigiri",
+                        "caption": "*IKURA (Salmon Roe)"
+                    },
+                    {
+                        "src": "/menu/nigiri-only/tai-nigiri.jpg",
+                        "alt": "Ajisai tai nigiri",
+                        "caption": "*TAI (Red Snapper)"
+                    }
+                ],
                 "items": [
                     {
                         "name": "*MAGURO (Tuna)",
