@@ -226,6 +226,23 @@ const menuGroupData = [
                 "id": "sushi-bar-entrees",
                 "title": "Sushi Bar Entrées",
                 "description": "Chef's premium selection of fresh fish.",
+                "galleryImages": [
+                    {
+                        "src": "/menu/sushi-bar-entrees/ajisai-love-boat-for-two.jpg",
+                        "alt": "Ajisai Love Boat for two",
+                        "caption": "AJISAI LOVE BOAT(for two)"
+                    },
+                    {
+                        "src": "/menu/sushi-bar-entrees/sushi-and-sashimi-combo.jpg",
+                        "alt": "Ajisai sushi and sashimi combo",
+                        "caption": "Sushi & Sashimi Combo"
+                    },
+                    {
+                        "src": "/menu/sushi-bar-entrees/sushi-deluxe.jpg",
+                        "alt": "Ajisai sushi deluxe",
+                        "caption": "Sushi Deluxe"
+                    }
+                ],
                 "items": [
                     {
                         "name": "Maki Combo",
