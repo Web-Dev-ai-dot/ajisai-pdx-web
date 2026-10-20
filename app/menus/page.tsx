@@ -925,16 +925,12 @@ const menuGroupData = [
                 "title": "Yaki Soba & Udon",
                 "description": "Served with onion, carrots, and cabbage",
                 "showSignature": false,
+                "centerGallery": true,
                 "galleryImages": [
                     {
-                        "src": "/menu/lunch/beef-yaki-udon.jpg",
-                        "alt": "Ajisai beef yaki udon",
-                        "caption": "Beef Yaki Udon"
-                    },
-                    {
-                        "src": "/menu/lunch/chicken-yaki-udon.jpg",
-                        "alt": "Ajisai chicken yaki udon",
-                        "caption": "Chicken Yaki Udon"
+                        "src": "/menu/lunch/beef-yaki-soba.jpg",
+                        "alt": "Ajisai beef yaki soba",
+                        "caption": "Beef Yaki Soba"
                     },
                     {
                         "src": "/menu/lunch/chicken-yaki-soba.jpg",
