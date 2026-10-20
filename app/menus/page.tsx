@@ -75,7 +75,7 @@ const menuGroupData = [
                     {
                         "src": "/menu/hot-appetizers/hot-appetizers-02.png",
                         "alt": "Ajisai gyoza appetizer",
-                        "caption": "Gyoza Veggie (Veggie)"
+                        "caption": "Gyoza (Veggie)"
                     },
                     {
                         "src": "/menu/hot-appetizers/hot-appetizers-03.png",
